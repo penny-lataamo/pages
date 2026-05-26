@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Penny Pages</title>
+<style>
+  :root { color-scheme: light; --ink:#050B3E; --muted:#586176; --bg:#F7F7F2; --card:#fff; --line:rgba(5,11,62,.12); }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:radial-gradient(circle at 15% 15%, rgba(90,33,214,.10), transparent 30%), linear-gradient(135deg,#fbfbf7,#f2efe7); color:var(--ink); }
+  main { width:min(980px, calc(100% - 40px)); margin:0 auto; padding:72px 0; }
+  h1 { margin:0 0 12px; font-size:clamp(42px,8vw,88px); letter-spacing:-.06em; line-height:.92; }
+  p { margin:0 0 34px; color:var(--muted); font-size:20px; line-height:1.45; max-width:720px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+  a { display:block; padding:22px; border:1px solid var(--line); border-radius:24px; background:rgba(255,255,255,.72); color:inherit; text-decoration:none; box-shadow:0 18px 46px rgba(5,11,62,.07); }
+  a:hover { transform:translateY(-1px); box-shadow:0 22px 52px rgba(5,11,62,.10); }
+  strong { display:block; font-size:22px; margin-bottom:8px; }
+  span { color:var(--muted); line-height:1.35; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Penny Pages</h1>
+  <p>Public static pages and one-off visual deliverables created for Lataamo.</p>
+  <section class="grid" aria-label="Published pages">
+    <a href="/ai-as-enabler/"><strong>AI as an Enabler</strong><span>One-screen actionable process infographic.</span></a>
+    <a href="/sanoma-get-tomorrow-together/"><strong>Sanoma: Get Tomorrow Together</strong><span>Event app case reference card.</span></a>
+    <a href="/nordea-sustainability/"><strong>Nordea Sustainability</strong><span>Finnish page.</span></a>
+    <a href="/nordea-sustainability-en/"><strong>Nordea Sustainability EN</strong><span>English page.</span></a>
+  </section>
+</main>
+</body>
+</html>
