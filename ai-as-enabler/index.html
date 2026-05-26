@@ -7,130 +7,147 @@
 <meta name="description" content="A one-screen Lataamo branded infographic showing how Lataamo turns AI into event value." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #15151a;
-    --muted: #62626d;
-    --paper: #fffdf8;
-    --cream: #fbfaf6;
-    --line: rgba(21,21,26,.11);
-    --orange: #ff5500;
-    --orange-soft: #ff8a3d;
-    --pink: #ec0382;
-    --pink-deep: #d70376;
-    --yellow: #ffc909;
-    --green: #25d86f;
-    --grad: linear-gradient(135deg,#ff5500 0%,#fd5412 28%,#ec0382 76%,#d70376 100%);
-    --soft-grad: linear-gradient(135deg,rgba(255,85,0,.12),rgba(236,3,130,.10));
+    --ink:#17171d;
+    --muted:#5f5e68;
+    --paper:#fffdf8;
+    --cream:#fbf7ef;
+    --line:rgba(23,23,29,.11);
+    --orange:#ff5500;
+    --pink:#ec0382;
+    --pink-dark:#d70376;
+    --yellow:#ffc909;
+    --green:#1fd66b;
+    --grad:linear-gradient(135deg,#ff6b35 0%,#ff5500 30%,#ec0382 72%,#d70376 100%);
   }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: var(--cream); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  body::before { content:""; position:fixed; inset:0; background:
-    radial-gradient(circle at 5% 10%, rgba(255,201,9,.36), transparent 22%),
-    radial-gradient(circle at 79% 7%, rgba(236,3,130,.16), transparent 24%),
-    radial-gradient(circle at 84% 88%, rgba(255,85,0,.18), transparent 28%),
-    linear-gradient(135deg,#ffffff 0%,#fffdf6 42%,#fff0df 100%); z-index:-2; }
-  body::after { content:""; position:fixed; inset:18px; border:1px solid rgba(21,21,26,.06); border-radius:34px; pointer-events:none; z-index:-1; }
-  .frame { width: 100vw; height: 56.25vw; max-height: 100vh; max-width: 177.7778vh; margin: auto; position: relative; overflow: hidden; padding: 20px 34px 40px; display:flex; flex-direction:column; }
-  .brandbar { display:flex; align-items:center; justify-content:space-between; margin-bottom: 6px; flex:0 0 auto; }
-  .brand { display:flex; align-items:center; gap:10px; font-size: 12px; font-weight:900; text-transform:uppercase; letter-spacing:.16em; color:#8d4b22; }
-  .mark { width:34px; height:34px; border-radius:11px; background:var(--grad); color:#fff; display:grid; place-items:center; font-weight:900; font-size:20px; box-shadow:0 14px 32px rgba(236,3,130,.22); letter-spacing:-.03em; }
-  .tag { color:#7c3d1f; font-size:11px; font-weight:900; letter-spacing:.13em; text-transform:uppercase; }
-  header { display:grid; grid-template-columns: 430px 1fr; gap:26px; align-items:end; margin-bottom: 18px; flex:0 0 auto; }
-  h1 { margin:0; font-family:"Bebas Neue", Inter, sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:.01em; line-height:.82; font-size: 72px; max-width:460px; }
-  h1 span { display:block; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .subtitle { margin:0; max-width: 1040px; color:#33333a; font-size: 21px; line-height: 1.12; font-weight:760; letter-spacing:-.04em; padding: 0 0 5px 0; }
-  .subtitle b { color: var(--pink-deep); }
-  .flow { position: relative; display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; flex:1 1 auto; min-height:0; align-items: stretch; }
-  .flow::before { content:""; position:absolute; top:32px; left:60px; right:60px; height:7px; border-radius:999px; background:var(--grad); opacity:.98; z-index:0; box-shadow:0 12px 36px rgba(236,3,130,.18); }
-  .card { --c: var(--orange); position: relative; z-index:1; min-width:0; display:flex; flex-direction:column; align-items:stretch; text-align:left; border:1px solid var(--line); border-radius: 23px; background: rgba(255,255,255,.78); box-shadow:0 20px 52px rgba(21,21,26,.07); padding: 18px 12px 12px; overflow:visible; }
-  .card::before { content:""; position:absolute; inset:0 0 auto 0; height:7px; border-radius:23px 23px 0 0; background:var(--grad); opacity:.95; }
-  .card::after { content:"→"; position:absolute; right:-14px; top:24px; color:#15151a; font-size:25px; font-weight:900; z-index:3; text-shadow:0 8px 18px rgba(21,21,26,.16); }
-  .card:last-child::after { display:none; }
-  .num { width:48px; height:48px; border-radius:15px; display:grid; place-items:center; color:#fff; background:var(--c); font-family:"Bebas Neue",Inter,sans-serif; font-size:34px; font-weight:400; line-height:1; margin: -40px 0 12px; box-shadow:0 12px 28px rgba(21,21,26,.16); }
-  .iconbox { width:64px; height:64px; border-radius:18px; background:linear-gradient(135deg,rgba(255,85,0,.10),rgba(236,3,130,.08)); border:1px solid rgba(255,85,0,.12); display:grid; place-items:center; margin-bottom: 10px; }
-  .icon { width:48px; height:48px; }
-  h2 { margin:0 0 6px; font-family:"Bebas Neue", Inter, sans-serif; text-transform:uppercase; font-weight:400; letter-spacing:.005em; font-size: 21px; line-height:.94; color:#111; }
-  .why { margin:0 0 8px; color: var(--muted); font-size: 12.2px; line-height:1.14; font-weight:720; letter-spacing:-.025em; }
-  .action { margin-top:auto; border-radius:16px; background:#15151a; color:#fff; padding: 8px 9px 9px; min-height: 60px; display:flex; align-items:center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
-  .action b { display:block; color:var(--yellow); font-size: 8.5px; font-weight:900; letter-spacing:.13em; text-transform:uppercase; margin-bottom:3px; }
-  .action span { display:block; font-size:11.6px; line-height:1.1; font-weight:850; letter-spacing:-.025em; }
-  .c1 { --c:#ff5500; } .c2 { --c:#ff6b35; } .c3 { --c:#ec0382; } .c4 { --c:#d70376; } .c5 { --c:#15151a; } .c6 { --c:#ffc909; } .c7 { --c:#25d86f; }
-  .c6 .num { color:#15151a; } .c7 .num { color:#15151a; }
-  svg { overflow:visible; }
-  .stroke { stroke: var(--c); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-  .fill { fill: var(--c); }
-  .soft { fill: rgba(236,3,130,.10); }
+  *{box-sizing:border-box}
+  html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  body{display:grid;place-items:center}
+  body::before{content:"";position:fixed;inset:0;background:
+    radial-gradient(circle at 8% 12%,rgba(255,201,9,.34),transparent 21%),
+    radial-gradient(circle at 86% 8%,rgba(236,3,130,.15),transparent 24%),
+    radial-gradient(circle at 76% 88%,rgba(255,85,0,.14),transparent 30%),
+    linear-gradient(135deg,#fffefa 0%,#fff8ee 50%,#fff1df 100%);z-index:-2}
+  .frame{width:100vw;height:56.25vw;max-width:177.7778vh;max-height:100vh;overflow:hidden;position:relative;padding:30px 42px 34px;display:flex;flex-direction:column;gap:18px}
+  .frame::after{content:"";position:absolute;inset:18px;border:1px solid rgba(23,23,29,.06);border-radius:34px;pointer-events:none}
+  .brandbar{height:34px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex:0 0 auto}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#7a3a1f}
+  .mark{width:34px;height:34px;border-radius:11px;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:900;font-size:20px;box-shadow:0 12px 30px rgba(236,3,130,.22)}
+  .tag{font-weight:900;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7a3a1f;text-align:right}
+  header{display:grid;grid-template-columns: minmax(420px, .95fr) 1.35fr;gap:34px;align-items:end;flex:0 0 auto}
+  h1{margin:0;font-size:clamp(42px,4.7vw,78px);line-height:.95;letter-spacing:-.07em;font-weight:900;max-width:760px}
+  h1 .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{margin:0 0 5px;color:#2f2f38;font-size:clamp(17px,1.35vw,23px);line-height:1.12;letter-spacing:-.055em;font-weight:850;max-width:970px}
+  .lead b{color:var(--pink-dark)}
+  .canvas{flex:1 1 auto;min-height:0;display:grid;grid-template-columns: 365px 1fr;gap:18px;align-items:stretch}
+  .thesis{position:relative;border-radius:30px;background:#17171d;color:#fff;padding:24px 24px 22px;overflow:hidden;box-shadow:0 24px 60px rgba(23,23,29,.13);display:flex;flex-direction:column;justify-content:space-between}
+  .thesis::before{content:"";position:absolute;inset:-90px -80px auto auto;width:250px;height:250px;border-radius:50%;background:var(--grad);opacity:.9}
+  .kicker{position:relative;z-index:1;font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px}
+  .bigline{position:relative;z-index:1;font-size:38px;line-height:.98;letter-spacing:-.065em;font-weight:900;margin:0 0 18px}
+  .bigline span{display:block;color:#fff}
+  .rule{position:relative;z-index:1;display:grid;grid-template-columns:34px 1fr;gap:11px;align-items:start;padding:12px 0;border-top:1px solid rgba(255,255,255,.14)}
+  .rule strong{font-size:15px;line-height:1.05;letter-spacing:-.03em;display:block;margin-bottom:3px}
+  .rule p{margin:0;color:rgba(255,255,255,.76);font-size:12.5px;line-height:1.2;font-weight:650;letter-spacing:-.025em}
+  .dot{width:30px;height:30px;border-radius:10px;background:rgba(255,255,255,.11);display:grid;place-items:center;color:var(--yellow);font-weight:900;border:1px solid rgba(255,255,255,.12)}
+  .result{position:relative;z-index:1;margin-top:12px;border-radius:20px;background:#fff;color:#19191f;padding:14px 15px;font-size:16px;line-height:1.1;font-weight:900;letter-spacing:-.045em}
+  .result b{color:var(--pink-dark)}
+  .process{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr) 90px;gap:12px;min-height:0;position:relative}
+  .process::before{content:"";position:absolute;left:8.5%;right:8.5%;top:49%;height:9px;border-radius:999px;background:linear-gradient(90deg,#ff5500,#ec0382);opacity:.13;transform:translateY(-50%)}
+  .step{position:relative;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.82);box-shadow:0 18px 48px rgba(23,23,29,.07);padding:15px 15px 14px;display:flex;flex-direction:column;min-width:0;overflow:hidden}
+  .step::before{content:"";position:absolute;inset:0 0 auto;height:7px;background:var(--grad)}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+  .num{width:36px;height:36px;border-radius:12px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:18px;font-weight:900;box-shadow:0 10px 25px rgba(236,3,130,.18)}
+  .icon{width:42px;height:42px;border-radius:15px;background:linear-gradient(135deg,rgba(255,85,0,.10),rgba(236,3,130,.09));display:grid;place-items:center;font-size:21px;border:1px solid rgba(236,3,130,.10)}
+  h2{margin:0 0 7px;font-size:17.5px;line-height:1.02;letter-spacing:-.052em;font-weight:900}
+  .step p{margin:0;color:#575660;font-size:12px;line-height:1.13;font-weight:700;letter-spacing:-.03em}
+  .does{margin-top:auto;border-radius:15px;background:#fff5ed;border:1px solid rgba(255,85,0,.16);padding:9px 10px;color:#17171d;font-size:11px;line-height:1.1;font-weight:850;letter-spacing:-.03em}
+  .does b{display:block;color:var(--pink-dark);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:3px}
+  .band{grid-column:1 / -1;border-radius:24px;background:linear-gradient(135deg,rgba(255,85,0,.12),rgba(236,3,130,.11));border:1px solid rgba(236,3,130,.13);display:grid;grid-template-columns:220px repeat(3,1fr);gap:12px;align-items:center;padding:14px 18px}
+  .band-title{font-size:20px;line-height:.98;font-weight:900;letter-spacing:-.06em;color:#17171d}
+  .band-item{display:flex;align-items:center;gap:10px;font-size:12.5px;line-height:1.08;font-weight:850;letter-spacing:-.035em;color:#33323a}
+  .pill{flex:0 0 auto;width:28px;height:28px;border-radius:10px;background:#17171d;color:var(--yellow);display:grid;place-items:center;font-weight:900;font-size:13px}
+  .s1{grid-column:1 / 2}.s2{grid-column:2 / 3}.s3{grid-column:3 / 4}.s4{grid-column:4 / 5}.s5{grid-column:1 / 2}.s6{grid-column:2 / 3}.s7{grid-column:3 / 5}
+  .s7{background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(255,245,237,.9))}
+  .s7 .does{background:#17171d;color:#fff;border-color:#17171d}.s7 .does b{color:var(--yellow)}
+  @media (max-aspect-ratio: 16/9){.frame{width:177.7778vh;height:100vh}}
 </style>
 </head>
 <body>
-  <main class="frame" aria-label="AI as an Enabler action process infographic">
+  <main class="frame" aria-label="AI as an Enabler service infographic">
     <div class="brandbar">
       <div class="brand"><div class="mark">L</div><span>What Lataamo does</span></div>
       <div class="tag">AI supports the event idea — not the other way around</div>
     </div>
+
     <header>
-      <h1>AI as an <span>enabler</span></h1>
-      <p class="subtitle">Lataamo starts from the event goal, then designs the right AI-enabled interactions, tools and moments to create <b>measurable audience value</b>.</p>
+      <h1>AI is useful when it <span class="accent">serves the event idea</span></h1>
+      <p class="lead">Lataamo turns the event goal into the right mix of intelligent interaction, content, custom tools and memorable moments — so AI creates <b>measurable audience value</b>.</p>
     </header>
 
-    <section class="flow">
-      <article class="card c1">
-        <div class="num">1</div>
-        <div class="iconbox"><svg class="icon" viewBox="0 0 120 120" aria-hidden="true"><circle class="stroke" cx="56" cy="64" r="37"/><circle class="stroke" cx="56" cy="64" r="22"/><circle class="fill" cx="56" cy="64" r="7"/><path class="stroke" d="M69 51l28-28"/><path class="fill" d="M98 17l3 20-20 3z"/></svg></div>
-        <h2>Start from the event goal</h2>
-        <p class="why">We define what the event must change: leads, ROI, engagement, brand impact or deeper audience insight.</p>
-        <div class="action"><span><b>Lataamo does</b>Turns the ambition into one clear success sentence and the metrics that prove it.</span></div>
-      </article>
+    <section class="canvas">
+      <aside class="thesis">
+        <div>
+          <div class="kicker">Service principle</div>
+          <p class="bigline"><span>Goal first.</span><span>AI second.</span><span>Value always.</span></p>
+          <div class="rule"><div class="dot">1</div><div><strong>Start with the change.</strong><p>What should the event make people know, feel or do?</p></div></div>
+          <div class="rule"><div class="dot">2</div><div><strong>Choose the right AI role.</strong><p>Host, assistant, content engine, tool, or moment — never technology for its own sake.</p></div></div>
+          <div class="rule"><div class="dot">3</div><div><strong>Design the afterlife.</strong><p>The event should produce usable content, insight and next steps.</p></div></div>
+        </div>
+        <div class="result">The outcome: <b>an event that feels smarter</b>, not more complicated.</div>
+      </aside>
 
-      <article class="card c2">
-        <div class="num">2</div>
-        <div class="iconbox"><svg class="icon" viewBox="0 0 120 120" aria-hidden="true"><rect class="soft" x="25" y="42" width="70" height="54" rx="24"/><path class="stroke" d="M31 55c0-22 58-22 58 0"/><rect class="stroke" x="25" y="51" width="70" height="45" rx="22"/><circle class="fill" cx="48" cy="72" r="5"/><circle class="fill" cx="72" cy="72" r="5"/><path class="stroke" d="M20 66h-7v19h13M100 66h7v19H94"/><path class="stroke" d="M49 89h22"/></svg></div>
-        <h2>Design intelligent interaction</h2>
-        <p class="why">We place AI where it helps people participate: guidance, Q&A, onboarding, facilitation or follow-up.</p>
-        <div class="action"><span><b>Lataamo does</b>Designs the attendee touchpoints where an assistant, avatar or smart flow adds value.</span></div>
-      </article>
-
-      <article class="card c3">
-        <div class="num">3</div>
-        <div class="iconbox"><svg class="icon" viewBox="0 0 120 120" aria-hidden="true"><path class="stroke" d="M27 22h45l19 19v57H27z"/><path class="stroke" d="M72 23v20h19"/><path class="stroke" d="M42 51h28M42 66h20M42 82h13"/><path class="fill" d="M83 58a29 29 0 1029 29H83z"/><path fill="#fff" opacity=".55" d="M89 52v29h29a29 29 0 00-29-29z"/></svg></div>
-        <h2>Distil content into usable formats</h2>
-        <p class="why">We turn talks, responses and takeaways into summaries, infographics, videos and visual assets.</p>
-        <div class="action"><span><b>Lataamo does</b>Plans capture points and creates the content formats people can actually use afterwards.</span></div>
-      </article>
-
-      <article class="card c4">
-        <div class="num">4</div>
-        <div class="iconbox"><svg class="icon" viewBox="0 0 120 120" aria-hidden="true"><circle class="fill" cx="33" cy="60" r="14"/><circle class="fill" cx="87" cy="60" r="14"/><circle class="fill" cx="60" cy="50" r="16"/><path class="soft" d="M17 96c2-22 30-25 43-11 13-14 41-11 43 11z"/><circle class="stroke" cx="70" cy="80" r="21"/><path class="stroke" d="M87 97l17 17"/><rect class="fill" x="43" y="13" width="47" height="27" rx="7"/><path fill="#fff" d="M54 26h25v5H54z"/></svg></div>
-        <h2>Capture tacit knowledge</h2>
-        <p class="why">We surface themes, needs and signals from conversations, workshops and audience behavior.</p>
-        <div class="action"><span><b>Lataamo does</b>Builds the method for collecting, reviewing and turning hidden knowledge into insight.</span></div>
-      </article>
-
-      <article class="card c5">
-        <div class="num">5</div>
-        <div class="iconbox"><svg class="icon" viewBox="0 0 120 120" aria-hidden="true"><rect class="stroke" x="31" y="14" width="47" height="91" rx="8"/><path class="stroke" d="M49 23h12"/><rect class="fill" x="43" y="42" width="15" height="15" rx="3"/><rect class="fill" x="63" y="42" width="15" height="15" rx="3"/><rect class="fill" x="43" y="64" width="15" height="15" rx="3"/><path class="fill" d="M100 76l8 5-6 10 6 10-8 5-7-8h-12l-7 8-8-5 6-10-6-10 8-5 7 8h12z"/><circle fill="#fff" cx="87" cy="91" r="8"/></svg></div>
-        <h2>Build custom apps & automations</h2>
-        <p class="why">We create lightweight, purpose-built tools for audiences, organisers and behind-the-scenes work.</p>
-        <div class="action"><span><b>Lataamo does</b>Builds only the tools that remove friction or make the event goal easier to reach.</span></div>
-      </article>
-
-      <article class="card c6">
-        <div class="num">6</div>
-        <div class="iconbox"><svg class="icon" viewBox="0 0 120 120" aria-hidden="true"><circle class="fill" cx="46" cy="50" r="18"/><path class="soft" d="M17 95c2-24 56-24 58 0z"/><rect class="stroke" x="60" y="52" width="43" height="34" rx="6"/><path class="stroke" d="M73 64h17M73 76h12"/><circle class="fill" cx="68" cy="64" r="3"/><circle class="fill" cx="68" cy="76" r="3"/><path class="fill" d="M86 25c9-12 26-2 15 13L86 53 71 38c-11-15 6-25 15-13z"/></svg></div>
-        <h2>Personalize the event experience</h2>
-        <p class="why">We give different audiences relevant recaps, highlights, matches, content and next steps.</p>
-        <div class="action"><span><b>Lataamo does</b>Defines what each participant group should receive before, during and after the event.</span></div>
-      </article>
-
-      <article class="card c7">
-        <div class="num">7</div>
-        <div class="iconbox"><svg class="icon" viewBox="0 0 120 120" aria-hidden="true"><path class="stroke" d="M21 90l51-51"/><path class="fill" d="M78 17l7 19 20 2-16 13 5 20-17-11-18 10 6-20-15-14 20-1z"/><path class="stroke" d="M85 94c7 11 19 11 26 0M9 94c7 11 19 11 26 0"/><path class="fill" d="M20 37l4 9 10 2-8 6 3 10-9-5-9 5 3-10-8-6 10-2zM103 31l3 6 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z"/></svg></div>
-        <h2>Create memorable AI-powered moments</h2>
-        <p class="why">We make the experience participatory, surprising and immersive — without losing the human idea.</p>
-        <div class="action"><span><b>Lataamo does</b>Creates one talked-about AI moment that strengthens the brand and event story.</span></div>
-      </article>
+      <div class="process" aria-label="Seven-part Lataamo AI service process">
+        <article class="step s1">
+          <div class="top"><div class="num">1</div><div class="icon">◎</div></div>
+          <h2>Start from the event goal</h2>
+          <p>Define the change: leads, ROI, engagement, brand impact or deeper insight.</p>
+          <div class="does"><b>Lataamo does</b>Sets the success sentence and proof points.</div>
+        </article>
+        <article class="step s2">
+          <div class="top"><div class="num">2</div><div class="icon">◌</div></div>
+          <h2>Design interaction</h2>
+          <p>Use AI for guidance, Q&A, onboarding, facilitation or follow-up.</p>
+          <div class="does"><b>Lataamo does</b>Designs the useful touchpoints.</div>
+        </article>
+        <article class="step s3">
+          <div class="top"><div class="num">3</div><div class="icon">▤</div></div>
+          <h2>Distil content</h2>
+          <p>Summaries, visuals, videos and reusable assets.</p>
+          <div class="does"><b>Lataamo does</b>Plans capture and formats.</div>
+        </article>
+        <article class="step s4">
+          <div class="top"><div class="num">4</div><div class="icon">⌕</div></div>
+          <h2>Capture tacit knowledge</h2>
+          <p>Themes and needs from conversations, workshops and audience behaviour.</p>
+          <div class="does"><b>Lataamo does</b>Turns hidden knowledge into insight.</div>
+        </article>
+        <article class="step s5">
+          <div class="top"><div class="num">5</div><div class="icon">▣</div></div>
+          <h2>Build useful tools</h2>
+          <p>Lightweight tools for attendees, organisers and backstage work.</p>
+          <div class="does"><b>Lataamo does</b>Builds only what removes friction.</div>
+        </article>
+        <article class="step s6">
+          <div class="top"><div class="num">6</div><div class="icon">✦</div></div>
+          <h2>Personalize the experience</h2>
+          <p>Relevant recaps, highlights, contacts, content and next steps.</p>
+          <div class="does"><b>Lataamo does</b>Defines what each group receives.</div>
+        </article>
+        <article class="step s7">
+          <div class="top"><div class="num">7</div><div class="icon">✺</div></div>
+          <h2>Create memorable moments</h2>
+          <p>One participatory AI moment people remember.</p>
+          <div class="does"><b>Lataamo does</b>Makes it easy to share and remember.</div>
+        </article>
+        <div class="band" aria-label="What this produces">
+          <div class="band-title">What this produces</div>
+          <div class="band-item"><span class="pill">A</span><span>Clear reason to use AI</span></div>
+          <div class="band-item"><span class="pill">B</span><span>Interactions that help people</span></div>
+          <div class="band-item"><span class="pill">C</span><span>Content and insight after the event</span></div>
+        </div>
+      </div>
     </section>
   </main>
 </body>
