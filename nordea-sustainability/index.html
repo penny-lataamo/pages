@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fi" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nordea Esimerkkiprojekti – Vastuullisuusraportti</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --background: #fafafa;
+      --foreground: #171717;
+      --card: #ffffff;
+      --muted: #f5f5f5;
+      --muted-foreground: #737373;
+      --border: #e5e5e5;
+      --accent: #fff5f0;
+      --accent-foreground: #ff5500;
+
+      --nordea-deep: #00005E;
+      --nordea-blue: #0000A0;
+      --nordea-cyan: #009FDF;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--foreground);
+      font-family: 'Montserrat', system-ui, sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+
+    .bg-brand-gradient { background: linear-gradient(135deg, #ff5500 0%, #fd5412 25%, #ec0382 75%, #d70376 100%); }
+    .bg-brand-gradient-subtle { background: linear-gradient(135deg, rgba(255,85,0,0.10) 0%, rgba(215,3,118,0.10) 100%); }
+
+    .bg-nordea-gradient {
+      background:
+        radial-gradient(800px 280px at 0% 0%, rgba(0,159,223,0.20), transparent 60%),
+        radial-gradient(600px 280px at 100% 100%, rgba(0,0,160,0.28), transparent 55%),
+        linear-gradient(135deg, #00005E 0%, #0000A0 60%, #1B2DBF 100%);
+    }
+
+    .card {
+      border-radius: 0.875rem;
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      background-color: #ffffff;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05), 0 1px 2px -1px rgba(0,0,0,0.05);
+    }
+
+    .ring-customer {
+      box-shadow: 0 0 0 1px rgba(0,0,160,0.10), 0 18px 40px -16px rgba(0,0,90,0.30);
+    }
+
+    .badge-customer {
+      display: inline-flex; align-items: center; gap: .375rem;
+      padding: .2rem .6rem; border-radius: 9999px;
+      font-size: .65rem; font-weight: 600;
+      background-color: rgba(255,255,255,0.10); color: #fff;
+      border: 1px solid rgba(255,255,255,0.30);
+      backdrop-filter: blur(6px);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    .progress-track { background: #f1f5f9; border-radius: 9999px; overflow: hidden; position: relative; }
+    .progress-bar { height: 100%; border-radius: 9999px; }
+
+    .seg-yes  { background: linear-gradient(90deg, #34d399, #10b981); }
+    .seg-part { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+    .seg-no   { background: linear-gradient(90deg, #fb7185, #ef4444); }
+
+    .ring-target {
+      position: absolute; top: -4px; bottom: -4px; width: 2px; background: #0f172a;
+    }
+    .ring-target::after {
+      content: ""; position: absolute; left: 50%; top: -4px; width: 7px; height: 7px;
+      background: #0f172a; transform: translateX(-50%) rotate(45deg);
+    }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: .25rem;
+      padding: .15rem .5rem; border-radius: 9999px; font-size: .68rem; font-weight: 600;
+      white-space: nowrap;
+    }
+    .pill-passed { background: #ecfdf5; color: #047857; border: 1px solid #d1fae5; }
+    .pill-warn   { background: #fffbeb; color: #b45309; border: 1px solid #fef3c7; }
+    .pill-fail   { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+    .dim-eco  { color: #059669; }
+    .dim-soc  { color: #2563eb; }
+    .dim-econ { color: #d97706; }
+    .dim-gen  { color: #7c3aed; }
+
+    /* Sub-criteria checks */
+    .subcrit {
+      display: flex; align-items: center; gap: .375rem;
+      font-size: .7rem; color: #475569; line-height: 1.3;
+    }
+    .subcrit i { width: 11px; height: 11px; flex-shrink: 0; }
+    .subcrit-ok    { color: #047857; }
+    .subcrit-fail  { color: #b91c1c; }
+    .subcrit-pend  { color: #b45309; }
+
+    .stat-card {
+      border-radius: 0.625rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: .625rem .75rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Compact header -->
+  <header class="border-b border-slate-200 bg-white">
+    <div class="max-w-[1500px] mx-auto px-6 py-2.5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="#" class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          Etusivu
+        </a>
+        <span class="text-slate-300 text-xs">/</span>
+        <span class="text-xs font-semibold">Raportti</span>
+        <span class="text-xs text-slate-400 ml-1">Nordea Esimerkkiprojekti</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="text-xs text-slate-400">Lataamo · Vastuullisuus</div>
+        <div class="h-7 w-7 rounded-full bg-brand-gradient flex items-center justify-center text-white text-[10px] font-bold">JL</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-[1500px] mx-auto px-6 py-5 space-y-4">
+
+    <!-- Project title row -->
+    <div class="flex items-center justify-between gap-6 flex-wrap">
+      <div class="flex items-baseline gap-3 flex-wrap">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-gradient-subtle border border-orange-200/60">
+          <span class="w-1 h-1 rounded-full bg-brand-gradient"></span>
+          <span class="text-[10px] font-medium uppercase tracking-wider text-[var(--accent-foreground)]">Vastuullisuusraportti</span>
+        </div>
+        <h1 class="text-2xl font-bold text-slate-900">Nordea Esimerkkiprojekti</h1>
+        <span class="inline-flex items-center gap-1 text-xs text-slate-500"><i data-lucide="building-2" class="w-3.5 h-3.5"></i> Nordea Pankki Oyj</span>
+        <span class="inline-flex items-center gap-1 text-xs text-slate-500"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 12.3.2026</span>
+        <span class="inline-flex items-center gap-1 text-xs text-slate-500"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Helsinki, Kulttuuritalo</span>
+        <span class="inline-flex items-center gap-1 text-xs text-slate-500"><i data-lucide="users" class="w-3.5 h-3.5"></i> 500–2000 osallistujaa</span>
+      </div>
+
+      <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl border-2 bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200">
+        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-100">
+          <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i>
+        </div>
+        <div class="leading-tight">
+          <div class="font-bold text-sm text-emerald-900">Hyväksytty</div>
+          <div class="text-[10px] text-emerald-700">Minimivaatimukset täyttyvät</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-column main grid -->
+    <div class="grid grid-cols-12 gap-4">
+
+      <!-- ========== LEFT: Nordea customer goals (8 cols) ========== -->
+      <section class="col-span-12 lg:col-span-8 ring-customer rounded-2xl overflow-hidden">
+
+        <!-- Nordea banner -->
+        <div class="bg-nordea-gradient text-white px-5 py-4 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-white/15 backdrop-blur ring-1 ring-white/30">
+              <i data-lucide="target" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+              <span class="badge-customer">
+                <span class="w-1 h-1 rounded-full bg-cyan-300"></span>
+                Asiakkaan tavoitteet
+              </span>
+              <h2 class="text-xl font-bold leading-tight mt-1">Nordean vastuullisuustavoitteet projektissa</h2>
+              <p class="text-[11px] text-white/70 mt-0.5 max-w-2xl">Projekti arvioidaan ensisijaisesti Nordean omia vastuullisuuskriteerejä vasten.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 bg-white/10 rounded-lg px-4 py-2.5 ring-1 ring-white/20">
+            <div class="relative">
+              <svg class="w-14 h-14 -rotate-90" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="10"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#7DD3FC" stroke-width="10" stroke-linecap="round"
+                        stroke-dasharray="217 264"/>
+              </svg>
+              <span class="absolute inset-0 flex items-center justify-center text-xs font-bold">82%</span>
+            </div>
+            <div class="leading-tight">
+              <div class="text-[10px] uppercase tracking-wider text-white/70">Toteutuma</div>
+              <div class="text-base font-bold">5 / 6 tavoitetta</div>
+              <div class="text-[10px] text-white/70">Tavoiteraja 75 %</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Goals grid: 2 columns × 3 rows -->
+        <div class="bg-white p-4 grid grid-cols-2 gap-3">
+
+          <!-- Goal 1: Ilmastoneutraali -->
+          <article class="rounded-xl border border-slate-200 p-3.5 flex flex-col gap-2.5">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-start gap-2.5 min-w-0">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 flex-shrink-0">
+                  <i data-lucide="leaf" class="w-4 h-4 text-emerald-600"></i>
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-900 leading-tight">Ilmastoneutraali tapahtuma</h3>
+                  <p class="text-[11px] text-slate-500 leading-snug mt-0.5">Hiilijalanjälki kompensoitu, päästöjä vähennetty etäosallistumisella.</p>
+                </div>
+              </div>
+              <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                <span class="text-xl font-bold text-slate-900 tabular-nums leading-none">94<span class="text-xs text-slate-400">%</span></span>
+                <span class="pill pill-passed"><i data-lucide="check" class="w-2.5 h-2.5"></i> Toteutuu</span>
+              </div>
+            </div>
+            <div>
+              <div class="relative progress-track h-2">
+                <div class="progress-bar seg-yes" style="width: 94%"></div>
+                <div class="ring-target" style="left: 80%"></div>
+              </div>
+              <div class="flex items-center justify-between mt-1.5 text-[10px] text-slate-500">
+                <span>8 / 9 kriteeriä</span>
+                <span class="font-medium">Tavoite 80 %</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-1 pt-2 border-t border-slate-100">
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Hiilijalanjälki kompensoitu 100 %</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Etäosallistujia 38 % osallistujista</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Päästölaskelma todennettu (1.2 t CO₂e)</div>
+            </div>
+          </article>
+
+          <!-- Goal 2: Monimuotoisuus -->
+          <article class="rounded-xl border border-slate-200 p-3.5 flex flex-col gap-2.5">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-start gap-2.5 min-w-0">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 flex-shrink-0">
+                  <i data-lucide="users" class="w-4 h-4 text-blue-600"></i>
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-900 leading-tight">Monimuotoisuus ja yhdenvertaisuus</h3>
+                  <p class="text-[11px] text-slate-500 leading-snug mt-0.5">Tasapainoinen puhujakaarti, esteettömyys huomioitu kaikilla osa-alueilla.</p>
+                </div>
+              </div>
+              <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                <span class="text-xl font-bold text-slate-900 tabular-nums leading-none">88<span class="text-xs text-slate-400">%</span></span>
+                <span class="pill pill-passed"><i data-lucide="check" class="w-2.5 h-2.5"></i> Toteutuu</span>
+              </div>
+            </div>
+            <div>
+              <div class="relative progress-track h-2">
+                <div class="progress-bar seg-yes" style="width: 88%"></div>
+                <div class="ring-target" style="left: 75%"></div>
+              </div>
+              <div class="flex items-center justify-between mt-1.5 text-[10px] text-slate-500">
+                <span>7 / 8 kriteeriä</span>
+                <span class="font-medium">Tavoite 75 %</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-1 pt-2 border-t border-slate-100">
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Puhujista 52 % naisia, 12 % alle 30 v</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Esteettömyys WCAG 2.1 AA</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Monikielinen viestintä (FI / EN / SV)</div>
+            </div>
+          </article>
+
+          <!-- Goal 3: Vastuullinen hankinta -->
+          <article class="rounded-xl border border-amber-200 bg-amber-50/30 p-3.5 flex flex-col gap-2.5">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-start gap-2.5 min-w-0">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-purple-50 flex-shrink-0">
+                  <i data-lucide="handshake" class="w-4 h-4 text-purple-600"></i>
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-900 leading-tight">Vastuullinen hankinta</h3>
+                  <p class="text-[11px] text-slate-500 leading-snug mt-0.5">Nordean toimittajakoodi vaadittu kaikilta, alihankkijoiden auditointi käynnissä.</p>
+                </div>
+              </div>
+              <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                <span class="text-xl font-bold text-slate-900 tabular-nums leading-none">68<span class="text-xs text-slate-400">%</span></span>
+                <span class="pill pill-warn"><i data-lucide="alert-triangle" class="w-2.5 h-2.5"></i> Osittain</span>
+              </div>
+            </div>
+            <div>
+              <div class="relative progress-track h-2">
+                <div class="progress-bar seg-part" style="width: 68%"></div>
+                <div class="ring-target" style="left: 80%"></div>
+              </div>
+              <div class="flex items-center justify-between mt-1.5 text-[10px] text-slate-500">
+                <span>5 / 7 kriteeriä</span>
+                <span class="font-medium">Tavoite 80 %</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-1 pt-2 border-t border-amber-200/60">
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Supplier Code of Conduct allekirjoitettu 14 / 14</div>
+              <div class="subcrit subcrit-pend"><i data-lucide="clock"></i>Auditoinnit kesken: 2 alihankkijaa</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Paikallisia toimittajia 78 %</div>
+            </div>
+          </article>
+
+          <!-- Goal 4: Kiertotalous -->
+          <article class="rounded-xl border border-slate-200 p-3.5 flex flex-col gap-2.5">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-start gap-2.5 min-w-0">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 flex-shrink-0">
+                  <i data-lucide="recycle" class="w-4 h-4 text-amber-600"></i>
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-900 leading-tight">Kiertotalous ja jätteen vähennys</h3>
+                  <p class="text-[11px] text-slate-500 leading-snug mt-0.5">Paperiton tapahtuma, materiaalit kiertoon, lähiruokatarjoilu.</p>
+                </div>
+              </div>
+              <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                <span class="text-xl font-bold text-slate-900 tabular-nums leading-none">81<span class="text-xs text-slate-400">%</span></span>
+                <span class="pill pill-passed"><i data-lucide="check" class="w-2.5 h-2.5"></i> Toteutuu</span>
+              </div>
+            </div>
+            <div>
+              <div class="relative progress-track h-2">
+                <div class="progress-bar seg-yes" style="width: 81%"></div>
+                <div class="ring-target" style="left: 70%"></div>
+              </div>
+              <div class="flex items-center justify-between mt-1.5 text-[10px] text-slate-500">
+                <span>6 / 7 kriteeriä</span>
+                <span class="font-medium">Tavoite 70 %</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-1 pt-2 border-t border-slate-100">
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Kierrätysaste 92 %</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Paperiton tapahtuma — kaikki materiaalit digitaalisia</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Lähiruokaa tarjoilussa 87 %</div>
+            </div>
+          </article>
+
+          <!-- Goal 5: Tietosuoja (failing) -->
+          <article class="rounded-xl border border-rose-200 bg-rose-50/30 p-3.5 flex flex-col gap-2.5">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-start gap-2.5 min-w-0">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-rose-100 flex-shrink-0">
+                  <i data-lucide="shield-alert" class="w-4 h-4 text-rose-600"></i>
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-900 leading-tight">Tietosuoja ja eettinen viestintä</h3>
+                  <p class="text-[11px] text-slate-500 leading-snug mt-0.5">GDPR-prosessi puutteellinen — kriittinen kriteeri puuttuu.</p>
+                </div>
+              </div>
+              <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                <span class="text-xl font-bold text-rose-700 tabular-nums leading-none">42<span class="text-xs text-rose-400">%</span></span>
+                <span class="pill pill-fail"><i data-lucide="x" class="w-2.5 h-2.5"></i> Ei toteudu</span>
+              </div>
+            </div>
+            <div>
+              <div class="relative progress-track h-2">
+                <div class="progress-bar seg-no" style="width: 42%"></div>
+                <div class="ring-target" style="left: 95%"></div>
+              </div>
+              <div class="flex items-center justify-between mt-1.5 text-[10px] text-rose-700 font-medium">
+                <span>3 / 7 kriteeriä</span>
+                <span>Tavoite 95 %</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-1 pt-2 border-t border-rose-200/60">
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Tietosuojaseloste julkaistu</div>
+              <div class="subcrit subcrit-fail"><i data-lucide="x-circle"></i>Säilytysaikoja ei ole määritelty</div>
+              <div class="subcrit subcrit-fail"><i data-lucide="x-circle"></i>Tallennusvideoiden suostumuslomake puuttuu</div>
+            </div>
+          </article>
+
+          <!-- Goal 6: Sidosryhmäviestintä -->
+          <article class="rounded-xl border border-slate-200 p-3.5 flex flex-col gap-2.5">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-start gap-2.5 min-w-0">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-50 flex-shrink-0">
+                  <i data-lucide="megaphone" class="w-4 h-4 text-teal-600"></i>
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-900 leading-tight">Sidosryhmäviestintä ja avoimuus</h3>
+                  <p class="text-[11px] text-slate-500 leading-snug mt-0.5">Vastuullisuusraportti julkaistu, toimenpiteet ja tulokset läpinäkyviä.</p>
+                </div>
+              </div>
+              <div class="flex flex-col items-end gap-1 flex-shrink-0">
+                <span class="text-xl font-bold text-slate-900 tabular-nums leading-none">96<span class="text-xs text-slate-400">%</span></span>
+                <span class="pill pill-passed"><i data-lucide="check" class="w-2.5 h-2.5"></i> Toteutuu</span>
+              </div>
+            </div>
+            <div>
+              <div class="relative progress-track h-2">
+                <div class="progress-bar seg-yes" style="width: 96%"></div>
+                <div class="ring-target" style="left: 90%"></div>
+              </div>
+              <div class="flex items-center justify-between mt-1.5 text-[10px] text-slate-500">
+                <span>5 / 5 kriteeriä</span>
+                <span class="font-medium">Tavoite 90 %</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-1 pt-2 border-t border-slate-100">
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Vastuullisuusraportti julkaistu 15.3.2026</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Tulokset, mittarit ja kehityskohteet listattu</div>
+              <div class="subcrit subcrit-ok"><i data-lucide="check-circle-2"></i>Palautekanavat avoinna sidosryhmille</div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Footer info -->
+        <div class="bg-slate-50/70 border-t border-slate-100 px-5 py-2.5 flex items-center justify-between text-[11px] text-slate-500">
+          <span class="inline-flex items-center gap-1.5">
+            <i data-lucide="info" class="w-3 h-3 text-slate-400"></i>
+            Nordean kriteerit tuotu asiakaskohtaisena kriteeristönä — ne linkittyvät Lataamon 4 ulottuvuuteen.
+          </span>
+          <span>Kriteeristöversio 2026-Q1 · 41 kysymystä</span>
+        </div>
+      </section>
+
+      <!-- ========== RIGHT: Lataamo standard (4 cols) ========== -->
+      <aside class="col-span-12 lg:col-span-4 flex flex-col gap-3">
+
+        <!-- Section header -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-sm font-bold text-slate-900">Lataamon yleinen arviointi</h2>
+            <p class="text-[11px] text-slate-500 leading-snug">Sama projekti 4-ulottuvuuksisella standardilla.</p>
+          </div>
+          <span class="text-[10px] text-slate-500 inline-flex items-center gap-1">
+            <i data-lucide="layers" class="w-3 h-3"></i> 93 kysymystä
+          </span>
+        </div>
+
+        <!-- 4 dimension mini-cards -->
+        <div class="space-y-2">
+          <div class="card p-3 border-violet-100 bg-violet-50/40">
+            <div class="flex items-center gap-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-white flex-shrink-0">
+                <i data-lucide="layout-grid" class="w-4 h-4 dim-gen"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider dim-gen">Yleinen</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Hyväksytty</span>
+                    <span class="text-base font-bold text-slate-900 tabular-nums">78%</span>
+                  </div>
+                </div>
+                <div class="w-full h-1.5 bg-white rounded-full overflow-hidden mt-1.5">
+                  <div class="h-full rounded-full" style="width:78%; background:linear-gradient(to right,#a78bfa,#7c3aed)"></div>
+                </div>
+                <div class="text-[10px] text-slate-500 mt-1">84 % kattavuus · 22 / 26 vastattu</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-3 border-emerald-100 bg-emerald-50/40">
+            <div class="flex items-center gap-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-white flex-shrink-0">
+                <i data-lucide="leaf" class="w-4 h-4 dim-eco"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider dim-eco">Ekologinen</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-medium px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-800">Erinomainen</span>
+                    <span class="text-base font-bold text-slate-900 tabular-nums">86%</span>
+                  </div>
+                </div>
+                <div class="w-full h-1.5 bg-white rounded-full overflow-hidden mt-1.5">
+                  <div class="h-full rounded-full" style="width:86%; background:linear-gradient(to right,#34d399,#10b981)"></div>
+                </div>
+                <div class="text-[10px] text-slate-500 mt-1">92 % kattavuus · 23 / 25 vastattu</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-3 border-blue-100 bg-blue-50/40">
+            <div class="flex items-center gap-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-white flex-shrink-0">
+                <i data-lucide="users" class="w-4 h-4 dim-soc"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider dim-soc">Sosiaalinen</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Hyväksytty</span>
+                    <span class="text-base font-bold text-slate-900 tabular-nums">82%</span>
+                  </div>
+                </div>
+                <div class="w-full h-1.5 bg-white rounded-full overflow-hidden mt-1.5">
+                  <div class="h-full rounded-full" style="width:82%; background:linear-gradient(to right,#60a5fa,#2563eb)"></div>
+                </div>
+                <div class="text-[10px] text-slate-500 mt-1">88 % kattavuus · 21 / 24 vastattu</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-3 border-amber-100 bg-amber-50/40">
+            <div class="flex items-center gap-3">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-white flex-shrink-0">
+                <i data-lucide="coins" class="w-4 h-4 dim-econ"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider dim-econ">Taloudellinen</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Hyväksytty</span>
+                    <span class="text-base font-bold text-slate-900 tabular-nums">71%</span>
+                  </div>
+                </div>
+                <div class="w-full h-1.5 bg-white rounded-full overflow-hidden mt-1.5">
+                  <div class="h-full rounded-full" style="width:71%; background:linear-gradient(to right,#fbbf24,#d97706)"></div>
+                </div>
+                <div class="text-[10px] text-slate-500 mt-1">79 % kattavuus · 14 / 18 vastattu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Statistics grid -->
+        <div class="grid grid-cols-3 gap-2">
+          <div class="stat-card">
+            <div class="text-base font-bold text-slate-900">80</div>
+            <div class="text-[10px] text-slate-500 leading-none">Vastattu</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-base font-bold text-slate-900">7</div>
+            <div class="text-[10px] text-slate-500 leading-none">Ei sovellu</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-base font-bold text-amber-600">6</div>
+            <div class="text-[10px] text-slate-500 leading-none">En tiedä</div>
+          </div>
+        </div>
+
+        <!-- Combined score -->
+        <div class="card p-3.5 flex items-center gap-3">
+          <div class="relative flex-shrink-0">
+            <div class="absolute inset-0 bg-brand-gradient rounded-full opacity-20 blur-lg scale-110"></div>
+            <svg class="w-16 h-16 -rotate-90 relative" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#f1f5f9" stroke-width="10"/>
+              <circle cx="50" cy="50" r="42" fill="none" stroke="url(#totalGradient)" stroke-width="10" stroke-linecap="round"
+                      stroke-dasharray="208 264"/>
+              <defs>
+                <linearGradient id="totalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff5500"/>
+                  <stop offset="100%" stop-color="#ec0382"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-900">79%</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="text-xs uppercase tracking-wider text-slate-500 leading-none mb-1">Kokonaistulos</div>
+            <div class="text-base font-bold text-slate-900 leading-tight">Hyväksytty</div>
+            <div class="text-[10px] text-slate-500 leading-tight mt-0.5">86 % kattavuus · vastuullisuusraja 60 %</div>
+          </div>
+        </div>
+
+        <!-- Mapping hint -->
+        <div class="rounded-xl border border-dashed border-slate-300 p-3 bg-white/60">
+          <div class="flex items-start gap-2">
+            <div class="flex h-7 w-7 items-center justify-center rounded-md bg-indigo-50 flex-shrink-0">
+              <i data-lucide="git-branch" class="w-3.5 h-3.5 text-indigo-600"></i>
+            </div>
+            <div class="text-[11px] text-slate-600 leading-snug">
+              <span class="font-semibold text-slate-900 block mb-0.5">Asiakaskohtainen näkymä</span>
+              Nordean tavoitteet sisältävät <strong>23 omaa kriteeriä</strong>, jotka linkittyvät 18 Lataamon vakiokysymykseen ja 5 Nordealle räätälöityyn kysymykseen.
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
