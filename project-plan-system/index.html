@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lataamo Project Plan System — MVP-prototyyppi</title>
+  <meta name="description" content="Lataamon projektisuunnitelmien palikkakirjasto ja asiakasnäkymä — MVP-prototyyppi." />
+  <style>
+    :root{
+      --ink:#19131a;
+      --muted:#6a5c64;
+      --paper:#fffaf4;
+      --card:#ffffff;
+      --line:rgba(25,19,26,.13);
+      --orange:#ff6b35;
+      --hot:#ec0382;
+      --purple:#5b2df2;
+      --green:#159c6e;
+      --amber:#f3a116;
+      --red:#d83a52;
+      --shadow:0 24px 80px rgba(40,20,20,.12);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(255,107,53,.18), transparent 32%),
+        radial-gradient(circle at 92% 0%, rgba(236,3,130,.16), transparent 28%),
+        linear-gradient(180deg,#fffaf4 0%,#fff7ef 46%,#fbefe6 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .wrap{max-width:1280px;margin:0 auto;padding:34px 28px 54px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
+    .mark{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--orange),var(--hot));box-shadow:0 12px 32px rgba(236,3,130,.25);position:relative}
+    .mark:after{content:"";position:absolute;inset:10px;border:3px solid white;border-radius:9px;transform:rotate(-12deg)}
+    .pill{border:1px solid var(--line);background:rgba(255,255,255,.66);padding:9px 13px;border-radius:999px;color:var(--muted);font-size:13px;font-weight:700}
+    .hero{display:grid;grid-template-columns:1fr .9fr;gap:28px;align-items:stretch;margin-bottom:28px}
+    .hero-card,.panel{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(12px)}
+    .hero-card{padding:34px;position:relative;overflow:hidden}
+    .hero-card:before{content:"";position:absolute;right:-80px;top:-90px;width:260px;height:260px;border-radius:999px;background:linear-gradient(135deg,rgba(255,107,53,.22),rgba(236,3,130,.18));}
+    h1{font-size:clamp(40px,5.6vw,72px);line-height:.9;margin:10px 0 22px;text-transform:uppercase;letter-spacing:-.055em;font-weight:950;max-width:780px;overflow-wrap:normal}
+    h1 span{background:linear-gradient(135deg,var(--orange),var(--hot) 55%,var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:20px;line-height:1.38;color:#463941;max-width:760px;margin:0 0 24px;font-weight:620}
+    .hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+    .mini{border:1px solid var(--line);background:#fff;border-radius:18px;padding:15px;min-height:108px}
+    .mini b{display:block;font-size:14px;margin-bottom:8px}.mini p{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
+    .diagnosis{padding:24px;display:flex;flex-direction:column;gap:14px}
+    .diagnosis h2,.panel h2{font-size:24px;margin:0;letter-spacing:-.03em}.diagnosis p{margin:0;color:var(--muted);line-height:1.45}
+    .bad-good{display:grid;grid-template-columns:1fr 1fr;gap:12px}.chip{border-radius:18px;padding:15px;border:1px solid var(--line);background:#fff}.chip strong{display:block;margin-bottom:8px}.chip ul{padding-left:18px;margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+    .section{display:grid;grid-template-columns:.55fr 1.45fr;gap:24px;margin:28px 0}.section-intro{padding:24px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.13em;font-weight:950;color:var(--hot);margin-bottom:10px}.section-intro h2{font-size:34px;line-height:.98;margin:0 0 12px;letter-spacing:-.05em}.section-intro p{color:var(--muted);line-height:1.48;margin:0}
+    .flow{padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;position:relative;min-height:180px}.num{width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--orange),var(--hot));color:#fff;display:grid;place-items:center;font-weight:950;margin-bottom:14px}.step h3{margin:0 0 8px;font-size:18px}.step p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}
+    .views{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:22px}.view{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px}.view .tag{display:inline-block;padding:6px 9px;border-radius:999px;background:#fff0e8;color:#b13d19;font-weight:850;font-size:12px;margin-bottom:12px}.view h3{margin:0 0 9px;font-size:20px}.view p{margin:0;color:var(--muted);font-size:14px;line-height:1.42}.view.primary{background:linear-gradient(135deg,#21151f,#3b2037);color:#fff}.view.primary p{color:rgba(255,255,255,.76)}.view.primary .tag{background:rgba(255,255,255,.15);color:#fff}
+    .mock{padding:22px}.app{border-radius:26px;background:#fff;border:1px solid var(--line);overflow:hidden;box-shadow:0 20px 60px rgba(20,10,20,.11)}.topbar{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line);background:#fffdf9}.topbar h3{margin:0;font-size:19px}.status{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px;font-weight:750}.dot{width:10px;height:10px;border-radius:50%;background:var(--green)}.appbody{display:grid;grid-template-columns:310px 1fr;min-height:520px}.side{border-right:1px solid var(--line);background:#fff8f1;padding:18px}.field{margin-bottom:14px}.field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:900;margin-bottom:7px}.input{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 12px;font-weight:760;font-size:14px}.blocklist{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.blockpill{font-size:12px;font-weight:800;padding:7px 9px;border-radius:999px;background:#fff;border:1px solid var(--line)}.blockpill.on{background:linear-gradient(135deg,var(--orange),var(--hot));border:0;color:#fff}.preview{padding:20px;background:#fff}.preview-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:18px}.preview-title h4{font-size:24px;line-height:1.05;margin:0 0 7px}.preview-title p{margin:0;color:var(--muted);font-size:13px}.legend{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}.legend span{font-size:11px;font-weight:850;padding:6px 8px;border-radius:999px;border:1px solid var(--line);background:#fff}.roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}.phase{border:1px solid var(--line);border-radius:16px;padding:12px;min-height:122px;background:#fff}.phase.active{border-color:rgba(236,3,130,.35);box-shadow:inset 0 0 0 2px rgba(236,3,130,.09)}.phase small{display:block;color:var(--muted);font-weight:800;margin-bottom:8px}.phase b{display:block;font-size:13px;margin-bottom:8px}.phase em{display:block;font-style:normal;font-size:12px;color:var(--muted);line-height:1.35}.decision-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.decision{border-radius:16px;padding:12px;border:1px solid var(--line);background:#fffdf8}.decision strong{font-size:13px;display:block;margin-bottom:6px}.decision p{margin:0;color:var(--muted);font-size:12px;line-height:1.35}.decision.warn{background:#fff7e5}.decision.risk{background:#fff0f3}.decision.ok{background:#effcf6}
+    .matrix{padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.cell{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}.cell h3{font-size:16px;margin:0 0 8px}.cell p{font-size:13px;color:var(--muted);line-height:1.42;margin:0}.footer-note{padding:24px;border-radius:24px;background:#20151f;color:#fff;display:flex;justify-content:space-between;gap:24px;align-items:center}.footer-note h2{margin:0;font-size:30px;letter-spacing:-.04em}.footer-note p{margin:0;color:rgba(255,255,255,.72);max-width:640px;line-height:1.45}
+    @media(max-width:980px){.hero,.section{grid-template-columns:1fr}.flow,.views,.matrix{grid-template-columns:1fr 1fr}.appbody{grid-template-columns:1fr}.side{border-right:0;border-bottom:1px solid var(--line)}.roadmap,.decision-row{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr}.bad-good{grid-template-columns:1fr}}
+    @media(max-width:640px){.wrap{padding:22px 14px}.flow,.views,.matrix,.roadmap,.decision-row{grid-template-columns:1fr}.footer-note{display:block}.hero-card{padding:24px}h1{font-size:46px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><div class="mark"></div><div>Lataamo / Project Plan System</div></div>
+      <div class="pill">MVP-ajatus · ei PowerPoint-sidonnainen</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="kicker">Seuraava konkreettinen askel</div>
+        <h1>Palikoista <span>asiakas-<br>näkymäksi</span></h1>
+        <p class="lead">Projektisuunnitelman master ei ole slide, Excel tai yksittäinen dokumentti. Master on rakenteinen suunnitelmadata: hyväksytyt palikat, projektikohtaiset valinnat, vastuut, päätöspisteet ja aikajana. Siitä renderöidään oikea näkymä oikealle yleisölle.</p>
+        <div class="hero-grid">
+          <div class="mini"><b>1. Tehokkuus</b><p>Tuottaja valitsee hyväksytyt palikat ja muokkaa vain oikeasti projektikohtaiset kohdat.</p></div>
+          <div class="mini"><b>2. Yhtenäisyys</b><p>Lataamon tapa tehdä projektisuunnitelma muuttuu yhteiseksi järjestelmäksi.</p></div>
+          <div class="mini"><b>3. Asiakasymmärrys</b><p>Asiakas saa päätös- ja tilannekuvan, ei sisäistä tuotantolistaa.</p></div>
+        </div>
+      </div>
+      <aside class="diagnosis panel">
+        <h2>Diagnoosi nykyisestä slidemallista</h2>
+        <p>Nykyinen esimerkki sisältää paljon oikeaa tietoa, mutta se toimii enemmän sisäisenä muistilistana kuin asiakkaan päätöksenteon näkymänä.</p>
+        <div class="bad-good">
+          <div class="chip"><strong>Nyt</strong><ul><li>kuukausittaiset bulletit</li><li>paljon samanarvoista tekstiä</li><li>asiakkaan tehtävät eivät korostu</li><li>status/riskit piilossa</li></ul></div>
+          <div class="chip"><strong>Tavoite</strong><ul><li>vaiheet ja päätöspisteet</li><li>vastuut näkyviin</li><li>seuraavat 3 askelta</li><li>lisätiedot linkin takana</li></ul></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-intro panel">
+        <div class="kicker">MVP-arkkitehtuuri</div>
+        <h2>Ei ensin raskasta järjestelmää.</h2>
+        <p>Ensimmäinen versio kannattaa tehdä SeaTable/Sheet-pohjaisena palikkakirjastona, jonka päälle Penny kokoaa asiakas- ja sisäiset näkymät. Kun sisältömalli toimii oikeissa projekteissa, voidaan päättää ostotyökalusta tai omasta web-appista.</p>
+      </div>
+      <div class="flow panel">
+        <div class="step"><div class="num">1</div><h3>Blocks</h3><p>Hyväksytyt Lataamo-palikat: vaihe, tehtävät, asiakasteksti, sisäinen teksti, vastuut ja riippuvuudet.</p></div>
+        <div class="step"><div class="num">2</div><h3>Project profile</h3><p>Tuottaja täyttää lyhyen profiilin: formaatti, koko, palvelut, aikajana, kompleksisuus ja custom-huomiot.</p></div>
+        <div class="step"><div class="num">3</div><h3>Assembly</h3><p>Järjestelmä ehdottaa palikat. Tuottaja hyväksyy, poistaa, järjestää ja lisää projektikohtaiset poikkeamat.</p></div>
+        <div class="step"><div class="num">4</div><h3>Outputs</h3><p>Sama data renderöidään asiakasportaaliin, one-pageriksi, PDF:ksi, dashboardiksi tai tarvittaessa slideksi.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-intro panel">
+        <div class="kicker">Output-ajattelu</div>
+        <h2>Yksi lähde, monta näkymää.</h2>
+        <p>Projektisuunnitelmaa ei sidota PowerPointiin. Slide on vain yksi vientimuoto. Pysyvä hyöty syntyy siitä, että lähdedata ja palikat ovat hallittuja.</p>
+      </div>
+      <div class="views panel">
+        <div class="view primary"><span class="tag">ensisijainen</span><h3>Web-asiakasnäkymä</h3><p>Ajantasainen linkki: projektin vaihe, roadmap, päätökset, vastuut, materiaalit ja seuraavat stepit.</p></div>
+        <div class="view"><span class="tag">myynti / kickoff</span><h3>One-page plan</h3><p>Selain- tai PDF-muotoinen tiivis suunnitelma, jonka voi lähettää asiakkaalle ilman selittelyä.</p></div>
+        <div class="view"><span class="tag">tarvittaessa</span><h3>Slide / kuva</h3><p>Käytetään vain silloin, kun materiaali pitää upottaa deckiin tai ohjausryhmän esitykseen.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-intro panel">
+        <div class="kicker">Prototype view</div>
+        <h2>Miltä työkalu voisi tuntua?</h2>
+        <p>Vasen puoli on tuottajan nopea projektiprofiili ja palikkavalinta. Oikea puoli on asiakkaalle näkyvä päätösnäkymä. Tämä on tarkoituksella web-pohjainen, ei slide.</p>
+      </div>
+      <div class="mock panel">
+        <div class="app">
+          <div class="topbar"><h3>Helsinki Welcome Day — Project Plan</h3><div class="status"><span class="dot"></span> Päivitetty tänään · Asiakasnäkymä</div></div>
+          <div class="appbody">
+            <div class="side">
+              <div class="field"><label>Event type</label><div class="input">Corporate welcome event</div></div>
+              <div class="field"><label>Services included</label><div class="blocklist"><span class="blockpill on">Production</span><span class="blockpill on">Venue</span><span class="blockpill on">Program</span><span class="blockpill on">Speakers</span><span class="blockpill">Registration</span><span class="blockpill on">Comms</span></div></div>
+              <div class="field"><label>Suggested blocks</label><div class="blocklist"><span class="blockpill on">Kickoff</span><span class="blockpill on">Client approvals</span><span class="blockpill on">Venue logistics</span><span class="blockpill on">AV production</span><span class="blockpill on">Event day runbook</span><span class="blockpill">Post-event report</span></div></div>
+              <div class="field"><label>Customization</label><div class="input">Custom: Mayor greeting, international guest flow, city venue dependencies.</div></div>
+            </div>
+            <div class="preview">
+              <div class="preview-head">
+                <div class="preview-title"><h4>Client decision roadmap</h4><p>Tavoite: varmistaa tapahtuman valmistuminen ilman päätöspullonkauloja.</p></div>
+                <div class="legend"><span>● valmis</span><span>● aktiivinen</span><span>● asiakaspäätös</span><span>● riski</span></div>
+              </div>
+              <div class="roadmap">
+                <div class="phase"><small>Huhtikuu</small><b>Brief & kickoff</b><em>Tavoitteet, vastuut, aikataulu ja päätösmalli lukitaan.</em></div>
+                <div class="phase active"><small>Toukokuu</small><b>Program & venue lock</b><em>Ohjelma, puhujat, tila ja tuotantoratkaisut vahvistetaan.</em></div>
+                <div class="phase"><small>Toukokuu</small><b>Production build-up</b><em>Tekniikka, materiaalit, henkilöstö ja kuljetukset tuotantoon.</em></div>
+                <div class="phase"><small>Kesäkuu</small><b>Live event</b><em>Rakennus, tapahtuma, purku ja vastuuroolit paikan päällä.</em></div>
+                <div class="phase"><small>T+1 viikko</small><b>Wrap-up</b><em>Palautteet, raportointi, materiaalit ja opit seuraavaan toteutukseen.</em></div>
+              </div>
+              <div class="decision-row">
+                <div class="decision warn"><strong>Seuraava asiakaspäätös</strong><p>Vahvista puhujalista ja ohjelmarunko perjantaihin mennessä.</p></div>
+                <div class="decision risk"><strong>Kriittinen riippuvuus</strong><p>Tilan lopullinen layout vaikuttaa AV-suunnitelmaan ja rakentamiseen.</p></div>
+                <div class="decision ok"><strong>Lataamo hoitaa nyt</strong><p>Vendor-koordinointi, tuotantoaikataulu, tapahtumapäivän runbook.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-intro panel">
+        <div class="kicker">Seuraavat 10 työpäivää</div>
+        <h2>Pieni pilotti ennen työkalupäätöstä.</h2>
+        <p>Tässä vaiheessa ratkaistaan sisältömalli ja asiakasnäkymä, ei vielä osteta koko projektinhallinnan tulevaisuutta.</p>
+      </div>
+      <div class="matrix panel">
+        <div class="cell"><h3>1. Kerää 5 suunnitelmaa</h3><p>Otetaan oikeat Excelit/slidet ja puretaan niistä toistuvat vaiheet, vastuut ja asiakasnäkyvät päätökset.</p></div>
+        <div class="cell"><h3>2. Tee 30 palikkaa</h3><p>Rakennetaan ensimmäinen hyväksytty blokkilista: sisäinen teksti, asiakasteksti, aikajanalogiikka ja omistaja.</p></div>
+        <div class="cell"><h3>3. Testaa 1 projektilla</h3><p>Tuottaja kokoaa oikean suunnitelman palikoista. Mitataan missä tuli säästöä ja mikä jäi epäselväksi.</p></div>
+        <div class="cell"><h3>4. Päätä työkalu</h3><p>Jos taulukko riittää, jatketaan. Jos käyttöliittymä hidastaa, vertaillaan Airtable/monday/Teamwork/oma appi.</p></div>
+      </div>
+    </section>
+
+    <section class="footer-note">
+      <h2>Päätös nyt</h2>
+      <p>Seuraava järkevä konkreettinen askel on rakentaa ensimmäinen palikkakirjasto ja web-asiakasnäkymän malli yhdestä oikeasta Lataamo-projektista. Vasta sen jälkeen valitaan pysyvä järjestelmä.</p>
+    </section>
+  </div>
+</body>
+</html>
