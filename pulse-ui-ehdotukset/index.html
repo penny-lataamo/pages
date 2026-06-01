@@ -1,84 +1,243 @@
 <!doctype html>
-<html lang="fi" data-theme="light">
+<html lang="fi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PULSE — mobiilinäkymien UI-suunnitelma</title>
-  <meta name="description" content="PULSE-ominaisuuden mobiilikäyttöliittymän näkymäsuunnitelma Lataamon mobile trio -template-elementeillä." />
+  <title>PULSE — mobiilisovelluksen UX-suunnitelma</title>
+  <meta name="description" content="PULSE-ominaisuuden mobiilisovelluksen UX- ja käyttöliittymäsuunnitelma: näkymät, elementit ja perustelut." />
   <style>
-    :root{--brand-orange:#FF6B35;--brand-orange-deep:#FF5500;--brand-magenta:#EC0382;--brand-magenta-deep:#D70376;--brand-purple:#37104B;--brand-gradient:linear-gradient(135deg,#FF6B35 0%,#FF5500 30%,#EC0382 70%,#D70376 100%);--font:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--radius-phone:34px;--radius-card:22px;--radius-soft:16px;--radius-pill:999px;--shadow-phone:0 34px 80px rgba(17,17,17,.20),0 10px 28px rgba(55,16,75,.14);--shadow-card:0 16px 38px rgba(17,17,17,.10);--bg:#F5F1ED;--bg-map:rgba(55,16,75,.06);--surface:#FFFFFF;--surface-soft:#FFF1EA;--surface-raised:#FFFFFF;--ink:#111;--muted:#6B6167;--soft:#A69AA1;--line:#E8E0E4;--field:#FFFFFF;--action:#D70376;--action-hover:#B90263;--action-text:#fff;--dark-card:#242126;--dark-card-text:#fff;--nav-idle:#C9C1C6}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:var(--font);color:var(--ink);background:radial-gradient(circle at 12% 16%,rgba(255,107,53,.22),transparent 28%),radial-gradient(circle at 80% 18%,rgba(236,3,130,.18),transparent 30%),radial-gradient(circle at 52% 86%,rgba(55,16,75,.14),transparent 38%),var(--bg);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:linear-gradient(140deg,transparent 0 44%,var(--bg-map) 44.3% 45%,transparent 45.3% 100%),repeating-radial-gradient(ellipse at 10% 10%,transparent 0 34px,var(--bg-map) 35px 36px,transparent 37px 72px);mask-image:linear-gradient(to bottom,black,transparent 92%)}button,input,select,textarea{font:inherit}.shell{position:relative;z-index:1;width:min(1440px,calc(100% - 36px));margin:0 auto;padding:28px 0 44px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-.03em}.brand img{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(236,3,130,.18))}.brand span{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.10em;margin-top:2px}.template-tag{display:inline-flex;align-items:center;min-height:40px;padding:0 15px;border-radius:var(--radius-pill);background:var(--brand-gradient);color:#fff;font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 12px 26px rgba(236,3,130,.18)}
-    .hero{display:grid;grid-template-columns:.56fr 1.44fr;gap:38px;align-items:center}.intro{max-width:390px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--action);font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.10em}.eyebrow:before{content:"";width:28px;height:3px;border-radius:99px;background:var(--brand-gradient)}h1{margin:10px 0 14px;font-size:clamp(40px,4.7vw,70px);line-height:.88;letter-spacing:-.075em}.lead{margin:0;color:var(--muted);font-size:17px;line-height:1.52;font-weight:560}.notes{display:grid;gap:12px;margin-top:24px}.note{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--surface) 72%,transparent);box-shadow:0 12px 28px rgba(17,17,17,.05)}.note b{display:block;font-size:14px}.note span{display:block;color:var(--muted);font-size:13px;margin-top:2px}.note-icon{width:36px;height:36px;border-radius:13px;display:grid;place-items:center;color:#fff;background:var(--brand-gradient);font-weight:950}
-    .phone-stage{min-height:748px;position:relative;display:grid;place-items:center;perspective:1400px;overflow:visible}.phone{width:min(330px,25.5vw);min-width:274px;height:660px;position:absolute;border-radius:var(--radius-phone);background:var(--surface);border:1px solid color-mix(in srgb,var(--line) 74%,transparent);box-shadow:var(--shadow-phone);overflow:hidden;display:flex;flex-direction:column}.phone.profile{left:4%;top:70px;transform:rotate(-6deg) translateZ(-40px)}.phone.home{z-index:3;top:28px;transform:translateZ(70px)}.phone.login{right:4%;top:94px;transform:rotate(7deg) translateZ(-35px)}.phone-inner{padding:28px 24px 20px;min-height:0;flex:1;display:flex;flex-direction:column}.phone-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px}.hamburger{width:28px;display:grid;gap:5px}.hamburger i{display:block;height:3px;border-radius:99px;background:var(--ink)}.app-logo{display:inline-flex;align-items:center;gap:8px;font-size:23px;font-weight:1000;letter-spacing:-.065em}.app-logo img{width:29px;height:29px;object-fit:contain}.avatar{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--brand-gradient);border:3px solid color-mix(in srgb,var(--surface) 78%,transparent);box-shadow:0 8px 18px rgba(236,3,130,.18);font-weight:950;font-size:11px}.screen-label{display:inline-flex;width:max-content;align-items:center;gap:6px;min-height:28px;padding:0 10px;border-radius:var(--radius-pill);border:1px solid color-mix(in srgb,var(--action) 34%,var(--line));background:color-mix(in srgb,var(--action) 10%,var(--surface));color:var(--action);font-size:10px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.greeting{margin:12px 0 18px}.greeting span{display:block;color:var(--muted);font-size:21px;letter-spacing:-.04em;font-weight:620}.greeting strong{display:block;margin-top:3px;font-size:31px;line-height:1.04;letter-spacing:-.07em}.streak{position:relative;min-height:172px;padding:22px;border-radius:24px;background:radial-gradient(circle at 76% 24%,rgba(255,107,53,.40),transparent 24%),#252226;color:#fff;overflow:hidden;box-shadow:0 18px 38px rgba(17,17,17,.22)}.streak:after{content:"";position:absolute;right:-34px;bottom:-46px;width:190px;height:190px;border-radius:42px;transform:rotate(24deg);background:var(--brand-gradient);opacity:.82}.streak h2{position:relative;z-index:1;margin:0 0 8px;font-size:28px;letter-spacing:-.055em}.streak p{position:relative;z-index:1;margin:0;color:rgba(255,255,255,.78);max-width:160px;font-size:15px;line-height:1.3}.top25{position:absolute;z-index:2;right:18px;top:18px;padding:7px 12px;border:2px solid var(--brand-magenta);border-radius:var(--radius-pill);color:#FFD7EA;font-size:12px;font-weight:950}.section-row{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px}.section-row h3{margin:0;font-size:17px;letter-spacing:-.04em}.info{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius-pill);padding:6px 10px;color:var(--muted);font-size:11px;font-weight:850}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:18px;background:color-mix(in srgb,var(--line) 54%,transparent);margin:10px 0 12px}.tab{min-height:40px;border:0;border-radius:14px;color:var(--muted);background:transparent;font-weight:900}.tab.active{color:#fff;background:#2D2A2F;box-shadow:0 10px 24px rgba(17,17,17,.16)}.field{display:flex;align-items:center;gap:12px;min-height:61px;border:1px solid var(--line);border-radius:18px;background:var(--field);padding:10px 13px;margin-top:9px}.field-icon{width:24px;color:var(--soft);text-align:center}.field-text b{display:block;font-size:13px;letter-spacing:-.01em}.field-text span{display:block;color:var(--muted);margin-top:4px;font-size:12px;font-weight:650}.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.report-card{min-height:132px;border-radius:20px;padding:16px;color:#fff;position:relative;overflow:hidden;box-shadow:0 14px 30px rgba(17,17,17,.12)}.report-card:after{content:"";position:absolute;width:120px;height:120px;right:-28px;bottom:-42px;border-radius:50%;background:rgba(255,255,255,.24)}.report-card.magenta{background:linear-gradient(135deg,#D70376,#EC0382)}.report-card.orange{background:linear-gradient(135deg,#FF5500,#FF6B35)}.report-card b{display:block;font-size:17px;line-height:1.08;letter-spacing:-.045em}.report-card span{display:block;margin-top:8px;font-size:12px;color:rgba(255,255,255,.82);line-height:1.35}.list-item{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px;padding:12px;border-radius:18px;background:var(--surface-raised);border:1px solid var(--line);box-shadow:0 10px 24px rgba(17,17,17,.05)}.list-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--surface-soft);color:var(--action);font-weight:950}.muted{color:var(--muted);font-size:12px;font-weight:700}.button{min-height:40px;border:1px solid var(--line);border-radius:var(--radius-pill);padding:0 14px;background:var(--surface);color:var(--ink);font-weight:850}.button.primary{border:0;color:#fff;background:var(--brand-gradient);box-shadow:0 12px 26px rgba(236,3,130,.20)}.button.secondary{border-color:color-mix(in srgb,var(--action) 28%,var(--line));background:var(--surface);color:var(--ink)}.button-row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.badge-row{display:flex;flex-wrap:wrap;gap:8px}.badge{display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:0 9px;border-radius:var(--radius-pill);border:1px solid var(--line);color:var(--muted);font-size:11px;font-weight:900}.badge.brand{color:var(--action);background:color-mix(in srgb,var(--action) 10%,var(--surface));border-color:color-mix(in srgb,var(--action) 36%,var(--line))}.badge.success{color:#0A5B41;background:#E7F6EE;border-color:#B7E4CC}.badge.warning{color:#7A4300;background:#FFF1D6;border-color:#FFD891}.reaction-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:12px 0}.reaction{min-height:60px;border:1px solid var(--line);border-radius:18px;background:var(--surface-raised);box-shadow:0 10px 24px rgba(17,17,17,.05);display:grid;place-items:center;font-size:24px;font-weight:950}.reaction.active{color:#fff;background:var(--brand-gradient);border:0}.control{width:100%;min-height:46px;border:1px solid var(--line);border-radius:16px;background:var(--field);color:var(--ink);padding:0 14px;font-weight:720}.control.textarea{min-height:78px;padding-top:12px;resize:none}.form-control label{display:block;margin:0 0 6px;color:var(--muted);font-size:12px;font-weight:900}.form-demo{display:grid;gap:10px}.modal-preview{margin-top:12px;padding:14px;border-radius:24px;background:linear-gradient(135deg,color-mix(in srgb,var(--action) 12%,transparent),color-mix(in srgb,var(--brand-orange) 12%,transparent))}.dialog{padding:16px;border-radius:22px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-card)}.dialog h3{margin:0 0 7px;font-size:20px;letter-spacing:-.045em}.dialog p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.35}.progress-stack{display:grid;gap:9px;margin-top:12px}.progress-line{display:grid;grid-template-columns:72px 1fr 34px;gap:8px;align-items:center;font-size:11px;color:var(--muted);font-weight:850}.progress-track{height:9px;border-radius:999px;background:color-mix(in srgb,var(--muted) 16%,transparent);overflow:hidden}.progress-fill{display:block;height:100%;border-radius:inherit;background:var(--brand-gradient)}.toast{display:flex;align-items:start;gap:12px;padding:12px;border-radius:16px;border:1px solid var(--line);border-left:5px solid var(--action);background:var(--surface-raised)}.toast b{display:block;font-size:13px}.toast span{display:block;color:var(--muted);font-size:12px;margin-top:3px}.bottom-nav{margin:auto -4px 0;padding:10px 4px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border-top:1px solid color-mix(in srgb,var(--line) 64%,transparent)}.nav-link{min-height:52px;display:grid;place-items:center;gap:2px;color:var(--nav-idle);font-size:10px;font-weight:850}.nav-link b{font-size:18px;line-height:1}.nav-link.active{color:var(--action)}.fab{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);width:66px;height:66px;border-radius:50%;display:grid;place-items:center;color:#fff;background:#2D2A2F;box-shadow:0 16px 32px rgba(17,17,17,.24);border:5px solid var(--surface);font-weight:950}.fab:before{content:"";width:26px;height:17px;border-radius:5px 5px 12px 12px;background:var(--brand-gradient);transform:rotate(40deg);display:block}.ui-spec{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.spec-card{padding:18px;border:1px solid var(--line);border-radius:22px;background:color-mix(in srgb,var(--surface) 78%,transparent);box-shadow:0 12px 26px rgba(17,17,17,.06)}.spec-card b{display:block;margin-bottom:6px;font-size:13px;color:var(--action);text-transform:uppercase;letter-spacing:.08em}.spec-card span{color:var(--muted);font-size:13px;line-height:1.45}
-    @media(max-width:1180px){.hero{grid-template-columns:1fr}.intro{max-width:900px}.phone-stage{min-height:730px}.phone.profile{left:3%}.phone.login{right:3%}.ui-spec{grid-template-columns:repeat(2,1fr)}}@media(max-width:900px){.topbar{align-items:flex-start;flex-direction:column}.phone-stage{min-height:auto;display:grid;grid-template-columns:1fr;gap:22px;place-items:center}.phone{position:relative;width:min(355px,100%);height:690px;min-width:0}.phone.profile,.phone.home,.phone.login{left:auto;right:auto;top:auto;transform:none}.phone.home{order:-1}}@media(max-width:560px){.shell{width:min(100% - 24px,1440px);padding-top:18px}.hero{gap:22px}.phone{height:auto;min-height:650px;border-radius:28px}.phone-inner{padding:24px 20px 18px}.report-grid,.ui-spec{grid-template-columns:1fr}.template-tag{display:none}.spec-card{padding:16px}}
+    :root{
+      --orange:#FF6B35;--orange2:#FF5500;--magenta:#EC0382;--magenta2:#D70376;--purple:#37104B;
+      --grad:linear-gradient(135deg,#FF6B35 0%,#FF5500 30%,#EC0382 72%,#D70376 100%);
+      --bg:#F5F1ED;--surface:#fff;--surface2:#fff7f2;--ink:#111;--muted:#6B6167;--soft:#A69AA1;--line:#E8E0E4;--dark:#242126;
+      --radius:28px;--pill:999px;--font:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --shadow:0 22px 55px rgba(17,17,17,.10);--phone-shadow:0 34px 80px rgba(17,17,17,.22),0 10px 28px rgba(55,16,75,.14);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:var(--font);color:var(--ink);background:radial-gradient(circle at 12% 12%,rgba(255,107,53,.22),transparent 28%),radial-gradient(circle at 80% 8%,rgba(236,3,130,.16),transparent 30%),linear-gradient(180deg,#fffaf6 0%,var(--bg) 56%,#eee8e1 100%);}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;background-image:linear-gradient(140deg,transparent 0 44%,rgba(55,16,75,.06) 44.3% 45%,transparent 45.3% 100%),repeating-radial-gradient(ellipse at 10% 10%,transparent 0 34px,rgba(55,16,75,.045) 35px 36px,transparent 37px 72px);mask-image:linear-gradient(to bottom,black,transparent 92%)}
+    button,input,textarea{font:inherit}.page{position:relative;z-index:1;width:min(1320px,calc(100% - 36px));margin:0 auto;padding:28px 0 70px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:46px}.brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-.03em}.brand img{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(236,3,130,.18))}.brand span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.11em;margin-top:2px}.doc-pill{display:inline-flex;align-items:center;min-height:40px;padding:0 15px;border-radius:var(--pill);background:var(--grad);color:#fff;font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.08em;box-shadow:0 12px 26px rgba(236,3,130,.18)}
+    .hero{display:grid;grid-template-columns:minmax(300px,.78fr) minmax(0,1.22fr);gap:34px;align-items:end;margin-bottom:34px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--magenta);font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.10em}.eyebrow:before{content:"";width:28px;height:3px;border-radius:99px;background:var(--grad)}h1{margin:12px 0 14px;font-size:clamp(44px,6vw,86px);line-height:.86;letter-spacing:-.078em;max-width:760px}.lead{margin:0;color:var(--muted);font-size:18px;line-height:1.55;font-weight:560;max-width:760px}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.principle{padding:18px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.72);box-shadow:0 12px 28px rgba(17,17,17,.05)}.principle b{display:block;font-size:14px;color:var(--magenta);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px}.principle span{display:block;color:var(--muted);font-size:13px;line-height:1.45;font-weight:680}
+    .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:24px 0 42px}.flow-step{padding:14px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px rgba(17,17,17,.05)}.flow-step small{display:block;color:var(--magenta);font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.08em}.flow-step b{display:block;margin-top:5px;font-size:14px;letter-spacing:-.02em}.flow-step span{display:block;margin-top:4px;color:var(--muted);font-size:12px;line-height:1.35;font-weight:650}
+    .screen-section{display:grid;grid-template-columns:minmax(310px,390px) minmax(0,1fr);gap:32px;align-items:start;margin:0 0 30px;padding:28px;border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.66);box-shadow:var(--shadow);backdrop-filter:blur(12px)}.screen-section.reverse{grid-template-columns:minmax(0,1fr) minmax(310px,390px)}.screen-section.reverse .phone-wrap{order:2}.screen-copy{padding:8px 0}.screen-kicker{display:inline-flex;min-height:30px;align-items:center;padding:0 11px;border-radius:var(--pill);background:color-mix(in srgb,var(--magenta) 10%,#fff);border:1px solid color-mix(in srgb,var(--magenta) 30%,var(--line));color:var(--magenta);font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.08em}.screen-copy h2{margin:14px 0 10px;font-size:clamp(30px,3.2vw,48px);line-height:.95;letter-spacing:-.07em}.screen-copy p{margin:0 0 18px;color:var(--muted);font-size:16px;line-height:1.55;font-weight:560}.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.why{padding:14px;border-radius:18px;background:#fff;border:1px solid var(--line)}.why b{display:block;font-size:13px;margin-bottom:5px}.why span{display:block;color:var(--muted);font-size:13px;line-height:1.42;font-weight:650}.decision{margin-top:14px;padding:14px 16px;border-left:5px solid var(--magenta);border-radius:0 18px 18px 0;background:#fff;color:#3d363b;font-weight:750;line-height:1.45}.decision b{color:#111}
+    .phone-wrap{display:grid;place-items:center}.phone{position:relative;width:min(100%,350px);height:704px;border-radius:34px;background:#fff;border:1px solid color-mix(in srgb,var(--line) 74%,transparent);box-shadow:var(--phone-shadow);overflow:hidden;display:flex;flex-direction:column}.phone-inner{padding:28px 24px 20px;flex:1;min-height:0;display:flex;flex-direction:column}.phone-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px}.hamburger{width:28px;display:grid;gap:5px}.hamburger i{display:block;height:3px;border-radius:99px;background:var(--ink)}.app-logo{display:inline-flex;align-items:center;gap:8px;font-size:23px;font-weight:1000;letter-spacing:-.065em}.app-logo img{width:29px;height:29px}.avatar{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--grad);border:3px solid rgba(255,255,255,.78);box-shadow:0 8px 18px rgba(236,3,130,.18);font-weight:950;font-size:11px}.screen-label{display:inline-flex;width:max-content;min-height:28px;align-items:center;padding:0 10px;border-radius:var(--pill);background:color-mix(in srgb,var(--magenta) 10%,#fff);border:1px solid color-mix(in srgb,var(--magenta) 34%,var(--line));color:var(--magenta);font-size:10px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.greeting{margin:12px 0 18px}.greeting span{display:block;color:var(--muted);font-size:21px;letter-spacing:-.04em;font-weight:620}.greeting strong{display:block;margin-top:3px;font-size:31px;line-height:1.04;letter-spacing:-.07em}.hero-card{position:relative;min-height:170px;padding:22px;border-radius:24px;background:radial-gradient(circle at 76% 24%,rgba(255,107,53,.40),transparent 24%),#252226;color:#fff;overflow:hidden;box-shadow:0 18px 38px rgba(17,17,17,.22)}.hero-card:after{content:"";position:absolute;right:-34px;bottom:-46px;width:190px;height:190px;border-radius:42px;transform:rotate(24deg);background:var(--grad);opacity:.82}.hero-card h3{position:relative;z-index:1;margin:0 0 8px;font-size:28px;letter-spacing:-.055em;line-height:1}.hero-card p{position:relative;z-index:1;margin:0;color:rgba(255,255,255,.78);max-width:172px;font-size:15px;line-height:1.3}.live-chip{position:absolute;z-index:2;right:18px;top:18px;padding:7px 12px;border:2px solid var(--magenta);border-radius:var(--pill);color:#FFD7EA;font-size:12px;font-weight:950}.section-row{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px}.section-row h4{margin:0;font-size:17px;letter-spacing:-.04em}.info{border:1px solid var(--line);background:#fff;border-radius:var(--pill);padding:6px 10px;color:var(--muted);font-size:11px;font-weight:850}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:18px;background:color-mix(in srgb,var(--line) 54%,transparent);margin:10px 0 12px}.tab{min-height:40px;border:0;border-radius:14px;color:var(--muted);background:transparent;font-weight:900}.tab.active{color:#fff;background:#2D2A2F;box-shadow:0 10px 24px rgba(17,17,17,.16)}.field{display:flex;align-items:center;gap:12px;min-height:61px;border:1px solid var(--line);border-radius:18px;background:#fff;padding:10px 13px;margin-top:9px}.field-icon{width:24px;color:var(--soft);text-align:center}.field-text b{display:block;font-size:13px;letter-spacing:-.01em}.field-text span{display:block;color:var(--muted);margin-top:4px;font-size:12px;font-weight:650}.reaction-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:12px 0}.reaction{min-height:60px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 10px 24px rgba(17,17,17,.05);display:grid;place-items:center;font-size:24px;font-weight:950}.reaction.active{color:#fff;background:var(--grad);border:0}.list-item{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px;padding:12px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px rgba(17,17,17,.05)}.list-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--surface2);color:var(--magenta);font-weight:950}.muted{color:var(--muted);font-size:12px;font-weight:700}.bottom-nav{margin:auto -4px 0;padding:10px 4px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border-top:1px solid color-mix(in srgb,var(--line) 64%,transparent)}.nav-link{min-height:52px;display:grid;place-items:center;gap:2px;color:#C9C1C6;font-size:10px;font-weight:850}.nav-link b{font-size:18px;line-height:1}.nav-link.active{color:var(--magenta)}.fab{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:#2D2A2F;box-shadow:0 16px 32px rgba(17,17,17,.24);border:5px solid #fff}.fab:before{content:"";width:26px;height:17px;border-radius:5px 5px 12px 12px;background:var(--grad);transform:rotate(40deg)}.badge-row{display:flex;flex-wrap:wrap;gap:8px}.badge{display:inline-flex;align-items:center;min-height:30px;padding:0 10px;border-radius:var(--pill);border:1px solid var(--line);color:var(--muted);font-size:12px;font-weight:900;background:#fff}.badge.brand{color:var(--magenta);background:color-mix(in srgb,var(--magenta) 10%,#fff);border-color:color-mix(in srgb,var(--magenta) 36%,var(--line))}.badge.warning{color:#7A4300;background:#FFF1D6;border-color:#FFD891}.button-row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.button{min-height:40px;border:1px solid var(--line);border-radius:var(--pill);padding:0 14px;background:#fff;color:var(--ink);font-weight:850}.button.primary{border:0;color:#fff;background:var(--grad);box-shadow:0 12px 26px rgba(236,3,130,.20)}.button.secondary{border-color:color-mix(in srgb,var(--magenta) 28%,var(--line))}.modal-preview{padding:14px;border-radius:24px;background:linear-gradient(135deg,color-mix(in srgb,var(--magenta) 12%,transparent),color-mix(in srgb,var(--orange) 12%,transparent))}.dialog{padding:16px;border-radius:22px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}.dialog h3{margin:0 0 7px;font-size:20px;letter-spacing:-.045em}.dialog p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.35}.form-control label{display:block;margin:0 0 6px;color:var(--muted);font-size:12px;font-weight:900}.control{width:100%;min-height:46px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);padding:0 14px;font-weight:720}.control.textarea{min-height:78px;padding-top:12px;resize:none}.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.report-card{min-height:132px;border-radius:20px;padding:16px;color:#fff;position:relative;overflow:hidden;box-shadow:0 14px 30px rgba(17,17,17,.12)}.report-card:after{content:"";position:absolute;width:120px;height:120px;right:-28px;bottom:-42px;border-radius:50%;background:rgba(255,255,255,.24)}.report-card.magenta{background:linear-gradient(135deg,#D70376,#EC0382)}.report-card.orange{background:linear-gradient(135deg,#FF5500,#FF6B35)}.report-card b{display:block;font-size:17px;line-height:1.08;letter-spacing:-.045em}.report-card span{display:block;margin-top:8px;font-size:12px;color:rgba(255,255,255,.82);line-height:1.35}.progress-stack{display:grid;gap:9px;margin-top:12px}.progress-line{display:grid;grid-template-columns:72px 1fr 34px;gap:8px;align-items:center;font-size:11px;color:var(--muted);font-weight:850}.progress-track{height:9px;border-radius:999px;background:color-mix(in srgb,var(--muted) 16%,transparent);overflow:hidden}.progress-fill{display:block;height:100%;border-radius:inherit;background:var(--grad)}.toast{display:flex;align-items:start;gap:12px;padding:12px;border-radius:16px;border:1px solid var(--line);border-left:5px solid var(--magenta);background:#fff}.toast b{display:block;font-size:13px}.toast span{display:block;color:var(--muted);font-size:12px;margin-top:3px}.empty-state{display:grid;place-items:center;text-align:center;min-height:190px;padding:24px;border:1.5px dashed color-mix(in srgb,var(--magenta) 34%,var(--line));border-radius:22px;background:color-mix(in srgb,var(--surface2) 55%,transparent)}.empty-state img{width:54px;height:54px;margin-bottom:14px}.empty-state h3{margin:0 0 7px;font-size:20px;letter-spacing:-.045em}.empty-state p{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.35}.tiny-note{margin-top:10px;color:var(--muted);font-size:12px;font-weight:700;line-height:1.4}
+    .summary{margin-top:36px;padding:28px;border-radius:34px;background:#181519;color:#fff;box-shadow:var(--shadow)}.summary h2{margin:0 0 16px;font-size:clamp(30px,3vw,46px);letter-spacing:-.06em;line-height:.98}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.summary-card{padding:16px;border-radius:22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10)}.summary-card b{display:block;color:#fff;margin-bottom:6px}.summary-card span{display:block;color:rgba(255,255,255,.68);font-size:13px;line-height:1.45;font-weight:650}
+    @media(max-width:1040px){.hero,.screen-section,.screen-section.reverse{grid-template-columns:1fr}.screen-section.reverse .phone-wrap{order:0}.principles,.flow,.summary-grid{grid-template-columns:repeat(2,1fr)}.phone{height:704px}}@media(max-width:640px){.page{width:min(100% - 24px,1320px);padding-top:18px}.topbar{align-items:flex-start;flex-direction:column;margin-bottom:28px}.doc-pill{display:none}.principles,.flow,.why-grid,.summary-grid{grid-template-columns:1fr}.screen-section{padding:18px;border-radius:26px}.phone{height:auto;min-height:680px;border-radius:28px}.phone-inner{padding:24px 20px 18px}.report-grid{grid-template-columns:1fr}h1{font-size:clamp(42px,14vw,64px)}}
   </style>
 </head>
 <body>
-  <div class="shell">
+  <div class="page">
     <header class="topbar">
-      <div class="brand"><img src="assets/lataamo-brandmark.svg" alt="Lataamo" /><div>Lataamo PULSE<span>mobile UI screen plan</span></div></div>
-      <div class="template-tag">Mobile app trio · UI views</div>
+      <div class="brand"><img src="assets/lataamo-brandmark.svg" alt="Lataamo" /><div>Lataamo PULSE<span>UX + mobile UI plan</span></div></div>
+      <div class="doc-pill">Mobile app trio · suunnitelma</div>
     </header>
-    <main>
-      <section class="hero" aria-label="PULSE mobile UI screen plan">
-        <div class="intro">
-          <div class="eyebrow">Käyttöliittymäsuunnitelma</div>
-          <h1>PULSE mobiilinäkymät template-elementeillä.</h1>
-          <p class="lead">Tämä versio näyttää varsinaiset sovellusnäkymät, ei ominaisuuden myyntiesittelyä. Jokainen ruutu käyttää mobile trio -templateen rakennettuja elementtejä: app chrome, tabs, report cards, list items, badges, forms, dialog, progress ja bottom navigation.</p>
-          <div class="notes" aria-label="UI view notes">
-            <div class="note"><div class="note-icon">A</div><div><b>Osallistujan sessionäkymä</b><span>PULSE widget sijoitetaan ohjelmakortin sisään ja säilyttää yhden napautuksen reaktion.</span></div></div>
-            <div class="note"><div class="note-icon">B</div><div><b>Syykeräyksen bottom sheet</b><span>Kevyt dialogi käyttää template-lomakekomponentteja ja sulkee raskaan kyselytunnelman pois.</span></div></div>
-            <div class="note"><div class="note-icon">C</div><div><b>Järjestäjän signaalinäkymä</b><span>Raportti käyttää report cardeja, list itemeitä, progress-palkkeja ja toast-tyylistä insightia.</span></div></div>
+
+    <section class="hero" aria-label="PULSE UX plan introduction">
+      <div>
+        <div class="eyebrow">Mobiilisovelluksen suunnitelma</div>
+        <h1>PULSE ei ole kysely. Se on kevyt signaali oikeassa hetkessä.</h1>
+        <p class="lead">UX:n lähtökohta: osallistuja ei pysähdy täyttämään lomaketta kesken tapahtuman. PULSE pitää ensimmäisen toiminnon yhden napautuksen mittaisena ja pyytää lisätietoa vasta, kun käyttäjä on jo ilmaissut jotain.</p>
+      </div>
+      <div class="principles" aria-label="UX principles">
+        <div class="principle"><b>Minimoi kitka</b><span>Ensimmäinen reaktio tapahtuu suoraan sessionäkymässä. Ei erillistä kyselypolkua ennen kuin kiinnostus on osoitettu.</span></div>
+        <div class="principle"><b>Konteksti mukaan</b><span>Reaktio tallennetaan aina ohjelmakohdan, ajan ja käyttäjän roolin yhteyteen, jotta signaali ei jää irralliseksi.</span></div>
+        <div class="principle"><b>Arvo takaisin</b><span>Osallistuja näkee mihin hänen PULSE meni: oma feedi, tallennettu nosto tai valmis jaettava tiivistys.</span></div>
+      </div>
+    </section>
+
+    <nav class="flow" aria-label="PULSE user flow">
+      <div class="flow-step"><small>01</small><b>Entry</b><span>PULSE näkyy ohjelmakortissa, kun hetki on relevantti.</span></div>
+      <div class="flow-step"><small>02</small><b>Reaction</b><span>Yksi napautus: 👍 👎 ✦ ↗.</span></div>
+      <div class="flow-step"><small>03</small><b>Reason</b><span>Vapaaehtoinen bottom sheet, ei pakollinen lomake.</span></div>
+      <div class="flow-step"><small>04</small><b>Confirm</b><span>Kevyt palaute: tallennettu, voit jatkaa tapahtumaa.</span></div>
+      <div class="flow-step"><small>05</small><b>Personal feed</b><span>Omat PULSEt ja jaettavat nostot löytyvät myöhemmin.</span></div>
+      <div class="flow-step"><small>06</small><b>Organizer</b><span>Järjestäjä näkee signaalin teemoina, ei raakapeukkuina.</span></div>
+    </nav>
+
+    <section class="screen-section" aria-label="View 1 session entry">
+      <div class="phone-wrap">
+        <article class="phone" aria-label="Session view with embedded Pulse widget">
+          <div class="phone-inner">
+            <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
+            <span class="screen-label">View 01 · Session</span>
+            <div class="greeting"><span>Seuraavana</span><strong>Future ready brands</strong></div>
+            <section class="hero-card" aria-label="Programme card"><span class="live-chip">Live 14:05</span><h3>Keynote stage</h3><p>PULSE aktivoituu ohjelmakorttiin silloin kun sessio on käynnissä.</p></section>
+            <div class="section-row"><h4>Miltä tämä tuntuu?</h4><span class="info">1 napautus</span></div>
+            <div class="reaction-grid" aria-label="Pulse reactions"><button class="reaction active" type="button">👍</button><button class="reaction" type="button">👎</button><button class="reaction" type="button">✦</button><button class="reaction" type="button">↗</button></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">✦</div><div><b>Inspiraatio valittu</b><br><span class="muted">Avaa syykerros, mutta ei pakota</span></div></div><b>›</b></div>
+            <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>●</b>Pulse</div><div class="nav-link"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
           </div>
+        </article>
+      </div>
+      <div class="screen-copy">
+        <span class="screen-kicker">Tarvittava näkymä 01</span>
+        <h2>Sessionäkymä, jossa PULSE on osa ohjelmaa.</h2>
+        <p>Tämä on tärkein sisäänmeno. PULSE ei saa tuntua erilliseltä tutkimukselta, vaan mikrotoiminnolta juuri siinä kohdassa, jossa käyttäjä kokee sisällön.</p>
+        <div class="why-grid">
+          <div class="why"><b>Miksi ohjelmakortin alla?</b><span>Käyttäjä yhdistää reaktion automaattisesti oikeaan sisältöön. Järjestäjän ei tarvitse päätellä myöhemmin mihin palaute liittyi.</span></div>
+          <div class="why"><b>Miksi neljä isoa painiketta?</b><span>Tapahtumassa käyttö tapahtuu nopeasti, usein yhdellä kädellä. Isot napit vähentävät virhepainalluksia ja pitävät valinnan selkeänä.</span></div>
+          <div class="why"><b>Miksi “1 napautus” näkyy?</b><span>Se kertoo käyttäjälle, ettei kyse ole pitkästä kyselystä. Tämä nostaa todennäköisesti käyttöastetta.</span></div>
+          <div class="why"><b>Miksi bottom nav säilyy?</b><span>PULSE ei lukitse käyttäjää tilaan. Hän voi palata feediin, profiiliin tai kotiin samalla tavalla kuin muissa appinäkymissä.</span></div>
         </div>
-        <div class="phone-stage" aria-label="Three PULSE app UI screens">
-          <article class="phone profile" aria-label="Screen A participant session Pulse widget">
-            <div class="phone-inner">
-              <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
-              <span class="screen-label">Screen A · Session</span>
-              <div class="greeting"><span>Seuraavana</span><strong>Future ready brands</strong></div>
-              <section class="streak" aria-label="Session card"><span class="top25">Live 14:05</span><h2>Keynote stage</h2><p>Anna nopea PULSE tähän ohjelmahetkeen.</p></section>
-              <div class="section-row"><h3>Miltä tämä tuntui?</h3><span class="info">1 napautus</span></div>
-              <div class="reaction-grid" aria-label="PULSE reaction buttons"><button class="reaction active" type="button" aria-label="Peukku ylös">👍</button><button class="reaction" type="button" aria-label="Peukku alas">👎</button><button class="reaction" type="button" aria-label="Inspiroi">✦</button><button class="reaction" type="button" aria-label="Jaa">↗</button></div>
-              <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">✦</div><div><b>Inspiraatio valittu</b><br><span class="muted">Avaa vapaaehtoisen syyn</span></div></div><b>›</b></div>
-              <nav class="bottom-nav" aria-label="Participant navigation"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>●</b>Pulse</div><div class="nav-link"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
-            </div>
-          </article>
-          <article class="phone home" aria-label="Screen B Pulse reason bottom sheet">
-            <div class="phone-inner">
-              <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
-              <span class="screen-label">Screen B · Bottom sheet</span>
-              <div class="greeting"><span>Valitsit</span><strong>Inspiroiduin ✦</strong></div>
-              <div class="tabs" role="tablist" aria-label="Reason tabs"><button class="tab active" type="button">Syy</button><button class="tab" type="button">Ohita</button></div>
-              <div class="modal-preview" aria-label="Reason capture dialog"><div class="dialog"><h3>Mikä osui?</h3><p>Valitse yksi nopea syy tai lisää oma. Tämä kerros tekee PULSE-datasta käyttökelpoista.</p><div class="badge-row"><span class="badge brand">Idea omaan työhön</span><span class="badge">Haluan jatkaa</span><span class="badge warning">Jäi epäselväksi</span></div><div class="form-demo" style="margin-top:12px"><div class="form-control"><label for="pulseReason">Oma lisäys</label><textarea class="control textarea" id="pulseReason">Tämä auttaisi myyntitiimiä sanoittamaan muutoksen asiakkaalle.</textarea></div><div class="button-row"><button class="button primary" type="button">Tallenna PULSE</button><button class="button secondary" type="button">Ohita</button></div></div></div></div>
-              <div class="section-row"><h3>UI-elementit</h3><span class="info">dialog + form</span></div>
-              <div class="field"><div class="field-icon">⌁</div><div class="field-text"><b>State</b><span>Reaction selected → reason sheet open</span></div></div>
-              <nav class="bottom-nav" aria-label="Reason navigation"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>●</b>Pulse</div><div class="nav-link"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
-            </div>
-          </article>
-          <article class="phone login" aria-label="Screen C organizer Pulse signal dashboard">
-            <div class="phone-inner">
-              <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">LC</div></div>
-              <span class="screen-label">Screen C · Organizer</span>
-              <div class="greeting"><span>Live signal</span><strong>Keynote pulse</strong></div>
-              <div class="report-grid" aria-label="Organizer summary cards"><div class="report-card magenta"><b>82% inspired</b><span>Strong positive signal in current session.</span></div><div class="report-card orange"><b>14 shares</b><span>Content likely to travel after event.</span></div></div>
-              <div class="section-row"><h3>Reaktiot</h3><span class="info">Live</span></div>
-              <div class="progress-stack"><div class="progress-line"><span>👍 Useful</span><div class="progress-track"><i class="progress-fill" style="width:68%"></i></div><b>68</b></div><div class="progress-line"><span>✦ Inspired</span><div class="progress-track"><i class="progress-fill" style="width:82%"></i></div><b>82</b></div><div class="progress-line"><span>👎 Unclear</span><div class="progress-track"><i class="progress-fill" style="width:18%"></i></div><b>18</b></div></div>
-              <div class="section-row"><h3>Teemat</h3><span class="info">AI grouped</span></div>
-              <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">⚡</div><div><b>Vie tiimille</b><br><span class="muted">27 mainintaa</span></div></div><b>›</b></div>
-              <div class="toast" style="margin-top:10px"><div class="list-icon" style="width:34px;height:34px">!</div><div><b>Insight</b><span>Negatiiviset signaalit kasaantuvat kohtaan “mittarit epäselviä”.</span></div></div>
-              <nav class="bottom-nav" aria-label="Organizer navigation"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>◔</b>Pulse</div><div class="nav-link"><b>▣</b>Report</div><div class="nav-link"><b>●</b>Team</div></nav>
-            </div>
-          </article>
+        <div class="decision"><b>UX-päätös:</b> ensimmäinen PULSE tallentuu heti napautuksesta. Lisäsyy on seuraava vaihe, ei ehto tallennukselle.</div>
+      </div>
+    </section>
+
+    <section class="screen-section reverse" aria-label="View 2 reason bottom sheet">
+      <div class="phone-wrap">
+        <article class="phone" aria-label="Reason capture bottom sheet">
+          <div class="phone-inner">
+            <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
+            <span class="screen-label">View 02 · Reason sheet</span>
+            <div class="greeting"><span>Valitsit</span><strong>Inspiroiduin ✦</strong></div>
+            <div class="tabs" role="tablist"><button class="tab active" type="button">Syy</button><button class="tab" type="button">Ohita</button></div>
+            <div class="modal-preview"><div class="dialog"><h3>Mikä osui?</h3><p>Valitse yksi nopea syy tai kirjoita oma. Syy on vapaaehtoinen.</p><div class="badge-row"><span class="badge brand">Idea omaan työhön</span><span class="badge">Haluan jatkaa</span><span class="badge warning">Jäi epäselväksi</span></div><div style="margin-top:12px" class="form-control"><label for="reason">Oma lisäys</label><textarea class="control textarea" id="reason">Tämä auttaisi myyntitiimiä sanoittamaan muutoksen asiakkaalle.</textarea></div><div class="button-row" style="margin-top:12px"><button class="button primary" type="button">Tallenna</button><button class="button secondary" type="button">Ohita</button></div></div></div>
+            <div class="field"><div class="field-icon">⌁</div><div class="field-text"><b>State</b><span>Reaction selected → optional reason open</span></div></div>
+            <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>●</b>Pulse</div><div class="nav-link"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
+          </div>
+        </article>
+      </div>
+      <div class="screen-copy">
+        <span class="screen-kicker">Tarvittava näkymä 02</span>
+        <h2>Vapaaehtoinen syykerros bottom sheetinä.</h2>
+        <p>Pelkkä peukku kertoo vähän. Syykerros tekee PULSEsta hyödyllisen, mutta sen pitää olla kevyt. Siksi näkymä avautuu reaktion jälkeen eikä korvaa pääkokemusta.</p>
+        <div class="why-grid">
+          <div class="why"><b>Miksi bottom sheet?</b><span>Käyttäjä pysyy samassa kontekstissa. Dialogi tuntuu jatkolta valintaan, ei erilliseltä sivulta.</span></div>
+          <div class="why"><b>Miksi valmiit syychipit?</b><span>Useimmat eivät kirjoita tapahtumassa. Chipit antavat laadukkaampaa dataa yhdellä lisänapautuksella.</span></div>
+          <div class="why"><b>Miksi avoin kenttä mukana?</b><span>Kun osallistujalla on oikea havainto, sitä ei pidä pakottaa valmiiseen luokkaan. Kenttä on lisä, ei päätoiminto.</span></div>
+          <div class="why"><b>Miksi Ohita on näkyvä?</b><span>Pakottaminen vähentää luottamusta. Ohitus pitää alkuperäisen reaktion arvokkaana ja säilyttää flow'n.</span></div>
         </div>
-      </section>
-      <section class="ui-spec" aria-label="UI implementation notes">
-        <div class="spec-card"><b>Käytetty template-elementti</b><span>Phone chrome, app-logo, avatar, hamburger, bottom-nav ja floating action button.</span></div>
-        <div class="spec-card"><b>Osallistujan flow</b><span>Screen A → Screen B: sessionäkymän PULSE widget avaa syy-dialogin vain reaktion jälkeen.</span></div>
-        <div class="spec-card"><b>Järjestäjän flow</b><span>Screen C käyttää report cards + progress + list items -rakennetta live-signaalin tulkintaan.</span></div>
-        <div class="spec-card"><b>Seuraava taso</b><span>Näistä voi tehdä klikattavan prototyypin: reaction state, bottom sheet, toast ja organizer filterit.</span></div>
-      </section>
-    </main>
+        <div class="decision"><b>UX-päätös:</b> syykerros on progressiivinen tarkennus. Hyvä oletus on sulkea se automaattisesti tallennuksen jälkeen ja palauttaa käyttäjä sessionäkymään.</div>
+      </div>
+    </section>
+
+    <section class="screen-section" aria-label="View 3 confirmation and personal value">
+      <div class="phone-wrap">
+        <article class="phone" aria-label="Confirmation and personal feed save view">
+          <div class="phone-inner">
+            <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
+            <span class="screen-label">View 03 · Confirmation</span>
+            <div class="empty-state"><img src="assets/lataamo-brandmark.svg" alt="" /><h3>PULSE tallennettu</h3><p>Kiitos. Lisäsimme noston omaan feediisi ja tapahtuman live-signaaliin.</p><div class="button-row"><button class="button primary" type="button">Näytä omassa feedissä</button><button class="button secondary" type="button">Jatka ohjelmaa</button></div></div>
+            <div class="section-row"><h4>Seuraava paras toiminto</h4><span class="info">optional</span></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">↗</div><div><b>Tee jaettava nosto</b><br><span class="muted">AI tiivistää tämän roolillesi</span></div></div><b>›</b></div>
+            <div class="toast" style="margin-top:10px"><div class="list-icon" style="width:34px;height:34px">✓</div><div><b>Ei enää samaa PULSEa</b><span>Sessionäkymässä sama kohta näkyy vastattuna, ei uutena pyyntönä.</span></div></div>
+            <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link"><b>●</b>Pulse</div><div class="nav-link active"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav>
+          </div>
+        </article>
+      </div>
+      <div class="screen-copy">
+        <span class="screen-kicker">Tarvittava näkymä 03</span>
+        <h2>Vahvistus, joka antaa käyttäjälle vastinetta.</h2>
+        <p>Jos PULSE tuntuu vain datan keräämiseltä järjestäjälle, käyttö jää helposti satunnaiseksi. Vahvistusnäkymä näyttää, että reaktio tallentui ja antaa käyttäjälle hyödyllisen jatkotoiminnon.</p>
+        <div class="why-grid">
+          <div class="why"><b>Miksi “tallennettu feediin”?</b><span>Osallistuja saa oman hyödyn: nosto löytyy myöhemmin, eikä hetki katoa tapahtuman virtaan.</span></div>
+          <div class="why"><b>Miksi kaksi CTA:ta?</b><span>Pääpolku on jatkaa ohjelmaa. Lisäarvoinen polku on katsoa tai muokata omaa feedinostoa.</span></div>
+          <div class="why"><b>Miksi ei uutta kysymystä heti perään?</b><span>Liika kyselyputki tuntuu rasittavalta. Tässä vaiheessa pitää palkita, ei pyytää lisää.</span></div>
+          <div class="why"><b>Miksi “vastattu”-tila?</b><span>Sama käyttäjä ei saa samaa PULSE-pyyntöä uudelleen. Tämä estää ärsytystä ja datan tuplaantumista.</span></div>
+        </div>
+        <div class="decision"><b>UX-päätös:</b> jokaisen PULSEn jälkeen näytetään selkeä palautetila. Oletustoiminto on palata tapahtumaan nopeasti.</div>
+      </div>
+    </section>
+
+    <section class="screen-section reverse" aria-label="View 4 personal feed">
+      <div class="phone-wrap">
+        <article class="phone" aria-label="Personal Pulse feed view">
+          <div class="phone-inner">
+            <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Feed</div><div class="avatar">JW</div></div>
+            <span class="screen-label">View 04 · Personal feed</span>
+            <div class="greeting"><span>Omat nostot</span><strong>3 PULSEa tänään</strong></div>
+            <div class="tabs"><button class="tab active" type="button">Tallennetut</button><button class="tab" type="button">Jaettavat</button></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">✦</div><div><b>Future ready brands</b><br><span class="muted">Idea omaan työhön · 14:07</span></div></div><b>›</b></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">👍</div><div><b>Customer insight panel</b><br><span class="muted">Hyödyllinen · 13:20</span></div></div><b>›</b></div>
+            <div class="field"><div class="field-icon">↗</div><div class="field-text"><b>Valmis jaettava nosto</b><span>“Miten tämä muuttaa myynnin argumentointia?”</span></div></div>
+            <div class="button-row" style="margin-top:12px"><button class="button primary" type="button">Muokkaa nostoa</button><button class="button secondary" type="button">Kopioi</button></div>
+            <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link"><b>●</b>Pulse</div><div class="nav-link active"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
+          </div>
+        </article>
+      </div>
+      <div class="screen-copy">
+        <span class="screen-kicker">Tarvittava näkymä 04</span>
+        <h2>Oma feedi, jossa PULSE muuttuu muistijäljeksi.</h2>
+        <p>PULSE on hyödyllinen myös osallistujalle, jos se auttaa muistamaan ja jatkamaan tapahtuman oivalluksia. Feed tekee reaktiosta henkilökohtaisen työkalun.</p>
+        <div class="why-grid">
+          <div class="why"><b>Miksi oma feedi?</b><span>Osallistuja voi palata siihen mitä koki tärkeäksi. Tämä vahvistaa appin arvoa tapahtuman jälkeen.</span></div>
+          <div class="why"><b>Miksi “Tallennetut / Jaettavat” tabit?</b><span>Kaikki reaktiot eivät ole jaettavia. Tabit erottavat oman muistijäljen ja ulospäin vietävän sisällön.</span></div>
+          <div class="why"><b>Miksi list item -rakenne?</b><span>Se on templateen kuuluva tuttu mobiilielementti ja skaalautuu moneen PULSEen ilman raskasta korttitulvaa.</span></div>
+          <div class="why"><b>Miksi kopiointi/muokkaus?</b><span>“Jaa” tarvitsee kontrollia. Käyttäjä ei halua lähettää AI-tiivistystä tarkistamatta sitä.</span></div>
+        </div>
+        <div class="decision"><b>UX-päätös:</b> henkilökohtainen feedi on jälkikäytön ankkuri. Ilman sitä PULSE jää hetkelliseksi reaktioksi.</div>
+      </div>
+    </section>
+
+    <section class="screen-section" aria-label="View 5 organizer dashboard">
+      <div class="phone-wrap">
+        <article class="phone" aria-label="Organizer Pulse dashboard">
+          <div class="phone-inner">
+            <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">LC</div></div>
+            <span class="screen-label">View 05 · Organizer</span>
+            <div class="greeting"><span>Live signal</span><strong>Keynote pulse</strong></div>
+            <div class="report-grid"><div class="report-card magenta"><b>82% inspired</b><span>Strong positive signal in current session.</span></div><div class="report-card orange"><b>14 shares</b><span>Content likely to travel after event.</span></div></div>
+            <div class="section-row"><h4>Reaktiot</h4><span class="info">Live</span></div>
+            <div class="progress-stack"><div class="progress-line"><span>👍 Useful</span><div class="progress-track"><i class="progress-fill" style="width:68%"></i></div><b>68</b></div><div class="progress-line"><span>✦ Inspired</span><div class="progress-track"><i class="progress-fill" style="width:82%"></i></div><b>82</b></div><div class="progress-line"><span>👎 Unclear</span><div class="progress-track"><i class="progress-fill" style="width:18%"></i></div><b>18</b></div></div>
+            <div class="section-row"><h4>Teemat</h4><span class="info">AI grouped</span></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">⚡</div><div><b>Vie tiimille</b><br><span class="muted">27 mainintaa</span></div></div><b>›</b></div>
+            <div class="toast" style="margin-top:10px"><div class="list-icon" style="width:34px;height:34px">!</div><div><b>Insight</b><span>Negatiiviset signaalit kasaantuvat kohtaan “mittarit epäselviä”.</span></div></div>
+            <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>◔</b>Pulse</div><div class="nav-link"><b>▣</b>Report</div><div class="nav-link"><b>●</b>Team</div></nav>
+          </div>
+        </article>
+      </div>
+      <div class="screen-copy">
+        <span class="screen-kicker">Tarvittava näkymä 05</span>
+        <h2>Järjestäjän näkymä, jossa signaali on tulkittavaa.</h2>
+        <p>Järjestäjä ei tarvitse vain laskuria. Hyvä PULSE-näkymä näyttää, mihin kohtaan sisältöä reaktiot liittyvät, mikä teema nousee ja vaatiiko jokin kohta reagointia.</p>
+        <div class="why-grid">
+          <div class="why"><b>Miksi report cardit ylhäällä?</b><span>Järjestäjä saa heti tilannekuvan: mitä tapahtuu nyt ja mikä on poikkeuksellista.</span></div>
+          <div class="why"><b>Miksi progressit?</b><span>Ne ovat riittävän nopeita lukea live-tilanteessa. Tarkempi analyysi voi tulla raportissa myöhemmin.</span></div>
+          <div class="why"><b>Miksi teemalistat?</b><span>Syykerroksen arvo näkyy tässä: palautteesta muodostuu jatkotoimintaa ohjaavia teemoja.</span></div>
+          <div class="why"><b>Miksi insight-toast?</b><span>Järjestäjälle pitää nostaa poikkeamat, ei vaatia että hän etsii ne raakadatasta.</span></div>
+        </div>
+        <div class="decision"><b>UX-päätös:</b> organizer-näkymän tulee erottaa “mitä tapahtui” ja “mitä pitäisi tehdä seuraavaksi”.</div>
+      </div>
+    </section>
+
+    <section class="screen-section reverse" aria-label="View 6 edge states">
+      <div class="phone-wrap">
+        <article class="phone" aria-label="Answered and unavailable states">
+          <div class="phone-inner">
+            <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
+            <span class="screen-label">View 06 · States</span>
+            <div class="greeting"><span>Tilat</span><strong>Ei turhaa hälyä</strong></div>
+            <div class="field"><div class="field-icon">✓</div><div class="field-text"><b>Vastattu</b><span>PULSE näkyy kuitattuna, ei kysy samaa uudelleen.</span></div></div>
+            <div class="field"><div class="field-icon">⌁</div><div class="field-text"><b>Ei vielä aktiivinen</b><span>Reaktiot avautuvat vasta session aikana.</span></div></div>
+            <div class="field"><div class="field-icon">!</div><div class="field-text"><b>Offline</b><span>Tallennetaan paikallisesti ja lähetetään kun yhteys palaa.</span></div></div>
+            <div class="field"><div class="field-icon">↗</div><div class="field-text"><b>Jaa myöhemmin</b><span>Nosto jää feediin, jos käyttäjä ei halua toimia heti.</span></div></div>
+            <div class="tiny-note">Näiden tilojen tarkoitus on vähentää epävarmuutta: käyttäjä tietää mitä tapahtui, eikä ominaisuus keskeytä tapahtumakokemusta.</div>
+            <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>●</b>Pulse</div><div class="nav-link"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
+          </div>
+        </article>
+      </div>
+      <div class="screen-copy">
+        <span class="screen-kicker">Tarvittava näkymä 06</span>
+        <h2>Tilat, jotka tekevät ominaisuudesta luotettavan.</h2>
+        <p>Pienet tilat ratkaisevat käyttökokemuksen: onko PULSE jo annettu, voiko sitä vielä antaa, mitä tapahtuu huonolla verkkoyhteydellä ja miten käyttäjä voi palata myöhemmin.</p>
+        <div class="why-grid">
+          <div class="why"><b>Vastattu-tila</b><span>Estää toistuvan kysymisen ja tekee palautteen tallentumisen näkyväksi.</span></div>
+          <div class="why"><b>Ajastus</b><span>PULSE kannattaa näyttää vain relevantissa hetkessä. Liian aikainen kysymys on arvoton.</span></div>
+          <div class="why"><b>Offline-tuki</b><span>Tapahtumapaikoissa yhteydet vaihtelevat. Käyttäjän ei pidä menettää reaktiota teknisen syyn takia.</span></div>
+          <div class="why"><b>Myöhemmin jakaminen</b><span>Jakaminen vaatii harkintaa. Feed antaa mahdollisuuden palata asiaan ilman painetta.</span></div>
+        </div>
+        <div class="decision"><b>UX-päätös:</b> PULSE tarvitsee vähintään idle, active, selected, saved, answered ja offline-pending -tilat ennen toteutusta.</div>
+      </div>
+    </section>
+
+    <section class="summary" aria-label="UX summary">
+      <h2>Toteutuksen ydinsuositus</h2>
+      <div class="summary-grid">
+        <div class="summary-card"><b>Ensimmäinen julkaisu</b><span>Rakenna ensin View 01–03: session PULSE, vapaaehtoinen syykerros ja vahvistus.</span></div>
+        <div class="summary-card"><b>Älä tee tästä kyselyä</b><span>Jos käyttäjän pitää avata erillinen feedback-sivu, ominaisuus menettää vahvuutensa.</span></div>
+        <div class="summary-card"><b>Data design</b><span>Tallenna reaktio, sessio, aika, rooli/profiili, vapaaehtoinen syy ja tila erillisinä kenttinä.</span></div>
+        <div class="summary-card"><b>Seuraava prototyyppi</b><span>Klikattava flow: reaction → reason sheet → saved → personal feed → organizer signal.</span></div>
+      </div>
+    </section>
   </div>
 </body>
 </html>
