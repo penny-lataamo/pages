@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="fi">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PULSE — mobiilisovelluksen UX-suunnitelma</title>
-  <meta name="description" content="PULSE-ominaisuuden mobiilisovelluksen UX- ja käyttöliittymäsuunnitelma: näkymät, elementit ja perustelut." />
+  <title>PULSE — mobile app UX plan</title>
+  <meta name="description" content="A mobile app UX and UI plan for the PULSE feature: views, elements and rationale." />
   <style>
     :root{
       --orange:#FF6B35;--orange2:#FF5500;--magenta:#EC0382;--magenta2:#D70376;--purple:#37104B;
@@ -28,29 +28,29 @@
   <div class="page">
     <header class="topbar">
       <div class="brand"><img src="assets/lataamo-brandmark.svg" alt="Lataamo" /><div>Lataamo PULSE<span>UX + mobile UI plan</span></div></div>
-      <div class="doc-pill">Mobile app trio · suunnitelma</div>
+      <div class="doc-pill">Mobile app trio · plan</div>
     </header>
 
     <section class="hero" aria-label="PULSE UX plan introduction">
       <div>
-        <div class="eyebrow">Mobiilisovelluksen suunnitelma</div>
-        <h1>PULSE ei ole kysely. Se on kevyt signaali oikeassa hetkessä.</h1>
-        <p class="lead">UX:n lähtökohta: osallistuja ei pysähdy täyttämään lomaketta kesken tapahtuman. PULSE pitää ensimmäisen toiminnon yhden napautuksen mittaisena ja pyytää lisätietoa vasta, kun käyttäjä on jo ilmaissut jotain.</p>
+        <div class="eyebrow">Mobile app plan</div>
+        <h1>PULSE is not a survey. It is a lightweight signal at the right moment.</h1>
+        <p class="lead">UX starting point: the attendee should not stop to fill in a form in the middle of an event. PULSE keeps the first action to one tap and asks for more detail only after the user has already expressed something.</p>
       </div>
       <div class="principles" aria-label="UX principles">
-        <div class="principle"><b>Minimoi kitka</b><span>Ensimmäinen reaktio tapahtuu suoraan sessionäkymässä. Ei erillistä kyselypolkua ennen kuin kiinnostus on osoitettu.</span></div>
-        <div class="principle"><b>Konteksti mukaan</b><span>Reaktio tallennetaan aina ohjelmakohdan, ajan ja käyttäjän roolin yhteyteen, jotta signaali ei jää irralliseksi.</span></div>
-        <div class="principle"><b>Arvo takaisin</b><span>Osallistuja näkee mihin hänen PULSE meni: oma feedi, tallennettu nosto tai valmis jaettava tiivistys.</span></div>
+        <div class="principle"><b>Minimize friction</b><span>The first reaction happens directly in the session view. No separate survey path before interest has been shown.</span></div>
+        <div class="principle"><b>Keep the context</b><span>Each reaction is always stored with the programme item, time and user role so the signal does not become detached.</span></div>
+        <div class="principle"><b>Return value</b><span>The attendee sees where their PULSE went: personal feed, saved highlight or a ready-to-share summary.</span></div>
       </div>
     </section>
 
     <nav class="flow" aria-label="PULSE user flow">
-      <div class="flow-step"><small>01</small><b>Entry</b><span>PULSE näkyy ohjelmakortissa, kun hetki on relevantti.</span></div>
-      <div class="flow-step"><small>02</small><b>Reaction</b><span>Yksi napautus: 👍 👎 ✦ ↗.</span></div>
-      <div class="flow-step"><small>03</small><b>Reason</b><span>Vapaaehtoinen bottom sheet, ei pakollinen lomake.</span></div>
-      <div class="flow-step"><small>04</small><b>Confirm</b><span>Kevyt palaute: tallennettu, voit jatkaa tapahtumaa.</span></div>
-      <div class="flow-step"><small>05</small><b>Personal feed</b><span>Omat PULSEt ja jaettavat nostot löytyvät myöhemmin.</span></div>
-      <div class="flow-step"><small>06</small><b>Organizer</b><span>Järjestäjä näkee signaalin teemoina, ei raakapeukkuina.</span></div>
+      <div class="flow-step"><small>01</small><b>Entry</b><span>PULSE appears inside the programme card when the moment is relevant.</span></div>
+      <div class="flow-step"><small>02</small><b>Reaction</b><span>One tap: 👍 👎 ✦ ↗.</span></div>
+      <div class="flow-step"><small>03</small><b>Reason</b><span>Optional bottom sheet, not a mandatory form.</span></div>
+      <div class="flow-step"><small>04</small><b>Confirm</b><span>Light confirmation: saved, you can continue the event.</span></div>
+      <div class="flow-step"><small>05</small><b>Personal feed</b><span>Your own PULSEs and shareable highlights are available later.</span></div>
+      <div class="flow-step"><small>06</small><b>Organizer</b><span>The organizer sees the signal as themes, not raw thumbs.</span></div>
     </nav>
 
     <section class="screen-section" aria-label="View 1 session entry">
@@ -59,26 +59,26 @@
           <div class="phone-inner">
             <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
             <span class="screen-label">View 01 · Session</span>
-            <div class="greeting"><span>Seuraavana</span><strong>Future ready brands</strong></div>
-            <section class="hero-card" aria-label="Programme card"><span class="live-chip">Live 14:05</span><h3>Keynote stage</h3><p>PULSE aktivoituu ohjelmakorttiin silloin kun sessio on käynnissä.</p></section>
-            <div class="section-row"><h4>Miltä tämä tuntuu?</h4><span class="info">1 napautus</span></div>
+            <div class="greeting"><span>Up next</span><strong>Future ready brands</strong></div>
+            <section class="hero-card" aria-label="Programme card"><span class="live-chip">Live 14:05</span><h3>Keynote stage</h3><p>PULSE activates inside the programme card while the session is live.</p></section>
+            <div class="section-row"><h4>How does this feel?</h4><span class="info">1 tap</span></div>
             <div class="reaction-grid" aria-label="Pulse reactions"><button class="reaction active" type="button">👍</button><button class="reaction" type="button">👎</button><button class="reaction" type="button">✦</button><button class="reaction" type="button">↗</button></div>
-            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">✦</div><div><b>Inspiraatio valittu</b><br><span class="muted">Avaa syykerros, mutta ei pakota</span></div></div><b>›</b></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">✦</div><div><b>Inspired selected</b><br><span class="muted">Opens the reason layer, but does not force it</span></div></div><b>›</b></div>
             <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>●</b>Pulse</div><div class="nav-link"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
           </div>
         </article>
       </div>
       <div class="screen-copy">
-        <span class="screen-kicker">Tarvittava näkymä 01</span>
-        <h2>Sessionäkymä, jossa PULSE on osa ohjelmaa.</h2>
-        <p>Tämä on tärkein sisäänmeno. PULSE ei saa tuntua erilliseltä tutkimukselta, vaan mikrotoiminnolta juuri siinä kohdassa, jossa käyttäjä kokee sisällön.</p>
+        <span class="screen-kicker">Required view 01</span>
+        <h2>Session view where PULSE is part of the programme.</h2>
+        <p>This is the most important entry point. PULSE should not feel like a separate research task, but like a micro-action exactly where the user experiences the content.</p>
         <div class="why-grid">
-          <div class="why"><b>Miksi ohjelmakortin alla?</b><span>Käyttäjä yhdistää reaktion automaattisesti oikeaan sisältöön. Järjestäjän ei tarvitse päätellä myöhemmin mihin palaute liittyi.</span></div>
-          <div class="why"><b>Miksi neljä isoa painiketta?</b><span>Tapahtumassa käyttö tapahtuu nopeasti, usein yhdellä kädellä. Isot napit vähentävät virhepainalluksia ja pitävät valinnan selkeänä.</span></div>
-          <div class="why"><b>Miksi “1 napautus” näkyy?</b><span>Se kertoo käyttäjälle, ettei kyse ole pitkästä kyselystä. Tämä nostaa todennäköisesti käyttöastetta.</span></div>
-          <div class="why"><b>Miksi bottom nav säilyy?</b><span>PULSE ei lukitse käyttäjää tilaan. Hän voi palata feediin, profiiliin tai kotiin samalla tavalla kuin muissa appinäkymissä.</span></div>
+          <div class="why"><b>Why below the programme card?</b><span>The user automatically connects the reaction to the right content. The organizer does not have to infer later what the feedback referred to.</span></div>
+          <div class="why"><b>Why four large buttons?</b><span>At an event, usage is fast and often one-handed. Large buttons reduce mis-taps and keep the choice clear.</span></div>
+          <div class="why"><b>Why show “1 tap”?</b><span>It tells the user this is not a long survey. That will likely increase usage.</span></div>
+          <div class="why"><b>Why keep the bottom nav?</b><span>PULSE does not trap the user in a mode. They can return to the feed, profile or home just like in other app views.</span></div>
         </div>
-        <div class="decision"><b>UX-päätös:</b> ensimmäinen PULSE tallentuu heti napautuksesta. Lisäsyy on seuraava vaihe, ei ehto tallennukselle.</div>
+        <div class="decision"><b>UX decision:</b> the first PULSE is saved immediately on tap. The extra reason is the next step, not a condition for saving.</div>
       </div>
     </section>
 
@@ -88,25 +88,25 @@
           <div class="phone-inner">
             <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
             <span class="screen-label">View 02 · Reason sheet</span>
-            <div class="greeting"><span>Valitsit</span><strong>Inspiroiduin ✦</strong></div>
-            <div class="tabs" role="tablist"><button class="tab active" type="button">Syy</button><button class="tab" type="button">Ohita</button></div>
-            <div class="modal-preview"><div class="dialog"><h3>Mikä osui?</h3><p>Valitse yksi nopea syy tai kirjoita oma. Syy on vapaaehtoinen.</p><div class="badge-row"><span class="badge brand">Idea omaan työhön</span><span class="badge">Haluan jatkaa</span><span class="badge warning">Jäi epäselväksi</span></div><div style="margin-top:12px" class="form-control"><label for="reason">Oma lisäys</label><textarea class="control textarea" id="reason">Tämä auttaisi myyntitiimiä sanoittamaan muutoksen asiakkaalle.</textarea></div><div class="button-row" style="margin-top:12px"><button class="button primary" type="button">Tallenna</button><button class="button secondary" type="button">Ohita</button></div></div></div>
+            <div class="greeting"><span>You chose</span><strong>Inspired ✦</strong></div>
+            <div class="tabs" role="tablist"><button class="tab active" type="button">Reason</button><button class="tab" type="button">Skip</button></div>
+            <div class="modal-preview"><div class="dialog"><h3>What landed?</h3><p>Choose one quick reason or write your own. The reason is optional.</p><div class="badge-row"><span class="badge brand">Idea for my own work</span><span class="badge">I want to continue</span><span class="badge warning">Remained unclear</span></div><div style="margin-top:12px" class="form-control"><label for="reason">Own note</label><textarea class="control textarea" id="reason">This would help the sales team explain the change to the customer.</textarea></div><div class="button-row" style="margin-top:12px"><button class="button primary" type="button">Save</button><button class="button secondary" type="button">Skip</button></div></div></div>
             <div class="field"><div class="field-icon">⌁</div><div class="field-text"><b>State</b><span>Reaction selected → optional reason open</span></div></div>
             <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>●</b>Pulse</div><div class="nav-link"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
           </div>
         </article>
       </div>
       <div class="screen-copy">
-        <span class="screen-kicker">Tarvittava näkymä 02</span>
-        <h2>Vapaaehtoinen syykerros bottom sheetinä.</h2>
-        <p>Pelkkä peukku kertoo vähän. Syykerros tekee PULSEsta hyödyllisen, mutta sen pitää olla kevyt. Siksi näkymä avautuu reaktion jälkeen eikä korvaa pääkokemusta.</p>
+        <span class="screen-kicker">Required view 02</span>
+        <h2>Optional reason layer as a bottom sheet.</h2>
+        <p>A thumb alone says little. The reason layer makes PULSE useful, but it has to stay lightweight. That is why the view opens after the reaction and does not replace the main experience.</p>
         <div class="why-grid">
-          <div class="why"><b>Miksi bottom sheet?</b><span>Käyttäjä pysyy samassa kontekstissa. Dialogi tuntuu jatkolta valintaan, ei erilliseltä sivulta.</span></div>
-          <div class="why"><b>Miksi valmiit syychipit?</b><span>Useimmat eivät kirjoita tapahtumassa. Chipit antavat laadukkaampaa dataa yhdellä lisänapautuksella.</span></div>
-          <div class="why"><b>Miksi avoin kenttä mukana?</b><span>Kun osallistujalla on oikea havainto, sitä ei pidä pakottaa valmiiseen luokkaan. Kenttä on lisä, ei päätoiminto.</span></div>
-          <div class="why"><b>Miksi Ohita on näkyvä?</b><span>Pakottaminen vähentää luottamusta. Ohitus pitää alkuperäisen reaktion arvokkaana ja säilyttää flow'n.</span></div>
+          <div class="why"><b>Why a bottom sheet?</b><span>The user stays in the same context. The dialog feels like a continuation of the choice, not a separate page.</span></div>
+          <div class="why"><b>Why predefined reason chips?</b><span>Most people do not write during an event. Chips provide better-quality data with one extra tap.</span></div>
+          <div class="why"><b>Why include an open field?</b><span>When an attendee has a real observation, it should not be forced into a preset category. The field is an extra, not the main action.</span></div>
+          <div class="why"><b>Why is Skip visible?</b><span>Forcing reduces trust. Skipping keeps the original reaction valuable and preserves the flow.</span></div>
         </div>
-        <div class="decision"><b>UX-päätös:</b> syykerros on progressiivinen tarkennus. Hyvä oletus on sulkea se automaattisesti tallennuksen jälkeen ja palauttaa käyttäjä sessionäkymään.</div>
+        <div class="decision"><b>UX decision:</b> the reason layer is progressive detail. A good default is to close it automatically after saving and return the user to the session view.</div>
       </div>
     </section>
 
@@ -116,25 +116,25 @@
           <div class="phone-inner">
             <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
             <span class="screen-label">View 03 · Confirmation</span>
-            <div class="empty-state"><img src="assets/lataamo-brandmark.svg" alt="" /><h3>PULSE tallennettu</h3><p>Kiitos. Lisäsimme noston omaan feediisi ja tapahtuman live-signaaliin.</p><div class="button-row"><button class="button primary" type="button">Näytä omassa feedissä</button><button class="button secondary" type="button">Jatka ohjelmaa</button></div></div>
-            <div class="section-row"><h4>Seuraava paras toiminto</h4><span class="info">optional</span></div>
-            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">↗</div><div><b>Tee jaettava nosto</b><br><span class="muted">AI tiivistää tämän roolillesi</span></div></div><b>›</b></div>
-            <div class="toast" style="margin-top:10px"><div class="list-icon" style="width:34px;height:34px">✓</div><div><b>Ei enää samaa PULSEa</b><span>Sessionäkymässä sama kohta näkyy vastattuna, ei uutena pyyntönä.</span></div></div>
+            <div class="empty-state"><img src="assets/lataamo-brandmark.svg" alt="" /><h3>PULSE saved</h3><p>Thank you. We added the highlight to your personal feed and to the event live signal.</p><div class="button-row"><button class="button primary" type="button">Show in my feed</button><button class="button secondary" type="button">Continue programme</button></div></div>
+            <div class="section-row"><h4>Next best action</h4><span class="info">optional</span></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">↗</div><div><b>Create a shareable highlight</b><br><span class="muted">AI summarizes this for your role</span></div></div><b>›</b></div>
+            <div class="toast" style="margin-top:10px"><div class="list-icon" style="width:34px;height:34px">✓</div><div><b>No repeat PULSE</b><span>In the session view, this item appears as answered, not as a new request.</span></div></div>
             <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link"><b>●</b>Pulse</div><div class="nav-link active"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav>
           </div>
         </article>
       </div>
       <div class="screen-copy">
-        <span class="screen-kicker">Tarvittava näkymä 03</span>
-        <h2>Vahvistus, joka antaa käyttäjälle vastinetta.</h2>
-        <p>Jos PULSE tuntuu vain datan keräämiseltä järjestäjälle, käyttö jää helposti satunnaiseksi. Vahvistusnäkymä näyttää, että reaktio tallentui ja antaa käyttäjälle hyödyllisen jatkotoiminnon.</p>
+        <span class="screen-kicker">Required view 03</span>
+        <h2>Confirmation that gives value back to the user.</h2>
+        <p>If PULSE feels only like data collection for the organizer, usage easily becomes occasional. The confirmation view shows that the reaction was saved and gives the user a useful next action.</p>
         <div class="why-grid">
-          <div class="why"><b>Miksi “tallennettu feediin”?</b><span>Osallistuja saa oman hyödyn: nosto löytyy myöhemmin, eikä hetki katoa tapahtuman virtaan.</span></div>
-          <div class="why"><b>Miksi kaksi CTA:ta?</b><span>Pääpolku on jatkaa ohjelmaa. Lisäarvoinen polku on katsoa tai muokata omaa feedinostoa.</span></div>
-          <div class="why"><b>Miksi ei uutta kysymystä heti perään?</b><span>Liika kyselyputki tuntuu rasittavalta. Tässä vaiheessa pitää palkita, ei pyytää lisää.</span></div>
-          <div class="why"><b>Miksi “vastattu”-tila?</b><span>Sama käyttäjä ei saa samaa PULSE-pyyntöä uudelleen. Tämä estää ärsytystä ja datan tuplaantumista.</span></div>
+          <div class="why"><b>Why “saved to feed”?</b><span>The attendee gets personal value: the highlight can be found later and the moment does not disappear into the event flow.</span></div>
+          <div class="why"><b>Why two CTAs?</b><span>The primary path is to continue the programme. The value-add path is to view or edit the personal feed highlight.</span></div>
+          <div class="why"><b>Why not ask another question immediately?</b><span>Too much questioning feels tiring. At this point the UI should reward, not ask for more.</span></div>
+          <div class="why"><b>Why an “answered” state?</b><span>The same user should not get the same PULSE request again. This prevents irritation and duplicate data.</span></div>
         </div>
-        <div class="decision"><b>UX-päätös:</b> jokaisen PULSEn jälkeen näytetään selkeä palautetila. Oletustoiminto on palata tapahtumaan nopeasti.</div>
+        <div class="decision"><b>UX decision:</b> after each PULSE, show a clear feedback state. The default action is to return to the event quickly.</div>
       </div>
     </section>
 
@@ -144,27 +144,27 @@
           <div class="phone-inner">
             <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Feed</div><div class="avatar">JW</div></div>
             <span class="screen-label">View 04 · Personal feed</span>
-            <div class="greeting"><span>Omat nostot</span><strong>3 PULSEa tänään</strong></div>
-            <div class="tabs"><button class="tab active" type="button">Tallennetut</button><button class="tab" type="button">Jaettavat</button></div>
-            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">✦</div><div><b>Future ready brands</b><br><span class="muted">Idea omaan työhön · 14:07</span></div></div><b>›</b></div>
-            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">👍</div><div><b>Customer insight panel</b><br><span class="muted">Hyödyllinen · 13:20</span></div></div><b>›</b></div>
-            <div class="field"><div class="field-icon">↗</div><div class="field-text"><b>Valmis jaettava nosto</b><span>“Miten tämä muuttaa myynnin argumentointia?”</span></div></div>
-            <div class="button-row" style="margin-top:12px"><button class="button primary" type="button">Muokkaa nostoa</button><button class="button secondary" type="button">Kopioi</button></div>
+            <div class="greeting"><span>My highlights</span><strong>3 PULSEs today</strong></div>
+            <div class="tabs"><button class="tab active" type="button">Saved</button><button class="tab" type="button">Shareable</button></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">✦</div><div><b>Future ready brands</b><br><span class="muted">Idea for my own work · 14:07</span></div></div><b>›</b></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">👍</div><div><b>Customer insight panel</b><br><span class="muted">Useful · 13:20</span></div></div><b>›</b></div>
+            <div class="field"><div class="field-icon">↗</div><div class="field-text"><b>Ready shareable highlight</b><span>“How does this change the sales argument?”</span></div></div>
+            <div class="button-row" style="margin-top:12px"><button class="button primary" type="button">Edit highlight</button><button class="button secondary" type="button">Copy</button></div>
             <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link"><b>●</b>Pulse</div><div class="nav-link active"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
           </div>
         </article>
       </div>
       <div class="screen-copy">
-        <span class="screen-kicker">Tarvittava näkymä 04</span>
-        <h2>Oma feedi, jossa PULSE muuttuu muistijäljeksi.</h2>
-        <p>PULSE on hyödyllinen myös osallistujalle, jos se auttaa muistamaan ja jatkamaan tapahtuman oivalluksia. Feed tekee reaktiosta henkilökohtaisen työkalun.</p>
+        <span class="screen-kicker">Required view 04</span>
+        <h2>Personal feed where PULSE becomes a memory trace.</h2>
+        <p>PULSE is useful for the attendee too if it helps remember and continue event insights. The feed turns a reaction into a personal tool.</p>
         <div class="why-grid">
-          <div class="why"><b>Miksi oma feedi?</b><span>Osallistuja voi palata siihen mitä koki tärkeäksi. Tämä vahvistaa appin arvoa tapahtuman jälkeen.</span></div>
-          <div class="why"><b>Miksi “Tallennetut / Jaettavat” tabit?</b><span>Kaikki reaktiot eivät ole jaettavia. Tabit erottavat oman muistijäljen ja ulospäin vietävän sisällön.</span></div>
-          <div class="why"><b>Miksi list item -rakenne?</b><span>Se on templateen kuuluva tuttu mobiilielementti ja skaalautuu moneen PULSEen ilman raskasta korttitulvaa.</span></div>
-          <div class="why"><b>Miksi kopiointi/muokkaus?</b><span>“Jaa” tarvitsee kontrollia. Käyttäjä ei halua lähettää AI-tiivistystä tarkistamatta sitä.</span></div>
+          <div class="why"><b>Why a personal feed?</b><span>The attendee can return to what felt important. This strengthens the app’s value after the event.</span></div>
+          <div class="why"><b>Why “Saved / Shareable” tabs?</b><span>Not every reaction is shareable. Tabs separate personal memory traces from content meant to travel outward.</span></div>
+          <div class="why"><b>Why a list item structure?</b><span>It is a familiar mobile element from the template and scales to many PULSEs without a heavy card flood.</span></div>
+          <div class="why"><b>Why copy/edit?</b><span>“Share” needs control. The user does not want to send an AI summary without checking it.</span></div>
         </div>
-        <div class="decision"><b>UX-päätös:</b> henkilökohtainen feedi on jälkikäytön ankkuri. Ilman sitä PULSE jää hetkelliseksi reaktioksi.</div>
+        <div class="decision"><b>UX decision:</b> the personal feed is the anchor for post-event use. Without it, PULSE remains a momentary reaction.</div>
       </div>
     </section>
 
@@ -176,26 +176,26 @@
             <span class="screen-label">View 05 · Organizer</span>
             <div class="greeting"><span>Live signal</span><strong>Keynote pulse</strong></div>
             <div class="report-grid"><div class="report-card magenta"><b>82% inspired</b><span>Strong positive signal in current session.</span></div><div class="report-card orange"><b>14 shares</b><span>Content likely to travel after event.</span></div></div>
-            <div class="section-row"><h4>Reaktiot</h4><span class="info">Live</span></div>
+            <div class="section-row"><h4>Reactions</h4><span class="info">Live</span></div>
             <div class="progress-stack"><div class="progress-line"><span>👍 Useful</span><div class="progress-track"><i class="progress-fill" style="width:68%"></i></div><b>68</b></div><div class="progress-line"><span>✦ Inspired</span><div class="progress-track"><i class="progress-fill" style="width:82%"></i></div><b>82</b></div><div class="progress-line"><span>👎 Unclear</span><div class="progress-track"><i class="progress-fill" style="width:18%"></i></div><b>18</b></div></div>
-            <div class="section-row"><h4>Teemat</h4><span class="info">AI grouped</span></div>
-            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">⚡</div><div><b>Vie tiimille</b><br><span class="muted">27 mainintaa</span></div></div><b>›</b></div>
-            <div class="toast" style="margin-top:10px"><div class="list-icon" style="width:34px;height:34px">!</div><div><b>Insight</b><span>Negatiiviset signaalit kasaantuvat kohtaan “mittarit epäselviä”.</span></div></div>
+            <div class="section-row"><h4>Themes</h4><span class="info">AI grouped</span></div>
+            <div class="list-item"><div style="display:flex;align-items:center;gap:12px"><div class="list-icon">⚡</div><div><b>Take to team</b><br><span class="muted">27 mentions</span></div></div><b>›</b></div>
+            <div class="toast" style="margin-top:10px"><div class="list-icon" style="width:34px;height:34px">!</div><div><b>Insight</b><span>Negative signals cluster around “metrics unclear”.</span></div></div>
             <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>◔</b>Pulse</div><div class="nav-link"><b>▣</b>Report</div><div class="nav-link"><b>●</b>Team</div></nav>
           </div>
         </article>
       </div>
       <div class="screen-copy">
-        <span class="screen-kicker">Tarvittava näkymä 05</span>
-        <h2>Järjestäjän näkymä, jossa signaali on tulkittavaa.</h2>
-        <p>Järjestäjä ei tarvitse vain laskuria. Hyvä PULSE-näkymä näyttää, mihin kohtaan sisältöä reaktiot liittyvät, mikä teema nousee ja vaatiiko jokin kohta reagointia.</p>
+        <span class="screen-kicker">Required view 05</span>
+        <h2>Organizer view where the signal is interpretable.</h2>
+        <p>The organizer does not need just a counter. A good PULSE view shows what content the reactions relate to, what theme is rising and whether something requires action.</p>
         <div class="why-grid">
-          <div class="why"><b>Miksi report cardit ylhäällä?</b><span>Järjestäjä saa heti tilannekuvan: mitä tapahtuu nyt ja mikä on poikkeuksellista.</span></div>
-          <div class="why"><b>Miksi progressit?</b><span>Ne ovat riittävän nopeita lukea live-tilanteessa. Tarkempi analyysi voi tulla raportissa myöhemmin.</span></div>
-          <div class="why"><b>Miksi teemalistat?</b><span>Syykerroksen arvo näkyy tässä: palautteesta muodostuu jatkotoimintaa ohjaavia teemoja.</span></div>
-          <div class="why"><b>Miksi insight-toast?</b><span>Järjestäjälle pitää nostaa poikkeamat, ei vaatia että hän etsii ne raakadatasta.</span></div>
+          <div class="why"><b>Why report cards at the top?</b><span>The organizer immediately gets the situation: what is happening now and what is unusual.</span></div>
+          <div class="why"><b>Why progress indicators?</b><span>They are fast enough to read live. Deeper analysis can come later in the report.</span></div>
+          <div class="why"><b>Why theme lists?</b><span>This is where the reason layer creates value: feedback becomes themes that guide follow-up action.</span></div>
+          <div class="why"><b>Why an insight toast?</b><span>The organizer should be shown anomalies, not forced to find them in raw data.</span></div>
         </div>
-        <div class="decision"><b>UX-päätös:</b> organizer-näkymän tulee erottaa “mitä tapahtui” ja “mitä pitäisi tehdä seuraavaksi”.</div>
+        <div class="decision"><b>UX decision:</b> the organizer view should separate “what happened” from “what should be done next”.</div>
       </div>
     </section>
 
@@ -205,37 +205,37 @@
           <div class="phone-inner">
             <div class="phone-top"><div class="hamburger" aria-hidden="true"><i></i><i></i></div><div class="app-logo"><img src="assets/lataamo-brandmark.svg" alt="" />Pulse</div><div class="avatar">JW</div></div>
             <span class="screen-label">View 06 · States</span>
-            <div class="greeting"><span>Tilat</span><strong>Ei turhaa hälyä</strong></div>
-            <div class="field"><div class="field-icon">✓</div><div class="field-text"><b>Vastattu</b><span>PULSE näkyy kuitattuna, ei kysy samaa uudelleen.</span></div></div>
-            <div class="field"><div class="field-icon">⌁</div><div class="field-text"><b>Ei vielä aktiivinen</b><span>Reaktiot avautuvat vasta session aikana.</span></div></div>
-            <div class="field"><div class="field-icon">!</div><div class="field-text"><b>Offline</b><span>Tallennetaan paikallisesti ja lähetetään kun yhteys palaa.</span></div></div>
-            <div class="field"><div class="field-icon">↗</div><div class="field-text"><b>Jaa myöhemmin</b><span>Nosto jää feediin, jos käyttäjä ei halua toimia heti.</span></div></div>
-            <div class="tiny-note">Näiden tilojen tarkoitus on vähentää epävarmuutta: käyttäjä tietää mitä tapahtui, eikä ominaisuus keskeytä tapahtumakokemusta.</div>
+            <div class="greeting"><span>States</span><strong>No unnecessary noise</strong></div>
+            <div class="field"><div class="field-icon">✓</div><div class="field-text"><b>Answered</b><span>PULSE appears acknowledged and does not ask the same thing again.</span></div></div>
+            <div class="field"><div class="field-icon">⌁</div><div class="field-text"><b>Not active yet</b><span>Reactions open only during the session.</span></div></div>
+            <div class="field"><div class="field-icon">!</div><div class="field-text"><b>Offline</b><span>Saved locally and sent when the connection returns.</span></div></div>
+            <div class="field"><div class="field-icon">↗</div><div class="field-text"><b>Share later</b><span>The highlight stays in the feed if the user does not want to act immediately.</span></div></div>
+            <div class="tiny-note">The purpose of these states is to reduce uncertainty: the user knows what happened and the feature does not interrupt the event experience.</div>
             <nav class="bottom-nav"><div class="nav-link"><b>⌂</b>Home</div><div class="nav-link active"><b>●</b>Pulse</div><div class="nav-link"><b>◇</b>Feed</div><div class="nav-link"><b>☻</b>Me</div></nav><div class="fab" aria-hidden="true"></div>
           </div>
         </article>
       </div>
       <div class="screen-copy">
-        <span class="screen-kicker">Tarvittava näkymä 06</span>
-        <h2>Tilat, jotka tekevät ominaisuudesta luotettavan.</h2>
-        <p>Pienet tilat ratkaisevat käyttökokemuksen: onko PULSE jo annettu, voiko sitä vielä antaa, mitä tapahtuu huonolla verkkoyhteydellä ja miten käyttäjä voi palata myöhemmin.</p>
+        <span class="screen-kicker">Required view 06</span>
+        <h2>States that make the feature reliable.</h2>
+        <p>Small states define the experience: has PULSE already been given, can it still be given, what happens with poor connectivity and how can the user return later.</p>
         <div class="why-grid">
-          <div class="why"><b>Vastattu-tila</b><span>Estää toistuvan kysymisen ja tekee palautteen tallentumisen näkyväksi.</span></div>
-          <div class="why"><b>Ajastus</b><span>PULSE kannattaa näyttää vain relevantissa hetkessä. Liian aikainen kysymys on arvoton.</span></div>
-          <div class="why"><b>Offline-tuki</b><span>Tapahtumapaikoissa yhteydet vaihtelevat. Käyttäjän ei pidä menettää reaktiota teknisen syyn takia.</span></div>
-          <div class="why"><b>Myöhemmin jakaminen</b><span>Jakaminen vaatii harkintaa. Feed antaa mahdollisuuden palata asiaan ilman painetta.</span></div>
+          <div class="why"><b>Answered state</b><span>Prevents repeated asking and makes saving visible.</span></div>
+          <div class="why"><b>Timing</b><span>PULSE should only appear at a relevant moment. Asking too early is worthless.</span></div>
+          <div class="why"><b>Offline support</b><span>Connectivity varies at event venues. The user should not lose a reaction for technical reasons.</span></div>
+          <div class="why"><b>Sharing later</b><span>Sharing requires consideration. The feed makes it possible to return without pressure.</span></div>
         </div>
-        <div class="decision"><b>UX-päätös:</b> PULSE tarvitsee vähintään idle, active, selected, saved, answered ja offline-pending -tilat ennen toteutusta.</div>
+        <div class="decision"><b>UX decision:</b> PULSE needs at least idle, active, selected, saved, answered and offline-pending states before implementation.</div>
       </div>
     </section>
 
     <section class="summary" aria-label="UX summary">
-      <h2>Toteutuksen ydinsuositus</h2>
+      <h2>Core implementation recommendation</h2>
       <div class="summary-grid">
-        <div class="summary-card"><b>Ensimmäinen julkaisu</b><span>Rakenna ensin View 01–03: session PULSE, vapaaehtoinen syykerros ja vahvistus.</span></div>
-        <div class="summary-card"><b>Älä tee tästä kyselyä</b><span>Jos käyttäjän pitää avata erillinen feedback-sivu, ominaisuus menettää vahvuutensa.</span></div>
-        <div class="summary-card"><b>Data design</b><span>Tallenna reaktio, sessio, aika, rooli/profiili, vapaaehtoinen syy ja tila erillisinä kenttinä.</span></div>
-        <div class="summary-card"><b>Seuraava prototyyppi</b><span>Klikattava flow: reaction → reason sheet → saved → personal feed → organizer signal.</span></div>
+        <div class="summary-card"><b>First release</b><span>Build Views 01–03 first: session PULSE, optional reason layer and confirmation.</span></div>
+        <div class="summary-card"><b>Do not make this a survey</b><span>If the user has to open a separate feedback page, the feature loses its strength.</span></div>
+        <div class="summary-card"><b>Data design</b><span>Store reaction, session, time, role/profile, optional reason and state as separate fields.</span></div>
+        <div class="summary-card"><b>Next prototype</b><span>Clickable flow: reaction → reason sheet → saved → personal feed → organizer signal.</span></div>
       </div>
     </section>
   </div>
