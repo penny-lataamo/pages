@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07030b" />
+  <meta name="description" content="THE SIGNAL — Vuoden viimeinen lähetys. Inspiroiva pikkujoulukonsepti noin 500 henkilön yritystapahtumaan." />
+  <title>THE SIGNAL — Vuoden viimeinen lähetys</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;520;650;760;850&display=swap');
+
+    :root{
+      --ink:#fff8ef;
+      --muted:rgba(255,248,239,.72);
+      --soft:rgba(255,248,239,.54);
+      --bg:#07030b;
+      --void:#050207;
+      --line:rgba(255,248,239,.16);
+      --line-strong:rgba(255,248,239,.34);
+      --orange:#ff5500;
+      --pink:#ec0382;
+      --violet:#7b4dff;
+      --blue:#38d8ff;
+      --green:#89ffb3;
+      --amber:#ffc466;
+      --cream:#fff8ef;
+      --grad:linear-gradient(110deg,var(--orange),#ff7a1a 28%,var(--pink) 68%,#8b3dff);
+      --aurora:linear-gradient(120deg,#ff5500 0%,#ff7a1a 16%,#ec0382 42%,#7b4dff 67%,#38d8ff 100%);
+      --shadow:0 40px 120px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--bg)}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 18% -8%, rgba(255,85,0,.34), transparent 32rem),
+        radial-gradient(circle at 82% 2%, rgba(236,3,130,.30), transparent 32rem),
+        radial-gradient(circle at 50% 34%, rgba(56,216,255,.10), transparent 40rem),
+        linear-gradient(180deg,#09020d 0%,#050207 45%,#0d0613 100%);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-3;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:64px 64px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent 72%);
+      animation:gridDrift 18s linear infinite;
+    }
+    body::after{
+      content:"";
+      position:fixed; inset:-18vh -14vw; z-index:-2; pointer-events:none;
+      background:
+        conic-gradient(from 220deg at 50% 50%, transparent 0 8%, rgba(255,85,0,.28) 15%, rgba(236,3,130,.23) 26%, rgba(56,216,255,.18) 36%, transparent 48% 100%);
+      filter:blur(42px) saturate(1.35);
+      opacity:.72;
+      animation:aurora 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes aurora{from{transform:translate3d(-3%,0,0) rotate(-3deg) scale(1.04)}to{transform:translate3d(3%,2%,0) rotate(5deg) scale(1.11)}}
+    @keyframes gridDrift{to{background-position:64px 64px}}
+    @keyframes pulse{0%,100%{opacity:.44;transform:scale(.98)}50%{opacity:1;transform:scale(1.035)}}
+    @keyframes orbit{to{transform:rotate(360deg)}}
+    @keyframes scan{0%{transform:translateY(-12%);opacity:0}12%,78%{opacity:.65}100%{transform:translateY(115%);opacity:0}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+    @keyframes dash{to{stroke-dashoffset:-460}}
+    @keyframes reveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    a{color:inherit}
+    .page{position:relative; isolation:isolate}
+
+    .noise{
+      position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.18; mix-blend-mode:screen;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+    }
+
+    .topbar{
+      position:fixed; top:0; left:0; right:0; z-index:20;
+      display:flex; align-items:center; justify-content:space-between; gap:22px;
+      padding:18px clamp(18px,4vw,56px);
+      background:linear-gradient(180deg,rgba(7,3,11,.86),rgba(7,3,11,.38),transparent);
+      backdrop-filter:blur(10px);
+    }
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; letter-spacing:.12em; text-transform:uppercase; font-weight:850; font-size:12px;color:rgba(255,248,239,.88)}
+    .brandMark{width:28px;height:28px;border-radius:50%;background:var(--grad);box-shadow:0 0 32px rgba(236,3,130,.45);position:relative;overflow:hidden}
+    .brandMark::after{content:"";position:absolute;inset:7px 6px;border:2px solid rgba(255,248,239,.86);border-left-color:transparent;border-radius:50%;transform:rotate(-28deg)}
+    .nav{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{font-size:12px;text-decoration:none;color:rgba(255,248,239,.68);border:1px solid rgba(255,248,239,.12);padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.04)}
+    .nav a:hover{color:white;border-color:rgba(255,248,239,.34);background:rgba(255,255,255,.09)}
+
+    .hero{
+      min-height:min(100svh, 980px);
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);
+      align-items:center;
+      gap:clamp(28px,6vw,86px);
+      padding:clamp(110px,13vh,150px) clamp(18px,5vw,72px) 72px;
+      position:relative;
+    }
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;color:rgba(255,248,239,.78);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:850}
+    .eyebrow::before{content:"";width:42px;height:2px;background:var(--grad);border-radius:99px;box-shadow:0 0 18px rgba(236,3,130,.75)}
+    h1{font-family:"Bebas Neue",Inter,sans-serif;font-size:clamp(92px,15vw,244px);line-height:.76;letter-spacing:.005em;margin:0;text-transform:uppercase;font-weight:400;text-wrap:balance;text-shadow:0 22px 80px rgba(0,0,0,.55)}
+    .gradientText{background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 28px rgba(236,3,130,.26))}
+    .subtitle{font-size:clamp(22px,3.2vw,46px);line-height:1.02;letter-spacing:-.055em;max-width:880px;margin:24px 0 0;font-weight:850;text-wrap:balance}
+    .lead{max-width:760px;margin:22px 0 0;font-size:clamp(16px,1.45vw,21px);line-height:1.58;color:var(--muted)}
+    .heroCta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:34px}
+    .signalBadge{display:inline-flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid rgba(255,248,239,.20);border-radius:999px;background:rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.12);font-size:13px;color:rgba(255,248,239,.82)}
+    .signalBadge b{color:white}.dot{width:9px;height:9px;border-radius:50%;background:#89ffb3;box-shadow:0 0 20px #89ffb3;animation:pulse 1.8s infinite}
+
+    .signalCore{
+      position:relative;
+      min-height:min(72vh,720px);
+      display:grid;place-items:center;
+      filter:drop-shadow(0 30px 80px rgba(0,0,0,.55));
+    }
+    .orb{
+      width:min(42vw,560px); aspect-ratio:1; border-radius:50%; position:relative;
+      background:
+        radial-gradient(circle at 48% 50%,rgba(255,248,239,.92) 0 5%, transparent 6%),
+        radial-gradient(circle at 50% 50%, rgba(255,85,0,.14) 0 26%, rgba(236,3,130,.11) 27% 42%, transparent 43%),
+        conic-gradient(from 22deg, rgba(255,85,0,.96), rgba(236,3,130,.92), rgba(56,216,255,.9), rgba(137,255,179,.7), rgba(255,85,0,.96));
+      box-shadow:0 0 0 1px rgba(255,255,255,.18), inset 0 0 80px rgba(255,255,255,.18), 0 0 120px rgba(236,3,130,.28);
+      animation:float 6s ease-in-out infinite;
+    }
+    .orb::before,.orb::after{content:"";position:absolute;border-radius:50%;inset:8%;border:1px solid rgba(255,248,239,.24);border-top-color:rgba(255,248,239,.8);animation:orbit 8s linear infinite}
+    .orb::after{inset:-10%;border-color:rgba(56,216,255,.18);border-right-color:rgba(255,85,0,.8);animation-duration:14s;animation-direction:reverse}
+    .frequencyLines{position:absolute; inset:8% 0; pointer-events:none; opacity:.72}
+    .frequencyLines span{position:absolute;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,248,239,.46),transparent);box-shadow:0 0 18px rgba(56,216,255,.25);animation:scan 4.2s linear infinite}
+    .frequencyLines span:nth-child(2){animation-delay:.8s}.frequencyLines span:nth-child(3){animation-delay:1.7s}.frequencyLines span:nth-child(4){animation-delay:2.8s}
+    .orbLabel{position:absolute;inset:auto auto 8% 50%;transform:translateX(-50%);text-align:center;width:min(90%,380px);padding:18px;border:1px solid rgba(255,248,239,.18);border-radius:24px;background:rgba(7,3,11,.58);backdrop-filter:blur(18px);box-shadow:0 18px 70px rgba(0,0,0,.28)}
+    .orbLabel small{display:block;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,248,239,.6);font-size:11px;font-weight:850}.orbLabel strong{display:block;font-size:20px;line-height:1.1;margin-top:6px}
+
+    section{padding:clamp(70px,10vw,150px) clamp(18px,5vw,72px);position:relative}
+    .sectionHead{max-width:1060px;margin:0 auto 44px;display:grid;grid-template-columns:minmax(0,.92fr) minmax(280px,.55fr);gap:40px;align-items:end}
+    .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,248,239,.62);font-weight:850;margin:0 0 12px}.sectionHead h2{font-size:clamp(46px,7vw,110px);font-family:"Bebas Neue";font-weight:400;line-height:.88;margin:0;text-transform:uppercase}.sectionHead p{font-size:clamp(16px,1.5vw,22px);line-height:1.5;color:var(--muted);margin:0}
+    .panel{max-width:1180px;margin:0 auto;border:1px solid rgba(255,248,239,.16);background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));border-radius:36px;box-shadow:var(--shadow);overflow:hidden;position:relative;backdrop-filter:blur(18px)}
+    .panel::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 10%,rgba(255,85,0,.18),transparent 32%),radial-gradient(circle at 85% 40%,rgba(56,216,255,.12),transparent 34%);pointer-events:none}
+
+    .thesis{display:grid;grid-template-columns:1.1fr .9fr;gap:0;min-height:440px}
+    .thesisCopy{padding:clamp(28px,5vw,62px);position:relative;z-index:1}.thesisCopy h3{font-size:clamp(32px,4vw,62px);line-height:.96;letter-spacing:-.055em;margin:0 0 20px}.thesisCopy p{color:var(--muted);font-size:19px;line-height:1.55;margin:0 0 20px}.quote{font-size:clamp(22px,2.4vw,36px);line-height:1.08;font-weight:850;letter-spacing:-.045em;color:#fff;margin-top:30px;padding-left:22px;border-left:3px solid #ff5500}
+    .thesisVisual{position:relative;display:grid;place-items:center;padding:36px;min-height:420px}.rings{width:min(100%,460px);aspect-ratio:1;position:relative;border-radius:50%;background:radial-gradient(circle,rgba(255,248,239,.10),transparent 54%)}.rings span{position:absolute;inset:var(--i);border:1px solid rgba(255,248,239,.18);border-radius:50%;animation:orbit calc(16s + var(--d)) linear infinite}.rings span:nth-child(1){--i:4%;--d:0s;border-top-color:#ff5500}.rings span:nth-child(2){--i:18%;--d:4s;border-left-color:#ec0382;animation-direction:reverse}.rings span:nth-child(3){--i:32%;--d:8s;border-right-color:#38d8ff}.centerSignal{position:absolute;inset:38%;border-radius:50%;background:var(--grad);box-shadow:0 0 70px rgba(236,3,130,.55)}.micro{position:absolute;padding:9px 12px;border-radius:999px;background:rgba(255,248,239,.10);border:1px solid rgba(255,248,239,.18);font-size:12px;color:rgba(255,248,239,.82);backdrop-filter:blur(10px)}.m1{top:12%;left:0}.m2{top:30%;right:-4%}.m3{bottom:20%;left:3%}.m4{bottom:8%;right:10%}
+
+    .journey{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.step{min-height:310px;padding:24px;border:1px solid rgba(255,248,239,.16);border-radius:30px;background:rgba(255,255,255,.065);position:relative;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.22)}.step::before{content:"";position:absolute;inset:auto 0 0;height:5px;background:var(--grad)}.stepNum{font-family:"Bebas Neue";font-size:62px;line-height:.8;color:rgba(255,248,239,.18)}.step h3{font-size:22px;line-height:1.05;letter-spacing:-.04em;margin:24px 0 12px}.step p{margin:0;color:var(--muted);font-size:15px;line-height:1.48}.stepGlow{position:absolute;inset:-40% -40% auto auto;width:170px;height:170px;border-radius:50%;background:rgba(236,3,130,.22);filter:blur(28px)}
+
+    .zones{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.zone{padding:26px;border-radius:30px;border:1px solid rgba(255,248,239,.15);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.035));min-height:360px;position:relative;overflow:hidden}.zone::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 60% 0,var(--c),transparent 62%);opacity:.38}.zoneIcon{width:74px;height:74px;border-radius:24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;margin-bottom:28px;position:relative}.zoneIcon svg{width:42px;height:42px;stroke:white;fill:none;stroke-width:1.8}.zone h3{font-size:28px;line-height:.96;letter-spacing:-.05em;margin:0 0 14px}.zone p{margin:0;color:var(--muted);line-height:1.48;font-size:15px}.zone small{position:absolute;bottom:22px;left:26px;right:26px;color:rgba(255,248,239,.46);text-transform:uppercase;letter-spacing:.14em;font-weight:850;font-size:10px}
+
+    .dataStage{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:.92fr 1.08fr;gap:24px;align-items:stretch}.signalMap{position:relative;min-height:560px;border-radius:38px;border:1px solid rgba(255,248,239,.16);background:radial-gradient(circle at 50% 50%,rgba(255,85,0,.13),rgba(236,3,130,.09) 35%,rgba(255,255,255,.04) 60%,rgba(255,255,255,.02));overflow:hidden;box-shadow:var(--shadow)}.signalMap svg{position:absolute;inset:0;width:100%;height:100%}.signalMap path{stroke-dasharray:12 18;animation:dash 16s linear infinite}.node{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--node);box-shadow:0 0 24px var(--node);left:var(--x);top:var(--y);animation:pulse var(--t) ease-in-out infinite}.signalWord{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);font-weight:850;letter-spacing:-.045em;font-size:clamp(18px,2vw,34px);color:rgba(255,248,239,.9);text-shadow:0 0 24px rgba(0,0,0,.7)}.stack{display:grid;gap:16px}.infoCard{padding:28px;border:1px solid rgba(255,248,239,.15);border-radius:28px;background:rgba(255,255,255,.07)}.infoCard h3{margin:0 0 10px;font-size:24px;letter-spacing:-.045em}.infoCard p{margin:0;color:var(--muted);line-height:1.5}.infoCard strong{background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+    .timeline{max-width:1180px;margin:0 auto;position:relative}.timeline::before{content:"";position:absolute;left:32px;top:0;bottom:0;width:2px;background:linear-gradient(var(--orange),var(--pink),var(--blue))}.moment{display:grid;grid-template-columns:82px 1fr;gap:20px;margin-bottom:18px}.time{font-family:"Bebas Neue";font-size:34px;color:#fff;line-height:1}.momentDot{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);box-shadow:0 0 40px rgba(236,3,130,.24);position:relative;z-index:1}.momentCard{padding:24px;border-radius:28px;border:1px solid rgba(255,248,239,.14);background:rgba(255,255,255,.065)}.momentCard h3{margin:0 0 8px;font-size:26px;letter-spacing:-.045em}.momentCard p{margin:0;color:var(--muted);line-height:1.48}
+
+    .outcomes{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px}.outcome{padding:28px;border-radius:30px;border:1px solid rgba(255,248,239,.16);background:rgba(255,255,255,.07);min-height:190px}.outcome b{display:block;font-family:"Bebas Neue";font-size:50px;line-height:.9;background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px}.outcome h3{font-size:24px;line-height:1.05;margin:0 0 10px}.outcome p{color:var(--muted);margin:0;line-height:1.48}
+
+    .final{min-height:min(96svh, 980px);display:grid;place-items:center;text-align:center;padding-top:120px}.finalInner{max-width:1080px;margin:auto}.final h2{font-family:"Bebas Neue";font-size:clamp(76px,12vw,180px);line-height:.78;margin:0;text-transform:uppercase}.final p{max-width:760px;margin:28px auto 0;color:var(--muted);font-size:clamp(18px,2vw,26px);line-height:1.38}.signature{margin-top:48px;display:inline-flex;align-items:center;gap:12px;color:rgba(255,248,239,.8);font-weight:850;letter-spacing:.12em;text-transform:uppercase;font-size:12px}.signature::before,.signature::after{content:"";width:44px;height:1px;background:rgba(255,248,239,.28)}
+
+    .reveal{opacity:0;transform:translateY(24px)}.reveal.in{animation:reveal .85s cubic-bezier(.2,.8,.2,1) forwards}.delay1{animation-delay:.08s}.delay2{animation-delay:.16s}.delay3{animation-delay:.24s}.delay4{animation-delay:.32s}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;min-height:auto}.signalCore{min-height:520px}.orb{width:min(84vw,520px)}.sectionHead{grid-template-columns:1fr}.journey{grid-template-columns:1fr 1fr}.zones{grid-template-columns:1fr 1fr}.dataStage{grid-template-columns:1fr}.outcomes{grid-template-columns:1fr}.nav{display:none}.thesis{grid-template-columns:1fr}
+    }
+    @media (max-width:620px){
+      .topbar{padding:14px 16px}.hero{padding-left:16px;padding-right:16px}.signalCore{min-height:420px}.orbLabel{bottom:0}.journey,.zones{grid-template-columns:1fr}.step{min-height:240px}.timeline::before{left:23px}.moment{grid-template-columns:58px 1fr}.momentDot{width:48px;height:48px}.time{font-size:26px}.sectionHead h2{font-size:54px}.panel{border-radius:26px}.thesisCopy{padding:26px}.dataStage{gap:16px}.signalMap{min-height:430px}}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="THE SIGNAL alkuun"><span class="brandMark" aria-hidden="true"></span><span>Lataamo Creative</span></a>
+      <nav class="nav" aria-label="Sivun osiot">
+        <a href="#idea">Idea</a>
+        <a href="#journey">Matka</a>
+        <a href="#zones">Taajuudet</a>
+        <a href="#show">Show</a>
+        <a href="#outcomes">Jälki</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="THE SIGNAL hero">
+        <div class="heroCopy">
+          <div class="eyebrow reveal">500 henkilön pikkujoulukonsepti</div>
+          <h1 class="reveal delay1">THE<br><span class="gradientText">SIGNAL</span></h1>
+          <p class="subtitle reveal delay2">Vuoden viimeinen lähetys — yrityksen yhteinen energia muutetaan show’ksi, tilaksi ja muistijäljeksi.</p>
+          <p class="lead reveal delay3">Ei buffetjonoa joulukoristeiden alla. Vieraat astuvat yhden illan ajaksi salaiselle lähetysasemalle, jossa kulunut vuosi, tiimien tarinat ja tulevaisuuden suunta virittyvät näkyväksi.</p>
+          <div class="heroCta reveal delay4">
+            <span class="signalBadge"><span class="dot"></span><b>Live signal</b> yleisöstä sisällöksi</span>
+            <span class="signalBadge"><b>AI + show</b> ilman gimmickiä</span>
+            <span class="signalBadge"><b>Muistijälki</b> jokaiselle</span>
+          </div>
+        </div>
+        <div class="signalCore" aria-hidden="true">
+          <div class="orb">
+            <div class="frequencyLines"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="orbLabel">
+            <small>Year Signal Map</small>
+            <strong>500 ihmistä → yksi yhteinen taajuus</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="idea">
+        <div class="sectionHead reveal">
+          <div><p class="kicker">Mikä tekee tästä ostettavan</p><h2>Ei juhla. <span class="gradientText">Lähetys.</span></h2></div>
+          <p>THE SIGNAL tekee henkilöstöjuhlasta strategisen kokemuksen: se näyttää, miltä organisaation vuosi tuntuu, mikä ihmisiä yhdistää ja millä energialla seuraava vuosi käynnistyy.</p>
+        </div>
+        <div class="panel thesis reveal">
+          <div class="thesisCopy">
+            <h3>Yrityksen ihmiset eivät ole yleisöä. He ovat signaali.</h3>
+            <p>Ennen tapahtumaa jokainen virittää oman taajuutensa kolmella kevyellä kysymyksellä. Illan aikana vastaukset muuttuvat valoksi, lavavisuaaleiksi, keskustelunaiheiksi, tunnustuksiksi ja henkilökohtaiseksi jälkiviestiksi.</p>
+            <p>Tuloksena on pikkujoulu, joka tuntuu isolta yhteiseltä rituaalilta — mutta silti henkilökohtaiselta.</p>
+            <div class="quote">“Meidän signaalimme ei ole täydellinen. Se on nopea, lämmin, vähän levoton — ja täynnä ihmisiä, jotka saavat asiat tapahtumaan.”</div>
+          </div>
+          <div class="thesisVisual" aria-hidden="true">
+            <div class="rings"><span></span><span></span><span></span><div class="centerSignal"></div><em class="micro m1">rohkeus</em><em class="micro m2">yhteys</em><em class="micro m3">ilo</em><em class="micro m4">selkeys</em></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="journey">
+        <div class="sectionHead reveal">
+          <div><p class="kicker">Vieraan matka</p><h2>Viritys alkaa ennen ovia.</h2></div>
+          <p>Kokemus rakentuu ennen–aikana–jälkeen-kaareksi, jotta ilta ei jää vain hyväksi fiilikseksi vaan muuttuu muistettavaksi teoksi.</p>
+        </div>
+        <div class="journey">
+          <article class="step reveal"><div class="stepGlow"></div><div class="stepNum">01</div><h3>Virityskoodi</h3><p>Kutsu kertoo: “Vuoden viimeinen lähetys alkaa. Sinulla on oma taajuus.” Kolme kysymystä käynnistää henkilökohtaisen profiilin.</p></article>
+          <article class="step reveal delay1"><div class="stepGlow"></div><div class="stepNum">02</div><h3>Transmission Hall</h3><p>Sisäänkäynti tuntuu salaiselta lähetysasemalta: valo, ääni, QR-check-in ja ensimmäinen näkyvä Year Signal Map.</p></article>
+          <article class="step reveal delay2"><div class="stepGlow"></div><div class="stepNum">03</div><h3>Live signaali</h3><p>Yleisön sanat, muistot ja PULSE-reaktiot nousevat visuaaleiksi ja lavan dramaturgian osaksi.</p></article>
+          <article class="step reveal delay3"><div class="stepGlow"></div><div class="stepNum">04</div><h3>Human Signal</h3><p>Illan huippuhetki: yrityksen yhteinen energia esitetään lavalla visuaalisena, musiikillisena manifestina.</p></article>
+          <article class="step reveal delay4"><div class="stepGlow"></div><div class="stepNum">05</div><h3>Signal Card</h3><p>Jokainen saa oman jäljen: taajuus, takeaways, yhteinen ensi vuoden lause ja linkki jälkimateriaaleihin.</p></article>
+        </div>
+      </section>
+
+      <section id="zones">
+        <div class="sectionHead reveal">
+          <div><p class="kicker">Tilallinen maailma</p><h2>Neljä taajuutta. Yksi yö.</h2></div>
+          <p>500 hengen tapahtuma tarvitsee liikettä, rytmiä ja hengitystä. Siksi tila jakautuu eri energiatasoihin — show’sta rauhaan, datasta juhlaan.</p>
+        </div>
+        <div class="zones">
+          <article class="zone reveal" style="--c:rgba(255,85,0,.55)"><div class="zoneIcon"><svg viewBox="0 0 48 48"><path d="M8 34h32M12 34l5-20h14l5 20M18 20h12M24 14v20"/></svg></div><h3>Main Frequency</h3><p>Päälava, dinner, avausshow, tunnustukset, pääartisti ja klubivaihe. Yrityksen yhteinen signaali näkyy koko illan visuaalisena selkärankana.</p><small>Show / Dinner / Club</small></article>
+          <article class="zone reveal delay1" style="--c:rgba(236,3,130,.55)"><div class="zoneIcon"><svg viewBox="0 0 48 48"><path d="M13 14h22v28H13zM18 8h12M19 22h10M19 29h14M19 36h8"/></svg></div><h3>Memory Lab</h3><p>AI- ja mediapiste, jossa vuoden muistot muuttuvat visuaalisiksi korteiksi, nostoiksi ja jaettaviksi hetkiksi.</p><small>Muistot näkyväksi</small></article>
+          <article class="zone reveal delay2" style="--c:rgba(255,196,102,.48)"><div class="zoneIcon"><svg viewBox="0 0 48 48"><path d="M14 26c0 7 5 12 10 12s10-5 10-12S24 7 24 7 14 19 14 26zM18 27c1 4 3 6 6 7"/></svg></div><h3>Static Room</h3><p>Rauhallinen lounge: lämmin valo, glögi, akustinen hetki ja analoginen vastapaino ison tilan sähköisyydelle.</p><small>Hengähdys / lämpö</small></article>
+          <article class="zone reveal delay3" style="--c:rgba(56,216,255,.50)"><div class="zoneIcon"><svg viewBox="0 0 48 48"><path d="M10 35c8-14 20-14 28 0M16 28c5-7 11-7 16 0M22 21c2-2 6-2 8 0M24 38h.1"/></svg></div><h3>Future Booths</h3><p>Kevyet osallistavat pisteet: viesti tulevaisuuden itselle, tiimin supervoima, vuoden sisäpiirimeemi ja cinematic AI portrait.</p><small>Osallistuminen / leikki</small></article>
+        </div>
+      </section>
+
+      <section id="show">
+        <div class="sectionHead reveal">
+          <div><p class="kicker">Live-infografiikka</p><h2>Yleisöstä tulee sisältö.</h2></div>
+          <p>Signaalit eivät jää lomakkeeseen. Ne muuttuvat reaaliaikaiseksi visuaaliseksi maailmaksi, johon koko ilta palaa.</p>
+        </div>
+        <div class="dataStage">
+          <div class="signalMap reveal" aria-label="Animoitu Year Signal Map -visualisointi">
+            <svg viewBox="0 0 600 600" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M80 420 C160 120, 420 120, 520 410" fill="none" stroke="rgba(255,85,0,.48)" stroke-width="2"/>
+              <path d="M70 250 C210 540, 430 70, 545 310" fill="none" stroke="rgba(236,3,130,.45)" stroke-width="2"/>
+              <path d="M110 110 C240 270, 350 280, 510 115" fill="none" stroke="rgba(56,216,255,.42)" stroke-width="2"/>
+            </svg>
+            <span class="node" style="--x:22%;--y:68%;--node:#ff5500;--t:2.4s"></span><span class="node" style="--x:74%;--y:31%;--node:#ec0382;--t:3s"></span><span class="node" style="--x:52%;--y:50%;--node:#38d8ff;--t:2.7s"></span><span class="node" style="--x:34%;--y:24%;--node:#89ffb3;--t:3.3s"></span><span class="node" style="--x:82%;--y:70%;--node:#ffc466;--t:2.9s"></span>
+            <strong class="signalWord" style="--x:48%;--y:43%">yhteys</strong><strong class="signalWord" style="--x:27%;--y:33%">rohkeus</strong><strong class="signalWord" style="--x:70%;--y:58%">ilo</strong><strong class="signalWord" style="--x:56%;--y:74%">vauhti</strong>
+          </div>
+          <div class="stack">
+            <article class="infoCard reveal delay1"><h3><strong>Ennen:</strong> kolmen kysymyksen taajuusprofiili</h3><p>Kevyt ennakkoviritys tuo ihmiset mukaan jo ennen tapahtumaa ja antaa sisällölle todellisen pohjan.</p></article>
+            <article class="infoCard reveal delay2"><h3><strong>Aikana:</strong> PULSE ja livepoiminnat</h3><p>Reaktiot, muistot ja sanat nousevat lavalle — yleisö näkee itsensä osana show’ta.</p></article>
+            <article class="infoCard reveal delay3"><h3><strong>Jälkeen:</strong> personoitu muistijälki</h3><p>Signal Card, aftermovie ja yhteinen Year Signal tekevät illasta jaettavan myös seuraavana maanantaina.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sectionHead reveal">
+          <div><p class="kicker">Illan dramaturgia</p><h2>Show, joka tuntuu yrityksen omalta.</h2></div>
+          <p>Rakenne antaa tilaa johdolle, tunnustuksille ja pääartistille — mutta kaikki sidotaan samaan konseptiin, jotta ilta ei hajoa irrallisiksi ohjelmanumeroiksi.</p>
+        </div>
+        <div class="timeline">
+          <article class="moment reveal"><div class="momentDot"><span class="time">18</span></div><div class="momentCard"><h3>Arrival / Signal Lock</h3><p>Saapuminen, taajuusvärit, DJ/äänimaisema ja ensimmäiset yleisön signaalit tilan pinnoilla.</p></div></article>
+          <article class="moment reveal delay1"><div class="momentDot"><span class="time">19</span></div><div class="momentCard"><h3>Opening Transmission</h3><p>Lähetys käynnistyy. Johto tulee mukaan osana show’ta — ei perinteisenä pönöpuheena.</p></div></article>
+          <article class="moment reveal delay2"><div class="momentDot"><span class="time">21</span></div><div class="momentCard"><h3>The Human Signal</h3><p>Illan suuri oma hetki: yleisön datasta ja tarinoista syntyy yrityksen yhteinen manifesti.</p></div></article>
+          <article class="moment reveal delay3"><div class="momentDot"><span class="time">22</span></div><div class="momentCard"><h3>Headliner → Club Transmission</h3><p>Pääartisti, DJ ja visuaalit jatkavat samaa maailmaa. Bile ei ala tyhjästä — se purkaa illan kerätyn energian.</p></div></article>
+        </div>
+      </section>
+
+      <section id="outcomes">
+        <div class="sectionHead reveal">
+          <div><p class="kicker">Lopputulos</p><h2>Asiakas ostaa juhlan — ja saa enemmän.</h2></div>
+          <p>THE SIGNAL toimii näyttävänä pikkujouluna, mutta sen arvo jatkuu tapahtuman jälkeen sisäiseen viestintään, henkilöstökokemukseen ja yhteiseen suuntaan.</p>
+        </div>
+        <div class="outcomes">
+          <article class="outcome reveal"><b>01</b><h3>Yhteinen Year Signal</h3><p>Visuaalinen jälki siitä, miltä organisaation vuosi tuntui ja mihin energiaan seuraava vuosi viritetään.</p></article>
+          <article class="outcome reveal delay1"><b>02</b><h3>Henkilökohtaiset Signal Cardit</h3><p>Jokaiselle oma taajuus, takeaways ja linkki materiaaleihin — muisto, joka ei katoa narikkalappuun.</p></article>
+          <article class="outcome reveal delay2"><b>03</b><h3>Johdon ja HR:n insight-paketti</h3><p>Kooste fiiliksistä, toiveista, ylpeydenaiheista ja kulttuurin signaaleista seuraavaa vuotta varten.</p></article>
+          <article class="outcome reveal delay3"><b>04</b><h3>Aftermovie, joka kertoo oman tarinan</h3><p>Ei geneeristä koontivideota, vaan tarina, jonka runko syntyy osallistujien omasta signaalista.</p></article>
+        </div>
+      </section>
+
+      <section class="final">
+        <div class="finalInner reveal">
+          <p class="kicker">Vuoden viimeinen lähetys</p>
+          <h2>Kun ihmiset näkevät oman energiansa, juhla muuttuu muistoksi.</h2>
+          <p>THE SIGNAL on pikkujoulu niille yrityksille, jotka eivät halua päättää vuotta buffetjonoon. Se on juhla, show ja yhteinen suunta — samalla kertaa.</p>
+          <div class="signature">Lataamo Creative</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in'); });
+    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(item => io.observe(item));
+
+    const root = document.documentElement;
+    let ticking = false;
+    function onScroll(){
+      if(ticking) return;
+      requestAnimationFrame(() => {
+        const y = window.scrollY || 0;
+        root.style.setProperty('--scrollY', y);
+        document.body.style.backgroundPosition = `0 ${y * .04}px`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+    window.addEventListener('scroll', onScroll, { passive:true });
+  </script>
+</body>
+</html>
