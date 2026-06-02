@@ -93,6 +93,14 @@
     .nav{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
     .nav a{font-size:12px;text-decoration:none;color:rgba(255,248,239,.68);border:1px solid rgba(255,248,239,.12);padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.04)}
     .nav a:hover{color:white;border-color:rgba(255,248,239,.34);background:rgba(255,255,255,.09)}
+    .nav .navCta{display:none}
+    .menuToggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,248,239,.18);background:rgba(255,255,255,.07);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.12);cursor:pointer}
+    .menuToggle span{position:relative;display:block;width:19px;height:2px;border-radius:99px;background:#fff;transition:background .18s ease}
+    .menuToggle span::before,.menuToggle span::after{content:"";position:absolute;left:0;width:19px;height:2px;border-radius:99px;background:#fff;transition:transform .22s ease, top .22s ease}
+    .menuToggle span::before{top:-6px}.menuToggle span::after{top:6px}
+    body.navOpen .menuToggle span{background:transparent}
+    body.navOpen .menuToggle span::before{top:0;transform:rotate(45deg)}
+    body.navOpen .menuToggle span::after{top:0;transform:rotate(-45deg)}
 
     .hero{
       min-height:min(100svh, 980px);
@@ -161,7 +169,7 @@
     .reveal{opacity:1;transform:none}.reveal.in{animation:reveal .85s cubic-bezier(.2,.8,.2,1) forwards}.delay1{animation-delay:.08s}.delay2{animation-delay:.16s}.delay3{animation-delay:.24s}.delay4{animation-delay:.32s}
 
     @media (max-width:980px){
-      .hero{grid-template-columns:1fr;min-height:auto}.signalCore{min-height:520px}.orb{width:min(84vw,520px)}.sectionHead{grid-template-columns:1fr}.journey{grid-template-columns:1fr 1fr}.zones{grid-template-columns:1fr 1fr}.dataStage{grid-template-columns:1fr}.outcomes{grid-template-columns:1fr}.nav{display:none}.thesis{grid-template-columns:1fr}
+      .hero{grid-template-columns:1fr;min-height:auto}.signalCore{min-height:520px}.orb{width:min(84vw,520px)}.sectionHead{grid-template-columns:1fr}.journey{grid-template-columns:1fr 1fr}.zones{grid-template-columns:1fr 1fr}.dataStage{grid-template-columns:1fr}.outcomes{grid-template-columns:1fr}.thesis{grid-template-columns:1fr}.menuToggle{display:inline-flex}.nav{position:absolute;top:calc(100% - 2px);left:14px;right:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;border:1px solid rgba(255,248,239,.18);border-radius:26px;background:linear-gradient(145deg,rgba(16,7,22,.96),rgba(7,3,11,.90));box-shadow:0 26px 90px rgba(0,0,0,.48);backdrop-filter:blur(24px);transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease}.nav a{display:flex;align-items:center;justify-content:center;min-height:44px;text-align:center;color:rgba(255,248,239,.86);background:rgba(255,255,255,.06)}.nav .navCta{display:flex;grid-column:1 / -1;background:var(--aurora);color:white;border-color:rgba(255,255,255,.30);font-weight:850;box-shadow:0 16px 46px rgba(236,3,130,.24)}body.navOpen .nav{opacity:1;pointer-events:auto;transform:translateY(0)}
     }
     @media (max-width:620px){
       .topbar{padding:14px 16px}.hero{padding-left:16px;padding-right:16px}.signalCore{min-height:420px}.orbLabel{bottom:0}.journey,.zones{grid-template-columns:1fr}.step{min-height:240px}.timeline::before{left:23px}.moment{grid-template-columns:58px 1fr}.momentDot{width:48px;height:48px}.time{font-size:26px}.sectionHead h2{font-size:54px}.panel{border-radius:26px}.thesisCopy{padding:26px}.dataStage{gap:16px}.signalMap{min-height:430px}}
@@ -173,7 +181,7 @@
   <div class="page">
     <header class="topbar">
       <a class="brand" href="#top" aria-label="Back to THE SIGNAL"><span class="brandMark" aria-hidden="true"></span><span>Lataamo Creative</span></a>
-      <nav class="nav" aria-label="Page sections">
+      <nav class="nav" id="pageNav" aria-label="Page sections">
         <a href="#idea">Idea</a>
         <a href="#guest-takeaways">What guests get</a>
         <a href="#scope">Scope</a>
@@ -183,7 +191,9 @@
         <a href="#zones">Areas</a>
         <a href="#show">Show</a>
         <a href="#outcomes">Impact</a>
+        <a class="navCta" href="https://www.lataamo.fi/ota-yhteytta" target="_blank" rel="noopener">Book walkthrough</a>
       </nav>
+      <button class="menuToggle" type="button" aria-label="Open page menu" aria-controls="pageNav" aria-expanded="false"><span aria-hidden="true"></span></button>
     </header>
 
     <main id="top">
@@ -401,6 +411,18 @@
       ticking = true;
     }
     window.addEventListener('scroll', onScroll, { passive:true });
+
+    const menuToggle = document.querySelector('.menuToggle');
+    const pageNav = document.querySelector('#pageNav');
+    function setMenu(open){
+      document.body.classList.toggle('navOpen', open);
+      menuToggle?.setAttribute('aria-expanded', String(open));
+      menuToggle?.setAttribute('aria-label', open ? 'Close page menu' : 'Open page menu');
+    }
+    menuToggle?.addEventListener('click', () => setMenu(!document.body.classList.contains('navOpen')));
+    pageNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', event => { if(event.key === 'Escape') setMenu(false); });
+    window.addEventListener('resize', () => { if(window.innerWidth > 980) setMenu(false); });
   </script>
 </body>
 </html>
