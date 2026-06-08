@@ -1,0 +1,99 @@
+{
+  "updated": "2026-06-08",
+  "title": "Lataamo Insider",
+  "subtitle": "Internal pages, tools and reusable assets.",
+  "homeUrl": "../",
+  "accent": "#5A21D6",
+  "sections": [
+    {
+      "id": "core",
+      "label": "Core pages",
+      "items": [
+        {
+          "title": "Penny Pages Home",
+          "description": "Index of published Lataamo static pages and visual deliverables.",
+          "url": "../",
+          "tag": "Index",
+          "status": "live",
+          "icon": "⌂"
+        },
+        {
+          "title": "AI as an Enabler",
+          "description": "One-screen actionable process infographic.",
+          "url": "../ai-as-enabler/",
+          "tag": "Framework",
+          "status": "live",
+          "icon": "✦"
+        },
+        {
+          "title": "Project Plan System",
+          "description": "Project planning structure and delivery system reference.",
+          "url": "../project-plan-system/",
+          "tag": "Ops",
+          "status": "live",
+          "icon": "▦"
+        }
+      ]
+    },
+    {
+      "id": "customer-facing",
+      "label": "Customer-facing concepts",
+      "items": [
+        {
+          "title": "THE SIGNAL",
+          "description": "Animated Christmas party concept page for 500-person corporate events.",
+          "url": "../the-signal/",
+          "tag": "Concept",
+          "status": "live",
+          "icon": "◈"
+        },
+        {
+          "title": "Sanoma: Get Tomorrow Together",
+          "description": "Event app case reference card.",
+          "url": "../sanoma-get-tomorrow-together/",
+          "tag": "Case",
+          "status": "live",
+          "icon": "◆"
+        },
+        {
+          "title": "Nordea Sustainability",
+          "description": "Finnish sustainability event page.",
+          "url": "../nordea-sustainability/",
+          "tag": "FI",
+          "status": "live",
+          "icon": "●"
+        },
+        {
+          "title": "Nordea Sustainability EN",
+          "description": "English sustainability event page.",
+          "url": "../nordea-sustainability-en/",
+          "tag": "EN",
+          "status": "live",
+          "icon": "●"
+        }
+      ]
+    },
+    {
+      "id": "design-and-product",
+      "label": "Design and product",
+      "items": [
+        {
+          "title": "PULSE UI ehdotukset",
+          "description": "UI direction options and interaction proposals for PULSE.",
+          "url": "../pulse-ui-ehdotukset/",
+          "tag": "UI",
+          "status": "live",
+          "icon": "◐"
+        },
+        {
+          "title": "Lataamo Insider Demo",
+          "description": "Widget preview, embed snippet and manifest model.",
+          "url": "./",
+          "tag": "Widget",
+          "status": "new",
+          "icon": "◎"
+        }
+      ]
+    }
+  ]
+}

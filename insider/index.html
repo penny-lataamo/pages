@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Lataamo Insider Widget</title>
+<style>
+  :root { --ink:#050B3E; --muted:#626A7F; --paper:#F8F6EF; --card:#fff; --line:rgba(5,11,62,.13); --violet:#5A21D6; --pink:#FF4F9A; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--ink); background:radial-gradient(circle at 16% 8%, rgba(90,33,214,.17), transparent 30%), radial-gradient(circle at 82% 12%, rgba(255,79,154,.14), transparent 28%), linear-gradient(135deg,#FBFAF5,#EEE9DC); }
+  main { width:min(1120px, calc(100% - 40px)); margin:0 auto; padding:64px 0 110px; }
+  .badge { display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.62); color:#667085; font-weight:800; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .badge::before { content:"◎"; color:var(--violet); font-size:16px; }
+  h1 { max-width:850px; margin:20px 0 16px; font-size:clamp(44px,8vw,96px); line-height:.9; letter-spacing:-.07em; }
+  .lead { max-width:740px; margin:0 0 34px; color:var(--muted); font-size:clamp(18px,2.1vw,23px); line-height:1.38; }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:42px; }
+  .button { display:inline-flex; align-items:center; gap:10px; min-height:48px; padding:0 18px; border-radius:999px; text-decoration:none; font-weight:850; color:#fff; background:linear-gradient(135deg,var(--ink),var(--violet),var(--pink)); box-shadow:0 18px 38px rgba(5,11,62,.18); }
+  .button.secondary { color:var(--ink); background:rgba(255,255,255,.70); border:1px solid var(--line); box-shadow:none; }
+  .grid { display:grid; grid-template-columns:1.08fr .92fr; gap:18px; align-items:start; }
+  .card { border:1px solid var(--line); border-radius:30px; background:rgba(255,255,255,.68); box-shadow:0 24px 70px rgba(5,11,62,.10); backdrop-filter:blur(14px); overflow:hidden; }
+  .card h2 { margin:0 0 10px; font-size:26px; letter-spacing:-.035em; }
+  .card p { margin:0; color:var(--muted); line-height:1.5; }
+  .pad { padding:26px; }
+  pre { margin:16px 0 0; padding:18px; overflow:auto; border-radius:20px; background:#090B18; color:#EDEAFF; font-size:13px; line-height:1.55; }
+  code { font-family:"SFMono-Regular", Consolas, monospace; }
+  .steps { display:grid; gap:10px; margin-top:18px; }
+  .step { display:grid; grid-template-columns:32px 1fr; gap:12px; align-items:start; padding:13px; border-radius:18px; background:rgba(255,255,255,.62); border:1px solid rgba(5,11,62,.08); }
+  .num { width:32px; height:32px; display:grid; place-items:center; border-radius:12px; color:white; background:var(--violet); font-weight:900; }
+  .step strong { display:block; margin-bottom:3px; }
+  .mock { position:relative; min-height:420px; padding:24px; background:linear-gradient(135deg,#100E1C,#21143E); color:white; }
+  .mock-top { display:flex; justify-content:space-between; align-items:center; gap:20px; padding-bottom:54px; }
+  .logo { font-weight:950; letter-spacing:-.04em; font-size:22px; }
+  .fake-nav { display:flex; gap:10px; flex-wrap:wrap; }
+  .fake-nav span { width:74px; height:10px; border-radius:99px; background:rgba(255,255,255,.18); }
+  .mock h3 { max-width:500px; margin:0; font-size:44px; line-height:.95; letter-spacing:-.055em; }
+  .mock p { max-width:500px; margin:14px 0 0; color:rgba(255,255,255,.68); font-size:18px; }
+  .fake-widget { position:absolute; right:20px; bottom:20px; display:flex; align-items:center; gap:10px; height:56px; padding:0 17px 0 9px; border-radius:999px; background:linear-gradient(135deg,#050B3E,#5A21D6,#FF4F9A); box-shadow:0 18px 46px rgba(0,0,0,.35); font-weight:900; }
+  .fake-widget span:first-child { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; background:rgba(255,255,255,.16); }
+  .features { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+  .feature { padding:16px; border-radius:20px; background:rgba(255,255,255,.55); border:1px solid rgba(5,11,62,.08); }
+  .feature strong { display:block; margin-bottom:5px; }
+  .feature span { color:var(--muted); line-height:1.35; font-size:14px; }
+  @media (max-width:860px) { .grid { grid-template-columns:1fr; } .features { grid-template-columns:1fr; } .mock { min-height:360px; } }
+</style>
+</head>
+<body>
+<main>
+  <span class="badge">Lataamo internal navigation layer</span>
+  <h1>One excellent widget for every internal page.</h1>
+  <p class="lead">Lataamo Insider is a floating launcher that leaves existing page headers untouched while giving the team one searchable, centrally updated doorway into internal pages, concepts, tools and references.</p>
+  <div class="actions">
+    <a class="button" href="./assets.json">Open central manifest →</a>
+    <a class="button secondary" href="./widget.js">Open widget script</a>
+  </div>
+
+  <section class="grid">
+    <article class="card mock" aria-label="Widget visual preview">
+      <div class="mock-top"><div class="logo">Lataamo</div><div class="fake-nav"><span></span><span></span><span></span></div></div>
+      <h3>Current headers stay intact.</h3>
+      <p>The Insider layer floats above the page, uses isolated Shadow DOM styling, and can be dropped into very different pages without layout damage.</p>
+      <div class="fake-widget"><span>◎</span><span>Insider</span></div>
+    </article>
+
+    <article class="card pad">
+      <h2>Embed once per page</h2>
+      <p>Paste this before <code>&lt;/body&gt;</code>. The script fetches the central manifest from the same Insider folder, so link updates appear everywhere.</p>
+      <pre><code>&lt;script src="https://penny-lataamo.github.io/pages/insider/widget.js" defer&gt;&lt;/script&gt;</code></pre>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><div><strong>Add/update assets.json</strong><p>One source of truth for titles, descriptions, URLs, categories and statuses.</p></div></div>
+        <div class="step"><div class="num">2</div><div><strong>Every embedded page updates</strong><p>No manual dropdown maintenance across different microsites.</p></div></div>
+        <div class="step"><div class="num">3</div><div><strong>Search, keyboard and mobile UX included</strong><p>Use “/” for search, Esc to close, and a touch-friendly compact panel.</p></div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="features">
+    <div class="feature"><strong>Non-invasive</strong><span>Shadow DOM and isolated CSS avoid clashes with current page headers and design systems.</span></div>
+    <div class="feature"><strong>Central control</strong><span>A manifest file powers every installation. Later this can be backed by Sheet or SeaTable.</span></div>
+    <div class="feature"><strong>Premium feel</strong><span>Soft glass panel, clear categories, fast search, badges, current-page marker and responsive design.</span></div>
+  </section>
+</main>
+<script src="./widget.js" defer data-open="true"></script>
+</body>
+</html>
