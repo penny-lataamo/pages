@@ -5,6 +5,7 @@
   const scriptUrl = new URL(currentScript?.src || '/insider/widget.js', window.location.href);
   const baseUrl = new URL('./', scriptUrl).href;
   const manifestUrl = currentScript?.dataset.manifest || new URL('assets.json', baseUrl).href;
+  const logoUrl = currentScript?.dataset.logo || new URL('assets/lataamo-brandmark-transparent.svg', baseUrl).href;
   const position = currentScript?.dataset.position || 'bottom-right';
   const startOpen = currentScript?.dataset.open === 'true';
   const theme = currentScript?.dataset.theme || 'auto';
@@ -67,7 +68,8 @@
     .panel[hidden] { opacity:0; transform:translateY(14px) scale(.965); filter:blur(6px); pointer-events:none; visibility:hidden; }
     .hero { padding:22px 22px 17px; background:radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--li-accent) 18%, transparent), transparent 35%), radial-gradient(circle at 90% 10%, rgba(255,79,154,.16), transparent 30%); border-bottom:1px solid rgba(5,11,62,.08); }
     .top { display:flex; align-items:flex-start; gap:12px; }
-    .mark { flex:0 0 42px; width:42px; height:42px; border-radius:16px; display:grid; place-items:center; color:white; font-weight:900; font-size:18px; background:linear-gradient(135deg,var(--li-accent),var(--li-accent-2)); box-shadow:0 12px 30px color-mix(in srgb, var(--li-accent) 32%, transparent); }
+    .mark { flex:0 0 42px; width:42px; height:42px; border-radius:16px; display:grid; place-items:center; background:rgba(255,255,255,.74); border:1px solid rgba(90,33,214,.13); box-shadow:0 12px 30px color-mix(in srgb, var(--li-accent) 22%, transparent); overflow:hidden; }
+    .mark img { display:block; width:27px; height:27px; object-fit:contain; }
     .heading { min-width:0; flex:1; }
     h2 { all:unset; display:block; font:800 20px/1.05 var(--li-font); letter-spacing:-.035em; color:var(--li-ink); }
     .sub { margin-top:5px; color:var(--li-muted); font:500 12.5px/1.35 var(--li-font); }
@@ -101,7 +103,8 @@
     .launcher { all:unset; pointer-events:auto; cursor:pointer; margin-left:auto; display:flex; align-items:center; gap:10px; max-width:100%; height:56px; padding:0 17px 0 9px; border-radius:999px; color:white; background:linear-gradient(135deg,rgba(5,11,62,.96),rgba(90,33,214,.96) 55%,rgba(255,79,154,.94)); box-shadow:0 18px 46px rgba(5,11,62,.26), inset 0 1px 0 rgba(255,255,255,.2); font:850 14px/1 var(--li-font); letter-spacing:-.01em; transition: transform .18s ease, box-shadow .18s ease; }
     .launcher:hover { transform:translateY(-2px); box-shadow:0 22px 58px rgba(5,11,62,.30), inset 0 1px 0 rgba(255,255,255,.24); }
     .launcher:focus-visible { outline:4px solid color-mix(in srgb, var(--li-accent) 24%, transparent); outline-offset:3px; }
-    .launcher-mark { width:40px; height:40px; border-radius:999px; display:grid; place-items:center; background:rgba(255,255,255,.16); box-shadow:inset 0 1px 0 rgba(255,255,255,.18); font-size:18px; }
+    .launcher-mark { width:40px; height:40px; border-radius:999px; display:grid; place-items:center; background:rgba(255,255,255,.92); box-shadow:inset 0 1px 0 rgba(255,255,255,.42), 0 8px 18px rgba(5,11,62,.16); overflow:hidden; }
+    .launcher-mark img { display:block; width:27px; height:27px; object-fit:contain; }
     .launcher-text { white-space:nowrap; }
     .dot { width:8px; height:8px; border-radius:99px; background:#72FFB6; box-shadow:0 0 0 4px rgba(114,255,182,.14); }
     @media (max-width:520px) { .wrap { right:18px; left:18px; bottom:18px; width:auto; } .panel { max-height:calc(100vh - 124px); border-radius:28px; } .hero { padding:20px 20px 16px; } .body { padding:12px 14px 10px; } .item { grid-template-columns:42px minmax(0,1fr) auto; gap:13px; padding:12px 10px; } .meta .pill:not(.status-live):not(.status-new):not(.status-beta) { display:none; } }
@@ -139,11 +142,11 @@
     const updated = state.manifest?.updated ? `Updated ${escapeHtml(state.manifest.updated)}` : 'Central manifest';
     root.innerHTML = `<style>${styles}</style><div class="wrap">
       <section class="panel" ${state.open ? '' : 'hidden'} role="dialog" aria-modal="false" aria-label="${escapeHtml(state.manifest?.title || 'Lataamo Insider')}">
-        <div class="hero"><div class="top"><div class="mark">◎</div><div class="heading"><h2>${escapeHtml(state.manifest?.title || 'Lataamo Insider')}</h2><div class="sub">${escapeHtml(state.manifest?.subtitle || 'Internal pages, tools and reusable assets.')}</div></div><button class="close" aria-label="Close Insider">×</button></div>
+        <div class="hero"><div class="top"><div class="mark"><img src="${escapeHtml(logoUrl)}" alt="" aria-hidden="true"></div><div class="heading"><h2>${escapeHtml(state.manifest?.title || 'Lataamo Insider')}</h2><div class="sub">${escapeHtml(state.manifest?.subtitle || 'Internal pages, tools and reusable assets.')}</div></div><button class="close" aria-label="Close Insider">×</button></div>
         <div class="searchrow"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 21-4.35-4.35m1.35-5.15a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" value="${escapeHtml(state.query)}" placeholder="Search assets, cases, tools…" aria-label="Search Lataamo assets"></div></div>
         <div class="body">${body}</div><div class="footer"><span>${updated}</span><span><span class="kbd">/</span> search · <span class="kbd">Esc</span> close</span></div>
       </section>
-      <button class="launcher" aria-expanded="${state.open}" aria-label="Open Lataamo Insider"><span class="launcher-mark">◎</span><span class="launcher-text">${escapeHtml(launcherLabel)}</span><span class="dot" aria-hidden="true"></span></button>
+      <button class="launcher" aria-expanded="${state.open}" aria-label="Open Lataamo Insider"><span class="launcher-mark"><img src="${escapeHtml(logoUrl)}" alt="" aria-hidden="true"></span><span class="launcher-text">${escapeHtml(launcherLabel)}</span><span class="dot" aria-hidden="true"></span></button>
     </div>`;
     bindEvents();
   }

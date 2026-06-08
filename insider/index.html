@@ -36,7 +36,8 @@
   .mock h3 { max-width:500px; margin:0; font-size:44px; line-height:.95; letter-spacing:-.055em; }
   .mock p { max-width:500px; margin:14px 0 0; color:rgba(255,255,255,.68); font-size:18px; }
   .fake-widget { position:absolute; right:20px; bottom:20px; display:flex; align-items:center; gap:10px; height:56px; padding:0 17px 0 9px; border-radius:999px; background:linear-gradient(135deg,#050B3E,#5A21D6,#FF4F9A); box-shadow:0 18px 46px rgba(0,0,0,.35); font-weight:900; }
-  .fake-widget span:first-child { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; background:rgba(255,255,255,.16); }
+  .fake-widget span:first-child { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; background:rgba(255,255,255,.92); overflow:hidden; }
+  .fake-widget img { width:27px; height:27px; object-fit:contain; display:block; }
   .features { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
   .feature { padding:16px; border-radius:20px; background:rgba(255,255,255,.55); border:1px solid rgba(5,11,62,.08); }
   .feature strong { display:block; margin-bottom:5px; }
@@ -59,7 +60,7 @@
       <div class="mock-top"><div class="logo">Lataamo</div><div class="fake-nav"><span></span><span></span><span></span></div></div>
       <h3>Current headers stay intact.</h3>
       <p>The Insider layer floats above the page, uses isolated Shadow DOM styling, and can be dropped into very different pages without layout damage.</p>
-      <div class="fake-widget"><span>◎</span><span>Insider</span></div>
+      <div class="fake-widget"><span><img src="assets/lataamo-brandmark-transparent.svg" alt="" /></span><span>Insider</span></div>
     </article>
 
     <article class="card pad">
