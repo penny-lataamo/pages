@@ -6,8 +6,30 @@
   "accent": "#5A21D6",
   "sections": [
     {
+      "id": "actual-tools",
+      "label": "Actual live tools",
+      "items": [
+        {
+          "title": "Opportunity Engine",
+          "description": "Internal sales/opportunity intelligence: examples, hypotheses, packages and outreach openers.",
+          "url": "https://opportunity.lataamoapp.com",
+          "tag": "Sales",
+          "status": "live",
+          "icon": "↗"
+        },
+        {
+          "title": "AI in Events Inspiration Base",
+          "description": "Weekly-updated examples of AI use in events globally; source-grounded inspiration base.",
+          "url": "https://ai-events.lataamoapp.com",
+          "tag": "AI",
+          "status": "live",
+          "icon": "✺"
+        }
+      ]
+    },
+    {
       "id": "core",
-      "label": "Core pages",
+      "label": "Penny pages",
       "items": [
         {
           "title": "Penny Pages Home",
@@ -37,7 +59,7 @@
     },
     {
       "id": "customer-facing",
-      "label": "Customer-facing concepts",
+      "label": "Concept and case pages",
       "items": [
         {
           "title": "THE SIGNAL",
