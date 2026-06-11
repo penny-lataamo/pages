@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiveAvatar</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f7f2;
+      --ink: #050b3e;
+      --line: rgba(5, 11, 62, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 247, 242, 0.94);
+    }
+
+    .logo {
+      width: 72px;
+      height: 72px;
+      display: block;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    iframe {
+      width: min(100%, 1180px);
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border: 0;
+      display: block;
+      background: #000;
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(5, 11, 62, 0.14);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 16px 18px;
+      }
+
+      .logo {
+        width: 56px;
+        height: 56px;
+      }
+
+      main {
+        padding: 16px;
+        place-items: start center;
+      }
+
+      iframe {
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="../insider/assets/lataamo-brandmark-transparent.svg" alt="Lataamo" />
+  </header>
+
+  <main>
+    <iframe src="https://embed.liveavatar.com/v1/7e3d8ae0-30a0-4cfc-9dd2-79745758f16e?orientation=horizontal" allow="microphone" title="LiveAvatar Embed"></iframe>
+  </main>
+</body>
+</html>
