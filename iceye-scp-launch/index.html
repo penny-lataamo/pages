@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ICEYE SCP Launch Concept — Lataamo</title>
+  <meta name="description" content="A visual launch concept for ICEYE Space Command Platform: establish SCP as the command layer for sovereign ISR." />
+  <meta property="og:title" content="ICEYE SCP Launch Concept — Lataamo" />
+  <meta property="og:description" content="Launch SCP as a new command category, not another software release." />
+  <meta name="theme-color" content="#0f1020" />
+  <style>
+    :root {
+      --bg-0: #070812;
+      --bg-1: #101226;
+      --bg-2: #191b32;
+      --ink: #fbfbff;
+      --muted: rgba(251, 251, 255, .72);
+      --soft: rgba(251, 251, 255, .54);
+      --line: rgba(255,255,255,.16);
+      --glass: rgba(255,255,255,.085);
+      --glass-2: rgba(255,255,255,.12);
+      --shadow: 0 24px 80px rgba(0,0,0,.36);
+      --shadow-soft: 0 16px 50px rgba(0,0,0,.22);
+      --brand: linear-gradient(135deg, #FF6B35 0%, #FF5500 30%, #EC0382 70%, #D70376 100%);
+      --blue: #7dd3fc;
+      --green: #86efac;
+      --amber: #fde68a;
+      --radius-xl: 36px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 4%, rgba(255,107,53,.36), transparent 34vw),
+        radial-gradient(circle at 82% 14%, rgba(236,3,130,.30), transparent 35vw),
+        radial-gradient(circle at 50% 82%, rgba(125,211,252,.18), transparent 40vw),
+        linear-gradient(180deg, var(--bg-0), var(--bg-1) 46%, #0b0c18 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at 50% 20%, black, transparent 70%);
+      opacity: .55;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .glass {
+      background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.06));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 22px rgba(236,3,130,.7); }
+    header.nav {
+      position: sticky;
+      top: 14px;
+      z-index: 20;
+      margin: 14px auto 0;
+      width: min(var(--max), calc(100% - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 14px;
+      border-radius: 999px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.02em; }
+    .brandmark {
+      width: 32px; height: 32px; border-radius: 12px;
+      background: rgba(255,255,255,.96);
+      display: grid; place-items: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 14px 40px rgba(0,0,0,.28);
+      overflow: hidden;
+    }
+    .brandmark img { width: 22px; height: 22px; display: block; }
+    .navlinks { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .navlinks a { padding: 9px 11px; border-radius: 999px; color: rgba(255,255,255,.72); font-size: 13px; font-weight: 650; }
+    .navlinks a:hover { background: rgba(255,255,255,.10); color: white; }
+    .hero { padding: 86px 0 54px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 26px; align-items: stretch; }
+    .hero-card { border-radius: var(--radius-xl); padding: clamp(28px, 5vw, 58px); position: relative; overflow: hidden; min-height: 610px; }
+    .hero-card::after {
+      content: "";
+      position: absolute; inset: auto -20% -46% 22%; height: 68%;
+      background: radial-gradient(circle, rgba(255,85,0,.28), rgba(236,3,130,.16) 34%, transparent 66%);
+      filter: blur(14px);
+    }
+    h1 { margin: 20px 0 18px; font-size: clamp(48px, 7.2vw, 95px); line-height: .91; letter-spacing: -.078em; max-width: 890px; }
+    h2 { margin: 0; font-size: clamp(30px, 4.5vw, 58px); line-height: .94; letter-spacing: -.052em; }
+    h3 { margin: 0; font-size: 24px; line-height: 1.04; letter-spacing: -.035em; }
+    p { color: var(--muted); line-height: 1.55; font-size: 17px; margin: 0; }
+    .lead { font-size: clamp(19px, 2.2vw, 25px); color: rgba(255,255,255,.82); line-height: 1.35; max-width: 780px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; position: relative; z-index: 2; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 999px; font-weight: 850; border: 1px solid rgba(255,255,255,.18); }
+    .btn.primary { background: var(--brand); border: none; box-shadow: 0 18px 48px rgba(236,3,130,.22); }
+    .btn.secondary { background: rgba(255,255,255,.08); color: rgba(255,255,255,.86); }
+    .side-panel { border-radius: var(--radius-xl); padding: 24px; min-height: 610px; display: flex; flex-direction: column; gap: 16px; overflow: hidden; position: relative; }
+    .orbit {
+      position: relative; flex: 1; min-height: 380px; border-radius: 30px; overflow: hidden;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.13), rgba(255,255,255,.035) 42%, rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .ring { position: absolute; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; inset: 12%; animation: spin 28s linear infinite; }
+    .ring.r2 { inset: 23%; animation-duration: 20s; animation-direction: reverse; }
+    .ring.r3 { inset: 35%; animation-duration: 16s; }
+    .sat { position: absolute; width: 13px; height: 13px; border-radius: 50%; background: white; box-shadow: 0 0 24px rgba(125,211,252,.95); }
+    .s1 { top: 11%; left: 50%; } .s2 { top: 50%; right: 11%; } .s3 { bottom: 16%; left: 24%; } .s4 { top: 28%; left: 18%; }
+    .core {
+      position: absolute; inset: 37%; border-radius: 28px; display: grid; place-items: center; text-align: center; padding: 18px;
+      background: linear-gradient(135deg, rgba(255,107,53,.92), rgba(236,3,130,.88));
+      box-shadow: 0 24px 70px rgba(236,3,130,.32);
+      font-weight: 950; letter-spacing: -.04em;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .stat { padding: 16px; border-radius: 22px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); }
+    .stat b { display: block; font-size: 25px; letter-spacing: -.04em; }
+    .stat span { display: block; color: var(--soft); font-size: 12px; line-height: 1.25; margin-top: 3px; }
+    section { padding: 54px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 26px; align-items: end; margin-bottom: 22px; }
+    .section-head p { max-width: 520px; }
+    .big-panel { border-radius: var(--radius-xl); padding: clamp(22px, 4vw, 42px); position: relative; overflow: hidden; }
+    .strategy-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 18px; margin-top: 24px; }
+    .thesis { padding: 28px; border-radius: 28px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.13); }
+    .thesis strong { display: block; font-size: clamp(28px, 4vw, 50px); line-height: .96; letter-spacing: -.055em; color: white; margin-bottom: 16px; }
+    .stack { display: grid; gap: 12px; }
+    .layer { display: grid; grid-template-columns: 130px 1fr; gap: 18px; align-items: center; padding: 18px; border-radius: 24px; background: rgba(255,255,255,.065); border: 1px solid rgba(255,255,255,.12); }
+    .layer .label { font-weight: 900; letter-spacing: -.03em; }
+    .layer .copy { color: var(--muted); font-size: 15px; line-height: 1.45; }
+    .layer.hot { background: linear-gradient(135deg, rgba(255,107,53,.24), rgba(236,3,130,.20)); border-color: rgba(255,255,255,.22); }
+    .audience { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .aud-card { border-radius: 28px; padding: 24px; min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .aud-card::before { content: ""; position: absolute; inset: -40% -30% auto auto; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255,255,255,.17), transparent 66%); }
+    .aud-card .num { font-size: 13px; color: var(--soft); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .aud-card ul { margin: 18px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.45; }
+    .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .format { border-radius: 30px; padding: 26px; min-height: 480px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .format .icon { width: 58px; height: 58px; border-radius: 20px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.14); display: grid; place-items: center; font-size: 25px; margin-bottom: 22px; }
+    .format p { font-size: 15.5px; }
+    .format .for { color: var(--soft); font-size: 12px; font-weight: 850; letter-spacing: .10em; text-transform: uppercase; margin: 16px 0 10px; }
+    .format .deliverables { margin-top: auto; padding-top: 22px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { display: inline-flex; padding: 7px 9px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.75); font-size: 12px; font-weight: 700; }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; align-items: stretch; }
+    .flow-step { position: relative; padding: 18px; border-radius: 24px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); min-height: 150px; }
+    .flow-step:not(:last-child)::after { content: "→"; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,.44); font-size: 24px; z-index: 2; }
+    .flow-step b { display: block; font-size: 18px; letter-spacing: -.03em; margin-bottom: 8px; }
+    .flow-step span { color: var(--muted); font-size: 13.5px; line-height: 1.35; }
+    .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 16px; }
+    .risk { border-radius: 30px; padding: 30px; background: linear-gradient(145deg, rgba(253,230,138,.15), rgba(255,255,255,.055)); border: 1px solid rgba(253,230,138,.25); }
+    .next { border-radius: 30px; padding: 30px; background: linear-gradient(145deg, rgba(125,211,252,.13), rgba(255,255,255,.055)); border: 1px solid rgba(125,211,252,.22); }
+    .checklist { display: grid; gap: 10px; margin-top: 18px; }
+    .check { display: grid; grid-template-columns: 28px 1fr; gap: 10px; color: var(--muted); line-height: 1.38; }
+    .check::before { content: "✓"; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,.10); display: grid; place-items: center; color: white; font-weight: 900; }
+    .budget-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+    .budget { padding: 20px; border-radius: 24px; background: rgba(255,255,255,.065); border: 1px solid rgba(255,255,255,.12); }
+    .budget b { display:block; font-size: 18px; letter-spacing: -.03em; margin-bottom: 8px; }
+    .budget span { color: var(--muted); font-size: 13.5px; line-height: 1.35; display:block; }
+    .cta { text-align: center; padding: clamp(34px, 6vw, 68px); border-radius: var(--radius-xl); background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.055)); border: 1px solid rgba(255,255,255,.16); box-shadow: var(--shadow); }
+    .cta h2 { max-width: 860px; margin: 0 auto 18px; }
+    .cta p { max-width: 730px; margin: 0 auto; font-size: 19px; }
+    footer { padding: 32px 0 54px; color: var(--soft); font-size: 13px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.12); padding-top: 18px; }
+    @media (max-width: 980px) {
+      .hero-grid, .strategy-grid, .split { grid-template-columns: 1fr; }
+      .hero-card, .side-panel { min-height: auto; }
+      .audience, .format-grid, .budget-grid { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-step:not(:last-child)::after { content: "↓"; right: 22px; top: auto; bottom: -21px; transform: none; }
+      .section-head { align-items: start; flex-direction: column; }
+      .navlinks { display: none; }
+      .layer { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 24px, var(--max)); }
+      .hero { padding-top: 48px; }
+      .stat-row { grid-template-columns: 1fr; }
+      h1 { font-size: 47px; }
+      .hero-card, .side-panel, .big-panel, .format, .aud-card, .cta { border-radius: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav glass">
+    <a class="brand" href="#top" aria-label="Top">
+      <span class="brandmark"><img src="https://www.lataamo.fi/hubfs/lataamo-brandmark.svg" alt="" /></span>
+      <span>Lataamo × ICEYE</span>
+    </a>
+    <nav class="navlinks" aria-label="Presentation sections">
+      <a href="#angle">Angle</a>
+      <a href="#buyers">Buyers</a>
+      <a href="#formats">Formats</a>
+      <a href="#system">System</a>
+      <a href="#next">Next step</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-card glass">
+          <span class="pill"><span class="dot"></span> SCP launch concept seed</span>
+          <h1>Launch the category. Not just the software.</h1>
+          <p class="lead">A visual proposal for turning ICEYE Space Command Platform into the recognised command layer for sovereign ISR — with one category claim, three buyer-specific rooms and a repeatable launch format for future milestones.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#formats">View launch formats →</a>
+            <a class="btn secondary" href="#next">45-minute concept sprint</a>
+          </div>
+        </div>
+        <aside class="side-panel glass" aria-label="SCP visual model">
+          <div class="orbit">
+            <div class="ring"><span class="sat s1"></span><span class="sat s2"></span></div>
+            <div class="ring r2"><span class="sat s3"></span></div>
+            <div class="ring r3"><span class="sat s4"></span></div>
+            <div class="core">SCP<br/>Command<br/>Layer</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat"><b>1</b><span>operational asset from distributed capacity</span></div>
+            <div class="stat"><b>3</b><span>buyer layers, each with a different decision logic</span></div>
+            <div class="stat"><b>14d</b><span>follow-up meeting window after launch</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="angle">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="pill"><span class="dot"></span> Recommended strategic angle</span>
+            <h2 style="margin-top:16px">SCP should be framed as the allocation layer of sovereign ISR.</h2>
+          </div>
+          <p>The strongest launch is not a product demonstration first. It is a decision-making format that helps Europe understand why federated satellite capacity needs a single operating layer — without diluting national authority.</p>
+        </div>
+        <div class="big-panel glass">
+          <div class="strategy-grid">
+            <div class="thesis">
+              <strong>“SCP turns distributed satellite capacity into a single operational asset under one chain of command.”</strong>
+              <p>This is the category claim. Everything in the launch should make it visible, credible and usable for different buyer layers.</p>
+            </div>
+            <div class="stack">
+              <div class="layer"><div class="label">Satellite capacity</div><div class="copy">ICEYE’s full-stack constellation and tactical ISR capability: available now, not years from delivery.</div></div>
+              <div class="layer"><div class="label">Mission software</div><div class="copy">The operational foundation that connects tasking, data flows and mission execution.</div></div>
+              <div class="layer hot"><div class="label">SCP allocation layer</div><div class="copy">The missing command layer: allocate distributed sovereign capacity across domains, users and allied needs.</div></div>
+              <div class="layer"><div class="label">National authority</div><div class="copy">Federation without merger: allied capacity can be shared while sovereign control remains intact.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="buyers">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="pill"><span class="dot"></span> Three buyer layers</span>
+            <h2 style="margin-top:16px">One category. Three different reasons to believe.</h2>
+          </div>
+          <p>The launch should use one shared message but not one generic script. Each buyer layer needs to hear the SCP argument through its own decision responsibility.</p>
+        </div>
+        <div class="audience">
+          <article class="aud-card glass">
+            <div>
+              <div class="num">01 / Economic buyers</div>
+              <h3>Political leadership & EU institutions</h3>
+              <ul>
+                <li>Why federated sovereign capacity matters now</li>
+                <li>Why federation protects rather than dilutes authority</li>
+                <li>Why ICEYE is available now, not in a future programme</li>
+              </ul>
+            </div>
+          </article>
+          <article class="aud-card glass">
+            <div>
+              <div class="num">02 / Technical buyers</div>
+              <h3>Military decision-makers & space command</h3>
+              <ul>
+                <li>How allocation across domains actually works</li>
+                <li>How SCP sits above mission software</li>
+                <li>How command chain and operational control stay clear</li>
+              </ul>
+            </div>
+          </article>
+          <article class="aud-card glass">
+            <div>
+              <div class="num">03 / User buyers</div>
+              <h3>SOC staff & ISR officers</h3>
+              <ul>
+                <li>What changes in tasking, priority and decision flow</li>
+                <li>How the interface supports operational judgement</li>
+                <li>Why users can advocate internally after seeing it</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="formats">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="pill"><span class="dot"></span> Event format ideas</span>
+            <h2 style="margin-top:16px">A launch room system, not a one-off webinar.</h2>
+          </div>
+          <p>Recommended structure: produce a flagship studio launch and design the material so it can be reused as buyer-specific briefings, short clips, audio and written follow-ups in TwentyThree.</p>
+        </div>
+        <div class="format-grid">
+          <article class="format glass">
+            <div class="icon">◎</div>
+            <h3>Sovereign ISR Decision Room</h3>
+            <div class="for">For economic and political buyers</div>
+            <p>A premium, moderated studio briefing that establishes why Europe needs a command layer for federated sovereign ISR. It should include a credible non-ICEYE voice to frame the strategic need.</p>
+            <div class="deliverables"><span class="tag">Flagship webcast</span><span class="tag">Executive clips</span><span class="tag">Policy follow-up</span></div>
+          </article>
+          <article class="format glass">
+            <div class="icon">⌁</div>
+            <h3>Command Layer Technical Briefing</h3>
+            <div class="for">For military and space command buyers</div>
+            <p>A clear technical narrative that explains SCP’s role above mission software: capacity allocation, multi-domain tasking, federated operations and command-chain integrity.</p>
+            <div class="deliverables"><span class="tag">Expert studio</span><span class="tag">Interface footage</span><span class="tag">Technical Q&A</span></div>
+          </article>
+          <article class="format glass">
+            <div class="icon">▣</div>
+            <h3>ISR Operator After-Action Lab</h3>
+            <div class="for">For operational users and advocates</div>
+            <p>A scenario-based follow-up format showing how prioritisation, tasking and operational decisions change when SCP is in use. Less launch, more operational credibility.</p>
+            <div class="deliverables"><span class="tag">Scenario demo</span><span class="tag">Operator Q&A</span><span class="tag">Sales enablement</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="system">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="pill"><span class="dot"></span> Production and content system</span>
+            <h2 style="margin-top:16px">Designed for reach beyond the live moment.</h2>
+          </div>
+          <p>The production should be planned backwards from the 14-day follow-up window: every segment must create material that sales can use with priority pursuits.</p>
+        </div>
+        <div class="big-panel glass">
+          <div class="flow">
+            <div class="flow-step"><b>1. Category claim</b><span>Define the SCP vocabulary and the strongest one-sentence promise.</span></div>
+            <div class="flow-step"><b>2. Buyer dramaturgy</b><span>Translate the same claim into political, technical and operator logic.</span></div>
+            <div class="flow-step"><b>3. Studio launch</b><span>Direct experts, set, rehearsal and live/recorded production around clarity.</span></div>
+            <div class="flow-step"><b>4. Derivative content</b><span>Short cuts, audio version, written follow-ups and TwentyThree library.</span></div>
+            <div class="flow-step"><b>5. Meeting conversion</b><span>Track registration quality and drive follow-on meetings within 14 days.</span></div>
+          </div>
+          <div class="budget-grid">
+            <div class="budget"><b>Concept & pre-production</b><span>Launch narrative, format design, speaker preparation, scripts, rehearsal plan.</span></div>
+            <div class="budget"><b>Studio & live production</b><span>Set, direction, crew, graphics, stream/recording execution and contingency.</span></div>
+            <div class="budget"><b>Post-production</b><span>Master edit, short cuts, audio version, written follow-up assets and subtitles.</span></div>
+            <div class="budget"><b>Project management</b><span>Timeline, approvals, ICEYE coordination, TwentyThree delivery and QA.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next">
+      <div class="wrap">
+        <div class="split">
+          <div class="risk">
+            <span class="pill"><span class="dot"></span> Risk / caveat</span>
+            <h2 style="margin-top:16px">The biggest risk is a generic webinar.</h2>
+            <p>If the same script tries to serve all three audiences, the message becomes too abstract for operators, too shallow for technical buyers and too technical for political buyers. The launch needs one shared category claim — but three distinct paths to belief.</p>
+          </div>
+          <div class="next">
+            <span class="pill"><span class="dot"></span> Concrete next step</span>
+            <h2 style="margin-top:16px">45-minute concept sprint with ICEYE.</h2>
+            <p>We recommend a focused working session with Karoliina and the core SCP stakeholders to pressure-test the launch before scoping production.</p>
+            <div class="checklist">
+              <div class="check">What is the primary category claim ICEYE wants to own?</div>
+              <div class="check">Which buyer layer matters most in the first launch wave?</div>
+              <div class="check">What can be shown publicly, semi-privately and only in closed settings?</div>
+              <div class="check">Which ICEYE experts can carry the strategic, technical and operational story?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="cta">
+          <span class="pill"><span class="dot"></span> Proposed opening line</span>
+          <h2 style="margin-top:18px">“We believe SCP should be launched as the command layer of sovereign ISR — a new operating category, not a product webinar.”</h2>
+          <p>After the concept sprint, Lataamo can return with a concise launch narrative, recommended production model, derivative content plan, ICEYE requirements and pricing structure.</p>
+          <div class="hero-actions" style="justify-content:center">
+            <a class="btn primary" href="mailto:karoliina.moberg@iceye.com?subject=SCP%20launch%20concept%20sprint">Start with Karoliina →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>Lataamo concept seed for ICEYE SCP Launch Brief</div>
+      <div>Glass visual system · customer-facing draft · June 2026</div>
+    </div>
+  </footer>
+</body>
+</html>
