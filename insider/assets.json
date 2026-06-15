@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-08",
+  "updated": "2026-06-15",
   "title": "Lataamo Insider",
   "subtitle": "Internal pages, tools and reusable assets.",
   "homeUrl": "../",
@@ -16,6 +16,14 @@
           "tag": "Sales",
           "status": "live",
           "icon": "↗"
+        },
+        {
+          "title": "Opportunity Radar",
+          "description": "Sheet-backed lead browser for Finland openings, facilities and market-entry opportunities.",
+          "url": "https://lead-radar.lataamoapp.com",
+          "tag": "Leads",
+          "status": "live",
+          "icon": "◉"
         },
         {
           "title": "AI in Events Inspiration Base",
