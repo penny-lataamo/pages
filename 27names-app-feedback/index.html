@@ -28,11 +28,12 @@ section{padding:80px 0;border-top:1px solid rgba(255,255,255,.09)} h2{font-size:
 .rank,.pillbar{position:relative;display:flex;justify-content:space-between;gap:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.065);border-radius:18px;padding:16px 18px;margin:10px 0} .rank i,.pillbar i{position:absolute;inset:auto 0 0 0;height:4px;background:var(--grad);border-radius:99px;width:var(--w)} .rank span,.pillbar span{position:relative;z-index:1;color:rgba(255,255,255,.86)} .rank b,.pillbar b{position:relative;z-index:1}
 .quotes{columns:2 360px;column-gap:18px} blockquote{break-inside:avoid;margin:0 0 18px;border:1px solid rgba(255,255,255,.13);border-radius:26px;background:rgba(255,255,255,.075);padding:22px;color:rgba(255,255,255,.82);font-size:18px;line-height:1.35}
 .audit summary{cursor:pointer;color:rgba(255,255,255,.84);font-weight:800} table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px;color:rgba(255,255,255,.74)} td,th{border-top:1px solid rgba(255,255,255,.10);padding:10px;text-align:left;vertical-align:top} th{color:#fff} .footer{padding:46px 0 70px;color:rgba(255,255,255,.56);font-size:13px}
+.question-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.question-list{margin:0;padding-left:22px;color:rgba(255,255,255,.84);line-height:1.35}.question-list li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.10)}.question-list li:last-child{border-bottom:0}@media(max-width:900px){.question-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.kpi-grid,.insight-grid,.story,.split,.metrics{grid-template-columns:1fr}.nav nav{display:none}.hero{min-height:auto;padding-top:56px}.kpi{min-height:132px}.metric-top strong{font-size:36px}}
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap nav-inner"><div class="brand"><img src="https://www.lataamo.fi/hubfs/lataamo-brandmark.svg" alt="Lataamo"><span>27Names Warsaw feedback</span></div><nav><a href="#signal">Signal</a><a href="#ratings">Ratings</a><a href="#leads">Leads</a><a href="#next">Next</a><a href="#audit">Data</a></nav></div></header>
+<header class="nav"><div class="wrap nav-inner"><div class="brand"><img src="https://www.lataamo.fi/hubfs/lataamo-brandmark.svg" alt="Lataamo"><span>27Names Warsaw feedback</span></div><nav><a href="#signal">Signal</a><a href="#ratings">Ratings</a><a href="#leads">Leads</a><a href="#next">Next</a><a href="#audit">Data</a><a href="#questions">Questions</a></nav></div></header>
 <main>
   <section class="hero"><div class="wrap">
     <div class="eyebrow"><span class="dot"></span> 15 completed responses · event professionals · Warsaw</div>
@@ -111,6 +112,32 @@ section{padding:80px 0;border-top:1px solid rgba(255,255,255,.09)} h2{font-size:
   <section><div class="wrap"><h2>Voice of users</h2><p class="lead">Representative comments from the survey.</p><div class="quotes"><blockquote>“The insights post each session were great - and particularly the visualisation of them - would be helpful if this could be downloaded afterwards too, or copied across.”</blockquote><blockquote>“This would be especially valuable for TechChill :)”</blockquote><blockquote>“I think is useful to really have it in an APP with notifications”</blockquote><blockquote>“Live tracking of events so feedback is given in real time (agenda timings not 100% accurate)”</blockquote><blockquote>“The insights felt a bit to general. I missed the personal touch”</blockquote><blockquote>“I already think it is so much better than the SXSW Apps I used for both Austin and London - though the participant volume on both of those is insane.”</blockquote></div></div></section>
 
   <section id="audit" class="audit"><div class="wrap panel"><details open><summary>Data audit: exact values used in this presentation</summary><p class="note">Source: Tally API export for form A7Qy5l. Snapshot exported 2026-06-18T05:30:20Z. Completed submissions: 15. Partial submissions: 0.</p><table><thead><tr><th>Question</th><th>n</th><th>avg</th><th>rated 4–5</th><th>raw values, response order</th></tr></thead><tbody><tr><td>Overall event value</td><td>15</td><td>4.07</td><td>12/15</td><td>5, 5, 5, 3, 4, 4, 1, 4, 4, 4, 3, 5, 5, 4, 5</td></tr><tr><td>Relevant people discovery</td><td>15</td><td>3.53</td><td>9/15</td><td>4, 5, 4, 4, 1, 4, 1, 5, 5, 2, 3, 5, 3, 3, 4</td></tr><tr><td>AI insights value</td><td>14</td><td>4.14</td><td>10/14</td><td>3, 5, 5, 2, 5, 2, 4, 5, 4, 3, 5, 5, 5, 5</td></tr><tr><td>Match relevance</td><td>15</td><td>3.87</td><td>9/15</td><td>4, 5, 3, 4, 3, 3, 3, 4, 5, 4, 3, 5, 4, 3, 5</td></tr><tr><td>Ease of use</td><td>15</td><td>4.00</td><td>11/15</td><td>5, 5, 4, 4, 4, 3, 3, 3, 4, 3, 4, 5, 4, 4, 5</td></tr><tr><td>Interest in own events</td><td>15</td><td>4.47</td><td>14/15</td><td>5, 5, 5, 2, 5, 4, 4, 4, 5, 5, 4, 5, 5, 4, 5</td></tr><tr><td>Networking / engagement potential</td><td>15</td><td>4.53</td><td>14/15</td><td>4, 5, 5, 3, 4, 4, 4, 5, 5, 5, 4, 5, 5, 5, 5</td></tr></tbody></table></details></div></section>
+
+  <section id="questions"><div class="wrap">
+    <h2>Survey questions</h2>
+    <div class="panel">
+      <div class="question-grid">
+        <ol class="question-list">
+          <li>The app added value to my overall event experience</li>
+          <li>The app helped me discover relevant people to meet</li>
+          <li>The AI-generated insights were valuable to me</li>
+          <li>The matches I got felt relevant</li>
+          <li>The app was easy and intuitive to use during the event</li>
+          <li>I would be interested in using this kind of app at events I organise or produce</li>
+          <li>I could see this app improving networking, matchmaking or attendee engagement at professional events</li>
+        </ol>
+        <ol class="question-list" start="8">
+          <li>What was the most useful part of the app experience for you?</li>
+          <li>What would make the app more valuable for professional events?</li>
+          <li>If you organise, produce or influence events: what type of event would you consider using this app for?</li>
+          <li>Would you be open to a short follow-up conversation about using the app in your own events?</li>
+          <li>If yes or maybe, please leave your name, company and email</li>
+          <li>Company</li>
+          <li>Email address</li>
+        </ol>
+      </div>
+    </div>
+  </div></section>
 </main>
 <footer class="footer"><div class="wrap">27Names XL Warsaw · Lataamo app feedback · visualised for external presentation</div></footer>
 </body></html>
