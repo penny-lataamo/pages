@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ICEYE SCP Launch, explained simply</title>
+  <meta name="description" content="A simple visual explanation of the ICEYE SCP launch brief and its three buyer audiences." />
+  <meta name="theme-color" content="#080912" />
+  <style>
+    :root{
+      --bg:#080912;
+      --panel:rgba(255,255,255,.09);
+      --panel2:rgba(255,255,255,.14);
+      --line:rgba(255,255,255,.16);
+      --ink:#fbfbff;
+      --muted:rgba(251,251,255,.72);
+      --soft:rgba(251,251,255,.56);
+      --brand:linear-gradient(135deg,#FF6B35 0%,#FF5500 30%,#EC0382 70%,#D70376 100%);
+      --blue:#7dd3fc;
+      --green:#8df6b1;
+      --amber:#ffe08a;
+      --max:1180px;
+      --r:28px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 2%,rgba(255,107,53,.34),transparent 32vw),
+        radial-gradient(circle at 86% 8%,rgba(236,3,130,.30),transparent 36vw),
+        radial-gradient(circle at 50% 86%,rgba(125,211,252,.18),transparent 42vw),
+        linear-gradient(180deg,#080912,#101226 50%,#070812);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;opacity:.45;
+      background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:48px 48px;
+      mask-image:radial-gradient(circle at 50% 15%,black,transparent 72%);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .glass{background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.055));border:1px solid var(--line);box-shadow:0 24px 90px rgba(0,0,0,.36);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%)}
+    .nav{position:sticky;top:0;z-index:40;background:linear-gradient(180deg,rgba(8,9,18,.88),rgba(8,9,18,.54));backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:.02em}.brand img{width:30px;height:30px}.brand span{color:var(--muted);font-size:13px;font-weight:700}
+    .links{display:flex;gap:10px;flex-wrap:wrap}.links a{font-size:12px;color:var(--muted);padding:9px 12px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.045)}.links a:hover{color:white;background:rgba(255,255,255,.1)}
+    .hero{min-height:calc(100vh - 72px);display:grid;align-items:center;padding:54px 0 70px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:34px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.075);color:var(--muted);text-transform:uppercase;font-size:12px;font-weight:850;letter-spacing:.08em}.dot{width:8px;height:8px;border-radius:50%;background:#FF6B35;box-shadow:0 0 18px rgba(255,107,53,.8)}
+    h1{font-size:clamp(43px,7vw,86px);line-height:.9;letter-spacing:-.07em;margin:18px 0 20px;max-width:850px}h1 .grad,.grad{background:var(--brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:clamp(18px,2.1vw,25px);line-height:1.38;color:var(--muted);max-width:720px;margin:0 0 26px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{padding:13px 17px;border-radius:999px;background:var(--brand);font-weight:850;box-shadow:0 18px 50px rgba(236,3,130,.18)}.btn.secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:var(--muted);box-shadow:none}
+    .mission-card{border-radius:36px;padding:30px;min-height:500px;position:relative;overflow:hidden}.mission-card:before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 90deg,transparent,rgba(125,211,252,.16),transparent,rgba(236,3,130,.20),transparent);animation:spin 18s linear infinite}.mission-content{position:relative;z-index:1}.orbit{height:260px;position:relative;margin:10px 0 26px}.earth{position:absolute;left:50%;top:50%;width:132px;height:132px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 25%,#f4fbff,#7dd3fc 34%,#134c78 70%,#071626);box-shadow:0 0 70px rgba(125,211,252,.28)}.ring{position:absolute;left:50%;top:50%;width:235px;height:235px;transform:translate(-50%,-50%);border:1px dashed rgba(255,255,255,.30);border-radius:50%;animation:spin 16s linear infinite}.sat{position:absolute;left:50%;top:50%;width:34px;height:20px;background:#fff;border-radius:5px;box-shadow:0 0 20px rgba(255,255,255,.45);transform-origin:-82px 8px;animation:orbit 8s linear infinite}.sat:before,.sat:after{content:"";position:absolute;top:4px;width:22px;height:12px;border:1px solid rgba(125,211,252,.8);background:rgba(125,211,252,.35)}.sat:before{right:36px}.sat:after{left:36px}.beam{position:absolute;left:50%;top:50%;width:5px;height:110px;background:linear-gradient(180deg,rgba(125,211,252,.65),transparent);transform:translate(-50%,-4%) rotate(-20deg);filter:blur(.4px);animation:pulse 2.6s ease-in-out infinite}.flowline{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.mini{border-radius:16px;padding:13px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.12);min-height:82px}.mini b{font-size:13px}.mini span{display:block;color:var(--soft);font-size:12px;line-height:1.35;margin-top:5px}
+    section{padding:86px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:28px}.section-head h2{font-size:clamp(32px,5vw,58px);line-height:.94;letter-spacing:-.055em;margin:14px 0 0}.section-head p{max-width:500px;color:var(--muted);font-size:17px;line-height:1.5;margin:0}
+    .simple-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.simple-card{border-radius:26px;padding:20px;min-height:260px;position:relative;overflow:hidden;transform:translateY(0);opacity:1;transition:.35s ease}.simple-card.in{transform:translateY(-4px)}.simple-card:hover{transform:translateY(-6px);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.07))}.simple-card .num{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);font-weight:900;margin-bottom:20px}.simple-card h3{font-size:19px;line-height:1.1;margin:0 0 12px;letter-spacing:-.025em}.simple-card p{font-size:14px;line-height:1.48;color:var(--muted);margin:0}.simple-card:after{content:"";position:absolute;inset:auto 18px 18px 18px;height:3px;background:var(--brand);border-radius:99px;opacity:.7}
+    .diagram{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:18px;align-items:center}.node{border-radius:28px;padding:24px;text-align:center}.node h3{margin:8px 0 8px;font-size:24px;letter-spacing:-.035em}.node p{margin:0;color:var(--muted);line-height:1.45}.big-node{border-radius:38px;padding:34px;text-align:center;position:relative;overflow:hidden}.big-node:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle,rgba(255,107,53,.20),transparent 34%),radial-gradient(circle at 80% 20%,rgba(236,3,130,.20),transparent 36%);animation:breathe 5s ease-in-out infinite}.big-node>*{position:relative}.big-node h3{font-size:clamp(34px,4vw,50px);line-height:.95;margin:14px 0;letter-spacing:-.06em}.connector{height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);position:relative}.connector:after{content:"";position:absolute;top:-4px;right:12px;width:10px;height:10px;border-top:2px solid rgba(255,255,255,.55);border-right:2px solid rgba(255,255,255,.55);transform:rotate(45deg)}
+    .audience{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.aud-card{border-radius:30px;padding:25px;min-height:330px;position:relative;overflow:hidden}.aud-card .tag{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);font-weight:900}.aud-card h3{font-size:28px;line-height:1;margin:12px 0;letter-spacing:-.04em}.aud-card .plain{font-size:18px;line-height:1.38;margin:18px 0;color:var(--ink)}.aud-card .needs{border-top:1px solid rgba(255,255,255,.12);padding-top:16px;color:var(--muted);font-size:14px;line-height:1.45}.icon{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);font-size:26px}.aud-card:nth-child(1){border-color:rgba(255,224,138,.34)}.aud-card:nth-child(2){border-color:rgba(125,211,252,.34)}.aud-card:nth-child(3){border-color:rgba(141,246,177,.34)}
+    .journey{border-radius:40px;padding:30px;overflow:hidden}.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:22px}.step{border-radius:22px;padding:18px;background:rgba(0,0,0,.20);border:1px solid rgba(255,255,255,.12);position:relative}.step b{display:block;font-size:15px;margin-bottom:8px}.step span{color:var(--muted);font-size:13px;line-height:1.42}.step:before{content:"";position:absolute;left:18px;right:18px;top:0;height:3px;background:var(--brand);border-radius:99px;transform:scaleX(.25);transform-origin:left;transition:.7s ease}.step.in:before{transform:scaleX(1)}
+    .takeaway{padding:92px 0 110px}.takeaway-card{border-radius:42px;padding:42px;display:grid;grid-template-columns:1fr .8fr;gap:28px;align-items:center}.takeaway h2{font-size:clamp(34px,5vw,64px);line-height:.94;letter-spacing:-.06em;margin:0 0 18px}.takeaway p{color:var(--muted);font-size:19px;line-height:1.45;margin:0}.quote{border-radius:28px;padding:28px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.12);font-size:24px;line-height:1.22;letter-spacing:-.035em}.quote small{display:block;margin-top:14px;color:var(--soft);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:900}.footer{padding:28px 0 42px;color:var(--soft);font-size:13px;border-top:1px solid rgba(255,255,255,.08)}
+    @keyframes spin{to{transform:rotate(360deg)}}@keyframes orbit{from{transform:rotate(0deg) translateX(112px) rotate(0deg)}to{transform:rotate(360deg) translateX(112px) rotate(-360deg)}}@keyframes pulse{50%{opacity:.35;height:88px}}@keyframes breathe{50%{transform:scale(1.05);opacity:.65}}
+    @media(max-width:980px){.hero-grid,.diagram,.takeaway-card{grid-template-columns:1fr}.simple-grid{grid-template-columns:repeat(2,1fr)}.audience,.timeline{grid-template-columns:1fr}.flowline{grid-template-columns:repeat(2,1fr)}.links{display:none}.section-head{display:block}.section-head p{margin-top:16px}.mission-card{min-height:auto}.connector{display:none}}
+    @media(max-width:560px){.wrap{width:min(100% - 26px,var(--max))}.simple-grid{grid-template-columns:1fr}.hero{padding-top:28px}.mission-card,.takeaway-card{padding:22px;border-radius:26px}.orbit{height:220px}h1{font-size:43px}.section-head h2{font-size:34px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.simple-card{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><img src="https://www.lataamo.fi/hubfs/lataamo-brandmark.svg" alt="Lataamo" /><div>ICEYE SCP<span> visual brief</span></div></a>
+      <div class="links"><a href="#simple">Simple story</a><a href="#model">Core model</a><a href="#audiences">Audiences</a><a href="#format">Show format</a></div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Like I am 10, but for a serious buyer room</span>
+          <h1>SCP is the <span class="grad">traffic control layer</span> for sovereign satellites.</h1>
+          <p class="lead">This page explains the launch brief in plain English: what ICEYE is launching, why it matters, and how three buyer groups need to understand the same idea in different ways.</p>
+          <div class="hero-actions"><a class="btn" href="#simple">Start the story</a><a class="btn secondary" href="#audiences">Jump to audiences</a></div>
+        </div>
+        <div class="mission-card glass" aria-label="Animated satellite visual">
+          <div class="mission-content">
+            <span class="eyebrow"><span class="dot"></span> One capacity, many needs</span>
+            <div class="orbit"><div class="ring"></div><div class="earth"></div><div class="beam"></div><div class="sat"></div></div>
+            <div class="flowline">
+              <div class="mini"><b>Satellites</b><span>Distributed capacity in orbit.</span></div>
+              <div class="mini"><b>Requests</b><span>Many users need images and intelligence.</span></div>
+              <div class="mini"><b>SCP</b><span>Decides priority, allocation and control logic.</span></div>
+              <div class="mini"><b>Decision</b><span>Right information reaches the right people faster.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="simple">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow"><span class="dot"></span> The brief in 5 simple ideas</span><h2>What is this launch really about?</h2></div>
+          <p>Not a normal software announcement. The task is to make a new category easy to understand before someone else defines it.</p>
+        </div>
+        <div class="simple-grid">
+          <article class="simple-card glass"><div class="num">1</div><h3>ICEYE helps countries see what is happening.</h3><p>Its radar satellites can observe Earth even when it is dark, cloudy, smoky or hard to see with normal cameras.</p></article>
+          <article class="simple-card glass"><div class="num">2</div><h3>Speed is the point.</h3><p>The value is not only getting a satellite image. The value is turning a request into useful intelligence fast enough to support a decision.</p></article>
+          <article class="simple-card glass"><div class="num">3</div><h3>SCP is not the satellite.</h3><p>SCP sits above mission software. It helps turn many satellites and requests into one managed operational asset.</p></article>
+          <article class="simple-card glass"><div class="num">4</div><h3>Federation without losing control.</h3><p>Countries can coordinate and share capacity when it helps, while keeping their own national authority and operational control intact.</p></article>
+          <article class="simple-card glass"><div class="num">5</div><h3>The launch must create a mental model.</h3><p>People should leave thinking: now I understand how distributed sovereign capacity can be commanded, allocated and trusted.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="model">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow"><span class="dot"></span> Core message</span><h2>From many moving parts to one operational asset.</h2></div>
+          <p>The brief’s main sentence can be visualised as a simple system: capacity on one side, decision needs on the other, SCP in the middle.</p>
+        </div>
+        <div class="diagram">
+          <div class="node glass"><div class="icon">🛰️</div><h3>Distributed satellite capacity</h3><p>National assets, allied capacity, different domains, changing priorities.</p></div>
+          <div class="big-node glass"><span class="eyebrow"><span class="dot"></span> Space Command Platform</span><h3>Allocation layer</h3><p>SCP connects capacity, priorities and authority into one clear operating logic.</p></div>
+          <div class="node glass"><div class="icon">🎯</div><h3>One commandable operational asset</h3><p>Faster tasking, clearer prioritisation, more useful intelligence for real decisions.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="audiences">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow"><span class="dot"></span> The three real target groups</span><h2>Same launch. Three different “what does this mean for me?” answers.</h2></div>
+          <p>The event should not speak to everyone with the same proof. Each buyer layer needs a different simple explanation.</p>
+        </div>
+        <div class="audience">
+          <article class="aud-card glass"><div class="icon">🏛️</div><div class="tag">Economic buyers</div><h3>Political leadership and EU institutions</h3><p class="plain">“Shared satellite capacity does not take sovereignty away. It can help countries see more, act together, and still keep national authority.”</p><p class="needs"><b>They need:</b> a credible strategic voice explaining why federated sovereign capacity protects authority instead of diluting it.</p></article>
+          <article class="aud-card glass"><div class="icon">🧭</div><div class="tag">Technical buyers</div><h3>Military decision-makers and space command leadership</h3><p class="plain">“SCP shows how satellite use is prioritised across missions, users and domains while the command chain stays clear.”</p><p class="needs"><b>They need:</b> a clean mental model of allocation, permissions, integration and operational control.</p></article>
+          <article class="aud-card glass"><div class="icon">🖥️</div><div class="tag">User buyers</div><h3>Space operations centre staff and ISR officers</h3><p class="plain">“This is how the work changes on mission day: who requests, what gets priority, what the interface shows, and how faster decisions happen.”</p><p class="needs"><b>They need:</b> practical decision logic and enough interface clarity to advocate internally.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="format">
+      <div class="wrap journey glass">
+        <div class="section-head">
+          <div><span class="eyebrow"><span class="dot"></span> Recommended visual show logic</span><h2>One shared broadcast, three tailored rooms.</h2></div>
+          <p>A simple event architecture makes the audience strategy visible: everyone hears the same category claim, then receives the proof their role needs.</p>
+        </div>
+        <div class="timeline">
+          <div class="step"><b>1. Shared opening</b><span>Frame SCP as the command and allocation layer for sovereign ISR.</span></div>
+          <div class="step"><b>2. Simple visual model</b><span>Show satellites, users, priorities and authority as one understandable system.</span></div>
+          <div class="step"><b>3. Buyer split</b><span>Economic, technical and user buyers move into role-specific content tracks.</span></div>
+          <div class="step"><b>4. Tailored proof</b><span>Each room answers its own question: sovereignty, architecture or mission-day use.</span></div>
+          <div class="step"><b>5. Targeted follow-up</b><span>Short clips, audio, written briefings and sales assets continue the launch after the event.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="takeaway">
+      <div class="wrap takeaway-card glass">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> The simplest takeaway</span>
+          <h2>Do not sell it as a webinar. Launch it as a new operating category.</h2>
+          <p>The visual story should make SCP feel obvious: when many sovereign satellite systems need to work together, someone needs the operating layer that allocates capacity without eroding authority.</p>
+        </div>
+        <div class="quote">“SCP turns distributed satellite capacity into a single operational asset, while keeping sovereign authority intact.”<small>Launch story in one sentence</small></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap">Prepared as a visual explanation for Lataamo concept development. Public language should be checked against ICEYE’s approved SCP terminology before customer delivery.</div></footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{ if(entry.isIntersecting){ entry.target.classList.add('in'); } });
+    }, {threshold:.18});
+    document.querySelectorAll('.simple-card,.step').forEach((el,i)=>{ el.style.transitionDelay = (i%5)*80+'ms'; observer.observe(el); });
+  </script>
+</body>
+</html>
