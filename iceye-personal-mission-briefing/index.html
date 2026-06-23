@@ -4,17 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Personal Mission Briefing</title>
-  <meta name="description" content="Customer-facing visualization for ICEYE Personal Mission Briefing after the SCP launch." />
+  <meta name="description" content="A personalized post-launch briefing concept for ICEYE SCP attendees." />
   <meta name="theme-color" content="#f7f4ef" />
   <style>
     :root{
-      --paper:#f7f4ef; --card:#ffffff; --ink:#171821; --muted:#5d6170; --soft:#8b8f9b; --line:#e4dfd6;
+      --paper:#f7f4ef; --card:#ffffff; --ink:#171821; --muted:#5c6070; --soft:#8a8f9c; --line:#e5dfd6;
       --orange:#ff5a1f; --pink:#e6007e; --deep:#191a27; --cream:#fffaf4; --shadow:0 18px 50px rgba(24,20,14,.10); --max:1120px;
     }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 12% 0%,rgba(255,90,31,.10),transparent 34vw),radial-gradient(circle at 92% 10%,rgba(230,0,126,.08),transparent 32vw),linear-gradient(180deg,#fffaf4,var(--paper));min-height:100vh}
     .wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}.grad{background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .top{padding:24px 0;border-bottom:1px solid var(--line);background:rgba(255,250,244,.86);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}.bar{display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font-weight:900}.brand img{width:28px;height:28px}.brand span{color:var(--muted);font-weight:700}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{appearance:none;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:10px 14px;font-weight:850;font-size:12px;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .top{padding:24px 0;border-bottom:1px solid var(--line);background:rgba(255,250,244,.88);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}.bar{display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font-weight:900}.brand img{width:28px;height:28px}.brand span{color:var(--muted);font-weight:700}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{appearance:none;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:10px 14px;font-weight:850;font-size:12px;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
     .tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:850;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--pink))}
     .view{display:none}.view.active{display:block}.section{padding:54px 0}.hero{padding:72px 0 42px}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}h1{font-size:clamp(44px,7vw,82px);line-height:.92;letter-spacing:-.065em;margin:18px 0;max-width:850px}.lead{font-size:clamp(18px,2vw,24px);line-height:1.38;color:var(--muted);margin:0;max-width:780px}.note{margin-top:24px;padding:18px 20px;border-left:5px solid var(--orange);background:#fff;border-radius:18px;box-shadow:var(--shadow);color:var(--muted);line-height:1.5}.note b{color:var(--ink)}
     .preview{background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:24px}.preview-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px}.preview-title{font-weight:900}.preview-type{font-size:12px;color:var(--soft);font-weight:800;text-transform:uppercase;letter-spacing:.06em}.brief-lines{display:grid;gap:12px;margin:18px 0}.line{height:12px;border-radius:999px;background:#ece7dd;overflow:hidden}.line span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--orange),var(--pink));width:82%}.line:nth-child(2) span{width:62%}.line:nth-child(3) span{width:92%}.line:nth-child(4) span{width:48%}.preview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.mini{border:1px solid var(--line);background:#fbfaf7;border-radius:18px;padding:16px;min-height:95px}.mini b{display:block;margin-bottom:7px}.mini span{color:var(--muted);font-size:14px;line-height:1.35}
@@ -46,15 +46,15 @@
         <div>
           <div class="tag"><span class="dot"></span> After the launch</div>
           <h1>Turn event interest into a <span class="grad">personal next step</span>.</h1>
-          <p class="lead">Personal Mission Briefing gives each attendee a short, visual summary of what SCP means for their role, priorities and next decision.</p>
-          <div class="note"><b>The value:</b> each attendee receives a useful briefing that shows what SCP means for their role, priorities and next decision.</div>
+          <p class="lead">Personal Mission Briefing gives each attendee a short, visual summary of what SCP means for their priorities, decisions and next conversation inside their organization.</p>
+          <div class="note"><b>The value:</b> each attendee receives a useful briefing that connects the launch to their real questions and next decision.</div>
         </div>
         <div class="preview" aria-label="Example briefing preview">
           <div class="preview-head"><div class="preview-title">Your SCP Decision Brief</div><div class="preview-type">Personal output</div></div>
           <div class="brief-lines"><div class="line"><span></span></div><div class="line"><span></span></div><div class="line"><span></span></div><div class="line"><span></span></div></div>
           <div class="preview-grid">
-            <div class="mini"><b>Role lens</b><span>Technical stakeholder</span></div>
-            <div class="mini"><b>Main interest</b><span>Allocation logic</span></div>
+            <div class="mini"><b>Your focus</b><span>Tasking and allocation</span></div>
+            <div class="mini"><b>Your question</b><span>How control stays clear</span></div>
             <div class="mini"><b>Best asset</b><span>Architecture recap</span></div>
             <div class="mini"><b>Next step</b><span>Follow-up briefing</span></div>
           </div>
@@ -66,17 +66,17 @@
       <section class="section">
         <div class="wrap">
           <div class="section-head">
-            <div class="tag"><span class="dot"></span> Simple process</div>
+            <div class="tag"><span class="dot"></span> How it works</div>
             <h2>Five steps from launch interest to tailored follow-up.</h2>
             <p>A short attendee flow turns interest into useful insight, relevant content and a clear reason to continue the conversation.</p>
           </div>
           <div class="process">
             <div class="steps">
-              <article class="step"><div class="num">1</div><h3>Attend the launch</h3><p>The participant sees the SCP story through the audience path most relevant to their role.</p><small>Shared moment</small></article>
-              <article class="step"><div class="num">2</div><h3>Answer 5 questions</h3><p>Role, organization type, main interest, ISR maturity level and preferred next topic.</p><small>2 minutes</small></article>
-              <article class="step"><div class="num">3</div><h3>Match the role lens</h3><p>ICEYE matches the attendee with the most relevant angle: strategic, technical or operational.</p><small>Role match</small></article>
-              <article class="step"><div class="num">4</div><h3>Deliver the brief</h3><p>The attendee receives a concise visual summary they can use in internal discussions.</p><small>Personal output</small></article>
-              <article class="step"><div class="num">5</div><h3>Follow up with purpose</h3><p>Sales continues with the right topic, proof point and suggested conversation.</p><small>Next action</small></article>
+              <article class="step"><div class="num">1</div><h3>Attend the launch</h3><p>The participant sees the SCP story and chooses what they want to understand better.</p><small>Shared moment</small></article>
+              <article class="step"><div class="num">2</div><h3>Answer 5 questions</h3><p>Role context, organization, main interest, ISR readiness and preferred next topic.</p><small>2 minutes</small></article>
+              <article class="step"><div class="num">3</div><h3>Match the context</h3><p>ICEYE connects the attendee with the most relevant angle, proof and next resource.</p><small>Personal relevance</small></article>
+              <article class="step"><div class="num">4</div><h3>Deliver the brief</h3><p>The attendee receives a concise visual summary they can use in internal discussions.</p><small>Tailored brief</small></article>
+              <article class="step"><div class="num">5</div><h3>Continue with purpose</h3><p>The next conversation starts from the attendee’s priorities, not from generic event follow-up.</p><small>Next conversation</small></article>
             </div>
           </div>
         </div>
@@ -84,19 +84,19 @@
 
       <section class="section">
         <div class="wrap">
-          <div class="section-head"><div class="tag"><span class="dot"></span> Three role lenses</div><h2>Each stakeholder receives the argument they need.</h2></div>
+          <div class="section-head"><div class="tag"><span class="dot"></span> Three content lenses</div><h2>The same launch becomes relevant in different ways.</h2></div>
           <div class="cards">
-            <article class="card"><div class="icon">🏛️</div><h3>Strategic decision-maker</h3><p><b>Focus:</b> sovereignty, shared capability, political confidence and why federated ISR matters now.</p></article>
-            <article class="card"><div class="icon">🧭</div><h3>Technical stakeholder</h3><p><b>Focus:</b> architecture, tasking, prioritisation, permissions, integration and control.</p></article>
-            <article class="card"><div class="icon">🖥️</div><h3>Operational user</h3><p><b>Focus:</b> mission-day workflow, requests, retasking, visibility and decision logic.</p></article>
+            <article class="card"><div class="icon">🏛️</div><h3>Sovereignty and shared capability</h3><p><b>Focus:</b> authority, trust, European capability and why federated ISR matters now.</p></article>
+            <article class="card"><div class="icon">🧭</div><h3>Architecture and control</h3><p><b>Focus:</b> tasking, prioritisation, permissions, integration and operational control.</p></article>
+            <article class="card"><div class="icon">🖥️</div><h3>Mission-day workflow</h3><p><b>Focus:</b> requests, retasking, visibility, decision logic and daily usability.</p></article>
           </div>
         </div>
       </section>
 
       <section class="section">
         <div class="wrap split">
-          <div class="promise"><h2>The promise</h2><p>Every priority attendee leaves with a clear answer to: “What does SCP mean for my role?”</p></div>
-          <div class="benefits"><h3>What ICEYE gains</h3><ul><li>Attendees receive a useful internal briefing, not only a recording.</li><li>Teams get clearer follow-up cues based on each attendee’s priorities.</li><li>The launch creates reusable role-based assets for future outreach.</li><li>SCP becomes easier to explain inside buyer organizations.</li></ul></div>
+          <div class="promise"><h2>The promise</h2><p>Every engaged attendee leaves with a clear answer to: “What does SCP mean for my situation?”</p></div>
+          <div class="benefits"><h3>Why this strengthens follow-up</h3><ul><li>Attendees receive a useful briefing they can use internally, not only a recording.</li><li>Teams get clearer follow-up cues based on each attendee’s priorities.</li><li>The launch creates reusable content paths for future outreach.</li><li>SCP becomes easier to explain inside attendee organizations.</li></ul></div>
         </div>
       </section>
     </main>
@@ -107,19 +107,19 @@
       <div class="wrap">
         <div class="single-slide">
           <div class="slide-top">
-            <div><div class="tag"><span class="dot"></span> Personal Mission Briefing</div><h1>Turn the launch into a <span class="grad">role-specific next step</span>.</h1></div>
-            <p class="slide-kicker">After the SCP launch, each attendee shares five quick preferences. ICEYE sends a concise visual brief tailored to their role and priorities.</p>
+            <div><div class="tag"><span class="dot"></span> Personal Mission Briefing</div><h1>Turn the launch into a <span class="grad">personal next step</span>.</h1></div>
+            <p class="slide-kicker">After the SCP launch, each attendee shares five quick preferences. ICEYE sends a concise visual brief tailored to their priorities and next question.</p>
           </div>
           <div class="slide-flow" aria-label="Single slide process">
             <div class="slide-box"><div class="slide-num">1</div><h2>Launch attendee</h2><p>Understands the SCP story, then receives a clear way to brief their own organization.</p></div>
             <div class="arrow">→</div>
-            <div class="slide-box primary"><div class="slide-num">2</div><h2>Five quick questions</h2><ul><li>Role</li><li>Organization</li><li>Main interest</li><li>Current ISR maturity</li><li>Preferred next topic</li></ul></div>
+            <div class="slide-box primary"><div class="slide-num">2</div><h2>Five quick questions</h2><ul><li>Role context</li><li>Organization</li><li>Main interest</li><li>Current ISR readiness</li><li>Preferred next topic</li></ul></div>
             <div class="arrow">→</div>
             <div class="slide-box"><div class="slide-num">3</div><h2>Personal visual brief</h2><p>A concise follow-up showing what SCP means for this attendee and which conversation should happen next.</p></div>
           </div>
           <div class="slide-bottom">
-            <div class="slide-result"><b>What ICEYE gains</b><span>Clearer follow-up insight than attendance alone: role lens, topic interest, readiness and recommended next conversation.</span></div>
-            <div><div class="chips"><span class="chip">Strategic decision-maker</span><span class="chip">Technical stakeholder</span><span class="chip">Operational user</span></div><div class="slide-value">Every priority attendee receives a relevant next step, and ICEYE receives a clearer reason to continue the conversation.</div></div>
+            <div class="slide-result"><b>Why this strengthens follow-up</b><span>Clearer follow-up insight than attendance alone: focus area, topic interest, readiness and recommended next conversation.</span></div>
+            <div><div class="chips"><span class="chip">Sovereignty</span><span class="chip">Architecture</span><span class="chip">Workflow</span></div><div class="slide-value">One launch. Many priorities. A clearer reason for the next meeting.</div></div>
           </div>
         </div>
       </div>
@@ -129,22 +129,22 @@
   <div class="view" id="view-example">
     <section class="example-wrap">
       <div class="wrap">
-        <article class="brief-card" aria-label="Example visual brief for a technical stakeholder">
+        <article class="brief-card" aria-label="Example visual brief">
           <div class="brief-hero">
-            <div><div class="tag"><span class="dot"></span> Example output</div><h1>Your SCP Decision Brief</h1><p class="lead">A sample post-event brief for a technical stakeholder interested in tasking and allocation.</p></div>
+            <div><div class="tag"><span class="dot"></span> Example output</div><h1>Your SCP Decision Brief</h1><p class="lead">A sample post-event brief for an attendee interested in tasking and allocation.</p></div>
             <div class="brief-meta">
-              <div class="meta-tile"><b>Role lens</b><span>Technical stakeholder</span></div>
-              <div class="meta-tile"><b>Context</b><span>National space organization</span></div>
-              <div class="meta-tile"><b>Main interest</b><span>Tasking and allocation</span></div>
+              <div class="meta-tile"><b>Your context</b><span>National space organization</span></div>
+              <div class="meta-tile"><b>Your focus</b><span>Tasking and allocation</span></div>
+              <div class="meta-tile"><b>Your question</b><span>How control stays clear</span></div>
               <div class="meta-tile"><b>Recommended next step</b><span>Architecture briefing</span></div>
             </div>
           </div>
           <div class="brief-body">
             <div class="brief-main">
-              <div class="brief-block"><h2>What SCP means for you</h2><p>SCP helps coordinate distributed satellite capacity through one operational allocation layer. For a technical stakeholder, the key question is how capacity is requested, prioritised and controlled across users.</p></div>
+              <div class="brief-block"><h2>What SCP means for you</h2><p>SCP helps coordinate distributed satellite capacity through one operational allocation layer. In your context, the key question is how capacity is requested, prioritised and controlled across users.</p></div>
               <div class="brief-block"><h2>Your three takeaways</h2><div class="takeaways">
                 <div class="takeaway"><div class="takeaway-num">1</div><div><b>Control stays visible</b><span>SCP clarifies who can request observations, who can approve them and how priorities are resolved.</span></div></div>
-                <div class="takeaway"><div class="takeaway-num">2</div><div><b>Shared capacity needs clear rules</b><span>Shared capacity works when access, permissions and national authority are built into the process.</span></div></div>
+                <div class="takeaway"><div class="takeaway-num">2</div><div><b>Shared capacity needs clear rules</b><span>Shared satellite capacity works when access, permissions and national authority are built into the process.</span></div></div>
                 <div class="takeaway"><div class="takeaway-num">3</div><div><b>The interface matters</b><span>The daily user experience is where mission urgency, satellite availability and command decisions meet.</span></div></div>
               </div></div>
             </div>
