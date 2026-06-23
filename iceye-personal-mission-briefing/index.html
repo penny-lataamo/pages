@@ -3,53 +3,81 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ICEYE Personal Mission Briefing Process</title>
-  <meta name="description" content="Simple visual process for post-event onboarding and hyperpersonalized visual summaries." />
-  <meta name="theme-color" content="#080912" />
+  <title>Personal Mission Briefing</title>
+  <meta name="description" content="A simple customer-facing visualization of the post-event Personal Mission Briefing process." />
+  <meta name="theme-color" content="#f7f4ef" />
   <style>
     :root{
-      --bg:#080912;--ink:#fbfbff;--muted:rgba(251,251,255,.72);--soft:rgba(251,251,255,.55);
-      --line:rgba(255,255,255,.16);--glass:rgba(255,255,255,.09);
-      --brand:linear-gradient(135deg,#FF6B35 0%,#FF5500 30%,#EC0382 70%,#D70376 100%);
-      --blue:#7dd3fc;--green:#86efac;--amber:#fde68a;--max:1160px;
+      --paper:#f7f4ef;
+      --card:#ffffff;
+      --ink:#171821;
+      --muted:#5d6170;
+      --soft:#8b8f9b;
+      --line:#e4dfd6;
+      --orange:#ff5a1f;
+      --pink:#e6007e;
+      --purple:#7c3aed;
+      --blue:#2563eb;
+      --green:#168a53;
+      --shadow:0 18px 50px rgba(24,20,14,.10);
+      --max:1120px;
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 12% 4%,rgba(255,107,53,.36),transparent 34vw),radial-gradient(circle at 84% 12%,rgba(236,3,130,.30),transparent 35vw),radial-gradient(circle at 48% 92%,rgba(125,211,252,.16),transparent 42vw),linear-gradient(180deg,#080912,#101226 55%,#070812);min-height:100vh;overflow-x:hidden}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.45;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at 50% 20%,black,transparent 70%)}
-    .wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}.glass{background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.055));border:1px solid var(--line);box-shadow:0 24px 90px rgba(0,0,0,.36);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%)}
-    header{padding:64px 0 36px}.brand{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:13px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;margin-bottom:34px}.brand img{width:30px;height:30px}.pill{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:var(--muted);font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.dot{width:8px;height:8px;border-radius:50%;background:#FF6B35;box-shadow:0 0 18px rgba(255,107,53,.85)}
-    h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-.07em;margin:18px 0 18px;max-width:980px}.grad{background:var(--brand);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:clamp(18px,2.2vw,25px);line-height:1.38;color:var(--muted);max-width:820px;margin:0}
-    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch;margin-top:38px}.hero-card{border-radius:34px;padding:30px;min-height:340px}.screen{border-radius:26px;padding:22px;background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.13);height:100%;display:grid;grid-template-rows:auto 1fr;gap:20px;position:relative;overflow:hidden}.screen:before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 90deg,transparent,rgba(125,211,252,.15),transparent,rgba(236,3,130,.20),transparent);animation:spin 16s linear infinite}.screen>*{position:relative}.mini-title{display:flex;justify-content:space-between;align-items:center;color:var(--soft);font-weight:850;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.brief-preview{display:grid;gap:12px}.bar{height:14px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden}.bar span{display:block;height:100%;border-radius:99px;background:var(--brand);animation:load 2.8s ease-in-out infinite}.bar:nth-child(2) span{width:72%;animation-delay:.2s}.bar:nth-child(3) span{width:54%;animation-delay:.4s}.bar:nth-child(4) span{width:86%;animation-delay:.6s}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{min-height:84px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:13px;font-size:12px;color:var(--muted)}.tile b{display:block;color:#fff;font-size:13px;margin-bottom:5px}
-    section{padding:58px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:24px}.section-head h2{font-size:clamp(32px,5vw,56px);line-height:.94;letter-spacing:-.055em;margin:14px 0 0}.section-head p{max-width:520px;color:var(--muted);font-size:17px;line-height:1.48;margin:0}
-    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative}.step{border-radius:28px;padding:22px;min-height:280px;position:relative;overflow:hidden;opacity:1;transform:translateY(0);transition:.35s ease}.step.in,.step:hover{transform:translateY(-6px);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.07))}.num{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);font-weight:950;margin-bottom:20px}.step h3{font-size:21px;line-height:1.05;letter-spacing:-.035em;margin:0 0 12px}.step p{margin:0;color:var(--muted);font-size:14px;line-height:1.46}.step .small{position:absolute;left:22px;right:22px;bottom:22px;color:var(--soft);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.step:after{content:"";position:absolute;left:22px;right:22px;bottom:56px;height:3px;border-radius:99px;background:var(--brand);transform:scaleX(.24);transform-origin:left;transition:.8s ease}.step.in:after{transform:scaleX(1)}
-    .audiences{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.aud{border-radius:28px;padding:24px;min-height:235px}.icon{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);font-size:26px}.aud h3{font-size:25px;line-height:1;margin:16px 0 12px;letter-spacing:-.04em}.aud p{color:var(--muted);line-height:1.45;margin:0}.aud b{color:#fff}
-    .bottom{padding:56px 0 86px}.summary{border-radius:38px;padding:34px;display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;align-items:center}.summary h2{font-size:clamp(32px,5vw,58px);line-height:.94;letter-spacing:-.055em;margin:0}.summary p{font-size:18px;color:var(--muted);line-height:1.48;margin:12px 0 0}.outputs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.out{border-radius:20px;padding:18px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.12);font-size:14px;color:var(--muted)}.out b{display:block;color:white;margin-bottom:6px}.footer{border-top:1px solid rgba(255,255,255,.08);padding:26px 0 38px;color:var(--soft);font-size:13px}
-    @keyframes spin{to{transform:rotate(360deg)}}@keyframes load{0%,100%{width:30%}55%{width:96%}}
-    @media(max-width:980px){.hero-grid,.summary{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.audiences,.outputs{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:16px}.step{min-height:220px}}
-    @media(max-width:560px){.wrap{width:min(100% - 26px,var(--max))}header{padding-top:36px}.hero-card,.summary{padding:22px;border-radius:26px}h1{font-size:42px}.tiles{grid-template-columns:1fr}.section-head h2{font-size:34px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.step{opacity:1;transform:none}}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 12% 0%,rgba(255,90,31,.12),transparent 34vw),
+        radial-gradient(circle at 92% 10%,rgba(230,0,126,.10),transparent 32vw),
+        linear-gradient(180deg,#fffaf4,var(--paper));
+      min-height:100vh;
+    }
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .top{padding:38px 0 22px;border-bottom:1px solid var(--line);background:rgba(255,250,244,.78);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}
+    .brand{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand-left{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:.01em}.brand-left img{width:28px;height:28px}.brand-left span{color:var(--muted);font-weight:700}
+    .tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:850;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--pink))}
+    header{padding:76px 0 44px}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+    h1{font-size:clamp(44px,7vw,82px);line-height:.92;letter-spacing:-.065em;margin:18px 0 18px;max-width:820px}.grad{background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:clamp(18px,2vw,24px);line-height:1.38;color:var(--muted);margin:0;max-width:760px}.hero-note{margin-top:24px;padding:18px 20px;border-left:5px solid var(--orange);background:#fff;border-radius:18px;box-shadow:var(--shadow);color:var(--muted);line-height:1.5}.hero-note b{color:var(--ink)}
+    .mock{background:var(--card);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:24px}.mock-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px}.mock-title{font-weight:900}.mock-type{font-size:12px;color:var(--soft);font-weight:800;text-transform:uppercase;letter-spacing:.06em}.brief-lines{display:grid;gap:12px;margin:18px 0}.line{height:12px;border-radius:999px;background:#ece7dd;overflow:hidden}.line span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--orange),var(--pink));animation:fill 2.6s ease-in-out infinite}.line:nth-child(2) span{animation-delay:.15s}.line:nth-child(3) span{animation-delay:.3s}.line:nth-child(4) span{animation-delay:.45s}.mock-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.mini{border:1px solid var(--line);background:#fbfaf7;border-radius:18px;padding:16px;min-height:95px}.mini b{display:block;margin-bottom:7px}.mini span{color:var(--muted);font-size:14px;line-height:1.35}
+    section{padding:50px 0}.section-head{max-width:780px;margin-bottom:28px}.section-head h2{font-size:clamp(32px,5vw,56px);line-height:.95;letter-spacing:-.055em;margin:14px 0 12px}.section-head p{font-size:18px;line-height:1.45;color:var(--muted);margin:0}
+    .process{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:34px;padding:28px}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0}.step{padding:18px 16px;position:relative;border-right:1px solid var(--line);min-height:230px}.step:last-child{border-right:0}.num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--orange),var(--pink));color:#fff;font-weight:950;margin-bottom:18px}.step h3{font-size:20px;line-height:1.07;letter-spacing:-.03em;margin:0 0 10px}.step p{color:var(--muted);font-size:14.5px;line-height:1.42;margin:0}.step small{display:block;margin-top:16px;color:var(--soft);font-weight:850;font-size:11px;text-transform:uppercase;letter-spacing:.06em}.step:after{content:"";position:absolute;top:37px;right:-8px;width:16px;height:16px;background:#fff;border-top:1px solid var(--line);border-right:1px solid var(--line);transform:rotate(45deg);z-index:2}.step:last-child:after{display:none}
+    .outputs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:var(--shadow)}.icon{font-size:30px;margin-bottom:14px}.card h3{font-size:24px;line-height:1;margin:0 0 12px;letter-spacing:-.04em}.card p{color:var(--muted);line-height:1.45;margin:0}.card b{color:var(--ink)}
+    .simple{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;align-items:stretch}.promise{background:linear-gradient(135deg,#1b1d2a,#2b1630);color:#fff;border-radius:30px;padding:32px;box-shadow:var(--shadow)}.promise h2{font-size:clamp(30px,4vw,48px);line-height:.96;letter-spacing:-.055em;margin:0 0 14px}.promise p{color:rgba(255,255,255,.76);font-size:18px;line-height:1.45;margin:0}.sales{background:#fff;border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:var(--shadow)}.sales h3{font-size:28px;margin:0 0 12px;letter-spacing:-.04em}.sales ul{margin:0;padding-left:20px;color:var(--muted);line-height:1.6}.sales li+li{margin-top:6px}
+    footer{padding:38px 0 54px;color:var(--soft);font-size:13px;border-top:1px solid var(--line);margin-top:40px}
+    @keyframes fill{0%,100%{width:34%}50%{width:96%}}
+    @media(max-width:980px){.hero,.simple{grid-template-columns:1fr}.steps,.outputs{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line);min-height:auto}.step:last-child{border-bottom:0}.step:after{display:none}.mock-grid{grid-template-columns:1fr}.brand{align-items:flex-start;flex-direction:column}.top{position:relative}}
+    @media(max-width:560px){.wrap{width:min(var(--max),calc(100% - 26px))}header{padding:46px 0 24px}h1{font-size:42px}.process,.promise,.sales,.mock{border-radius:24px;padding:20px}.section-head h2{font-size:34px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
+  <div class="top">
+    <div class="wrap brand">
+      <div class="brand-left"><img src="https://www.lataamo.fi/hubfs/lataamo-brandmark.svg" alt="Lataamo" /> Personal Mission Briefing <span>for ICEYE SCP launch</span></div>
+      <div class="tag"><span class="dot"></span> Customer-facing process visual</div>
+    </div>
+  </div>
+
   <header>
-    <div class="wrap">
-      <div class="brand"><img src="https://www.lataamo.fi/hubfs/lataamo-brandmark.svg" alt="Lataamo" /> Lataamo concept visual</div>
-      <span class="pill"><span class="dot"></span> Post-event personalization process</span>
-      <h1>From event attendee to <span class="grad">Personal Mission Briefing</span>.</h1>
-      <p class="lead">A simple add-on for ICEYE: after the launch, each valuable attendee completes a short onboarding. ICEYE then sends a role-specific visual summary that helps them carry the SCP argument into their own organization.</p>
-      <div class="hero-grid">
-        <div class="hero-card glass">
-          <span class="pill"><span class="dot"></span> Why this matters</span>
-          <h2 style="font-size:clamp(30px,4vw,48px);line-height:.96;letter-spacing:-.05em;margin:18px 0 14px">The event is small by design. Every attendee is valuable.</h2>
-          <p style="color:var(--muted);font-size:18px;line-height:1.5;margin:0">Instead of sending the same recording to everyone, ICEYE can turn each attendee’s role and interest into a tailored visual briefing: sovereignty for economic buyers, architecture for technical buyers, mission-day workflow for user buyers.</p>
-        </div>
-        <div class="hero-card glass">
-          <div class="screen">
-            <div class="mini-title"><span>Your SCP Decision Brief</span><span>Generating</span></div>
-            <div class="brief-preview">
-              <div class="bar"><span></span></div><div class="bar"><span></span></div><div class="bar"><span></span></div><div class="bar"><span></span></div>
-              <div class="tiles"><div class="tile"><b>Role lens</b>Technical buyer</div><div class="tile"><b>Top issue</b>Allocation logic</div><div class="tile"><b>Next step</b>Architecture briefing</div></div>
-            </div>
-          </div>
+    <div class="wrap hero">
+      <div>
+        <div class="tag"><span class="dot"></span> After the event</div>
+        <h1>Turn every attendee into a <span class="grad">relevant follow-up</span>.</h1>
+        <p class="lead">After the SCP launch, each attendee answers a few short questions. ICEYE sends back a clear visual summary tailored to their role and interest.</p>
+        <div class="hero-note"><b>The idea:</b> not one generic recording for everyone, but a useful briefing that helps each buyer understand what SCP means for their own decision context.</div>
+      </div>
+      <div class="mock" aria-label="Example personalized briefing card">
+        <div class="mock-head"><div class="mock-title">Your SCP Decision Brief</div><div class="mock-type">Example output</div></div>
+        <div class="brief-lines"><div class="line"><span></span></div><div class="line"><span></span></div><div class="line"><span></span></div><div class="line"><span></span></div></div>
+        <div class="mock-grid">
+          <div class="mini"><b>Role lens</b><span>Technical buyer</span></div>
+          <div class="mini"><b>Main interest</b><span>Allocation logic</span></div>
+          <div class="mini"><b>Best asset</b><span>Architecture recap</span></div>
+          <div class="mini"><b>Next step</b><span>Follow-up briefing</span></div>
         </div>
       </div>
     </div>
@@ -59,15 +87,18 @@
     <section>
       <div class="wrap">
         <div class="section-head">
-          <div><span class="pill"><span class="dot"></span> The process</span><h2>Five simple steps after the launch.</h2></div>
-          <p>The flow is intentionally light. It should feel like a useful briefing service, not like a marketing survey.</p>
+          <div class="tag"><span class="dot"></span> Simple process</div>
+          <h2>Five steps, from launch to useful sales signal.</h2>
+          <p>The process is intentionally short. It should feel like a helpful briefing service, not like a survey.</p>
         </div>
-        <div class="flow">
-          <article class="step glass"><div class="num">1</div><h3>Attendee joins the launch</h3><p>They watch the shared SCP story and the buyer-specific room that matches their role.</p><div class="small">Input: event behavior</div></article>
-          <article class="step glass"><div class="num">2</div><h3>Short onboarding</h3><p>After the event, they answer a few simple questions: role, country context, interest area and next concern.</p><div class="small">Input: 2 minutes</div></article>
-          <article class="step glass"><div class="num">3</div><h3>Role and intent mapping</h3><p>ICEYE maps the attendee to the right buyer lens and identifies which argument will help them most.</p><div class="small">Logic: segment + interest</div></article>
-          <article class="step glass"><div class="num">4</div><h3>Visual briefing generated</h3><p>The attendee receives a concise visual summary: what SCP means for their role, what to share internally, and what to ask next.</p><div class="small">Output: briefing card</div></article>
-          <article class="step glass"><div class="num">5</div><h3>Sales follow-up becomes smarter</h3><p>ICEYE sales sees the attendee’s interest signals and can continue with the most relevant next conversation.</p><div class="small">Outcome: better meeting</div></article>
+        <div class="process">
+          <div class="steps">
+            <article class="step"><div class="num">1</div><h3>Attend the launch</h3><p>The participant sees the SCP story and the content path built for their audience.</p><small>Event moment</small></article>
+            <article class="step"><div class="num">2</div><h3>Answer 5 short questions</h3><p>Role, organization type, main interest, maturity level and preferred next topic.</p><small>2 minutes</small></article>
+            <article class="step"><div class="num">3</div><h3>Map the buyer lens</h3><p>ICEYE connects the attendee to the right message: strategic, technical or operational.</p><small>Approved logic</small></article>
+            <article class="step"><div class="num">4</div><h3>Send a visual brief</h3><p>The attendee receives a concise, role-specific summary they can use internally.</p><small>Personal output</small></article>
+            <article class="step"><div class="num">5</div><h3>Follow up smarter</h3><p>Sales sees what each attendee cares about and can suggest the right next conversation.</p><small>Sales action</small></article>
+          </div>
         </div>
       </div>
     </section>
@@ -75,37 +106,38 @@
     <section>
       <div class="wrap">
         <div class="section-head">
-          <div><span class="pill"><span class="dot"></span> Three briefing versions</span><h2>Same event, different takeaway.</h2></div>
-          <p>The content is hyperpersonalized in a controlled way: by role, approved message modules and clear visual templates.</p>
+          <div class="tag"><span class="dot"></span> Three summary types</div>
+          <h2>Each buyer gets the angle they need.</h2>
         </div>
-        <div class="audiences">
-          <article class="aud glass"><div class="icon">🏛️</div><h3>Economic buyer brief</h3><p><b>Focus:</b> sovereignty, authority preserved, European capability and why federation matters now.</p></article>
-          <article class="aud glass"><div class="icon">🧭</div><h3>Technical buyer brief</h3><p><b>Focus:</b> architecture, tasking, permissions, prioritisation, integration and control.</p></article>
-          <article class="aud glass"><div class="icon">🖥️</div><h3>User buyer brief</h3><p><b>Focus:</b> mission-day workflow, requests, retasking, visibility and interface logic.</p></article>
+        <div class="outputs">
+          <article class="card"><div class="icon">🏛️</div><h3>Economic buyer</h3><p><b>Focus:</b> sovereignty, authority preserved, European capability and why federation matters now.</p></article>
+          <article class="card"><div class="icon">🧭</div><h3>Technical buyer</h3><p><b>Focus:</b> architecture, tasking, prioritisation, permissions, integration and control.</p></article>
+          <article class="card"><div class="icon">🖥️</div><h3>User buyer</h3><p><b>Focus:</b> mission-day workflow, requests, retasking, visibility and interface logic.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="bottom">
-      <div class="wrap summary glass">
-        <div>
-          <h2>The promise is simple.</h2>
-          <p>Every attendee leaves with a version of the SCP story they can actually use in their own decision context.</p>
+    <section>
+      <div class="wrap simple">
+        <div class="promise">
+          <h2>The promise</h2>
+          <p>Every valuable attendee leaves with a clear, visual answer to: “What does SCP mean for me?”</p>
         </div>
-        <div class="outputs">
-          <div class="out"><b>For the attendee</b>A clear, visual “what this means for me” summary.</div>
-          <div class="out"><b>For ICEYE sales</b>Better signals for follow-up and meeting prioritisation.</div>
-          <div class="out"><b>For marketing</b>Reusable role-based assets from the same launch content.</div>
-          <div class="out"><b>For the category</b>SCP becomes easier to explain, repeat and defend internally.</div>
+        <div class="sales">
+          <h3>Why ICEYE benefits</h3>
+          <ul>
+            <li>Attendees receive something more useful than a generic recording.</li>
+            <li>Sales gets stronger intent signals for follow-up.</li>
+            <li>Marketing gets reusable role-based assets from the same launch.</li>
+            <li>SCP becomes easier to explain inside the buyer organization.</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer"><div class="wrap">Suggested add-on name: Personal Mission Briefing, or Your SCP Decision Brief.</div></footer>
-  <script>
-    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.16});
-    document.querySelectorAll('.step').forEach((el,i)=>{el.style.transitionDelay=(i*90)+'ms';io.observe(el)});
-  </script>
+  <footer>
+    <div class="wrap">Suggested name: <b>Personal Mission Briefing</b> or <b>Your SCP Decision Brief</b>.</div>
+  </footer>
 </body>
 </html>
