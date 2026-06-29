@@ -88,10 +88,12 @@
     const q = normalize(state.query.trim());
     if (!q) return null;
     const groups = new Map();
-    visibleItems().forEach((item) => {
+    allItems().forEach((item, index) => {
+      const haystack = normalize([item.title, item.description, item.tag, item.status, item.section, item.url].join(' '));
+      if (!haystack.includes(q)) return;
       const key = item.section || 'Other';
       if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(item);
+      groups.get(key).push({ ...item, featured: isFeatured(item, index) });
     });
     return [...groups.entries()].map(([label, items]) => ({ label, items }));
   };
@@ -114,7 +116,7 @@
     .controls { padding:16px 30px 14px; display:grid; gap:13px; border-bottom:1px solid rgba(5,11,62,.08); background:rgba(255,255,255,.42); }
     .searchrow { position:relative; }
     .searchrow svg { position:absolute; left:15px; top:50%; transform:translateY(-50%); color:#7A7F8F; }
-    input { all:unset; box-sizing:border-box; width:100%; height:48px; padding:0 16px 0 44px; border:1px solid rgba(5,11,62,.14); border-radius:18px; background:rgba(255,255,255,.78); color:var(--li-ink); font:700 15px/1 var(--li-font); box-shadow:inset 0 1px 0 rgba(255,255,255,.86); }
+    input { all:unset; box-sizing:border-box; width:100%; height:48px; padding:0 16px 0 44px; border:1px solid rgba(5,11,62,.14); border-radius:18px; background:rgba(255,255,255,.78); color:var(--li-ink); font:700 15px/1 var(--li-font); box-shadow:inset 0 1px 0 rgba(255,255,255,.86); direction:ltr; text-align:left; unicode-bidi:plaintext; }
     input:focus { border-color:color-mix(in srgb, var(--li-accent) 55%, white); box-shadow:0 0 0 4px color-mix(in srgb, var(--li-accent) 14%, transparent); }
     .tabs { display:flex; gap:8px; overflow:auto; padding-bottom:2px; scrollbar-width:none; }
     .tabs::-webkit-scrollbar { display:none; }
@@ -207,6 +209,14 @@
     bindEvents();
   }
 
+  function focusSearchEnd() {
+    const nextInput = root.querySelector('input');
+    if (!nextInput) return;
+    nextInput.focus();
+    const end = nextInput.value.length;
+    try { nextInput.setSelectionRange(end, end); } catch {}
+  }
+
   function bindEvents() {
     const launcher = root.querySelector('.launcher');
     const close = root.querySelector('.close');
@@ -218,7 +228,7 @@
       state.query = event.target.value;
       state.activeIndex = -1;
       render();
-      root.querySelector('input')?.focus();
+      focusSearchEnd();
     });
     root.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => {
       state.activeTab = tab.dataset.tab || 'featured';
@@ -239,7 +249,7 @@
     state.open = open;
     state.activeIndex = -1;
     render();
-    if (open) setTimeout(() => root.querySelector('input')?.focus(), 40);
+    if (open) setTimeout(focusSearchEnd, 40);
   }
 
   window.addEventListener('keydown', (event) => {
