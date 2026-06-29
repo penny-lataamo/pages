@@ -1,7 +1,7 @@
 {
   "updated": "2026-06-29",
   "title": "Lataamo Insider",
-  "subtitle": "Internal pages, tools and reusable assets.",
+  "subtitle": "Pages, tools, guides and live internal assets.",
   "homeUrl": "../",
   "accent": "#5A21D6",
   "sections": [
@@ -15,7 +15,8 @@
           "url": "https://penny-guide.lataamoapp.com/",
           "tag": "Guide",
           "status": "live",
-          "icon": "✦"
+          "icon": "✦",
+          "featured": true
         },
         {
           "title": "Opportunity Engine",
@@ -23,7 +24,8 @@
           "url": "https://opportunity.lataamoapp.com",
           "tag": "Sales",
           "status": "live",
-          "icon": "↗"
+          "icon": "↗",
+          "featured": true
         },
         {
           "title": "Opportunity Radar",
@@ -31,7 +33,8 @@
           "url": "https://lead-radar.lataamoapp.com",
           "tag": "Leads",
           "status": "live",
-          "icon": "◉"
+          "icon": "◉",
+          "featured": true
         },
         {
           "title": "AI in Events Inspiration Base",
@@ -39,9 +42,11 @@
           "url": "https://ai-events.lataamoapp.com",
           "tag": "AI",
           "status": "live",
-          "icon": "✺"
+          "icon": "✺",
+          "featured": true
         }
-      ]
+      ],
+      "shortLabel": "Tools"
     },
     {
       "id": "core",
@@ -71,7 +76,8 @@
           "status": "live",
           "icon": "▦"
         }
-      ]
+      ],
+      "shortLabel": "Penny & AI"
     },
     {
       "id": "customer-facing",
@@ -109,7 +115,8 @@
           "status": "live",
           "icon": "●"
         }
-      ]
+      ],
+      "shortLabel": "Concepts & cases"
     },
     {
       "id": "design-and-product",
@@ -131,7 +138,8 @@
           "status": "new",
           "icon": "◎"
         }
-      ]
+      ],
+      "shortLabel": "Design & product"
     }
   ]
 }
