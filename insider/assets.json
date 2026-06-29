@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15",
+  "updated": "2026-06-29",
   "title": "Lataamo Insider",
   "subtitle": "Internal pages, tools and reusable assets.",
   "homeUrl": "../",
@@ -9,6 +9,14 @@
       "id": "actual-tools",
       "label": "Actual live tools",
       "items": [
+        {
+          "title": "How to Use Penny at Lataamo",
+          "description": "A practical one-page visual guide for using Penny effectively in Slack.",
+          "url": "https://penny-lataamo.github.io/lataamo-penny-guide/",
+          "tag": "Guide",
+          "status": "live",
+          "icon": "✦"
+        },
         {
           "title": "Opportunity Engine",
           "description": "Internal sales/opportunity intelligence: examples, hypotheses, packages and outreach openers.",
